@@ -1,0 +1,24 @@
+{
+  "name": "after-care-newest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stawbreedelight/after-care-newest.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/stawbreedelight/after-care-newest/issues"
+  },
+  "homepage": "https://github.com/stawbreedelight/after-care-newest#readme",
+  "devDependencies": {
+    "supabase": "^2.114.0"
+  }
+}
