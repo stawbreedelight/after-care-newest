@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mid Vanilla — Aftercare</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <!-- INTRO -->
+        <section id="intro">
+
+            <div class="logo">🍦</div>
+
+            <h1>Aftercare</h1>
+
+            <p>
+                Take a moment to reconnect after your time together.
+                These three questions are simply a chance to check in,
+                reflect, and discover something new about each other.
+            </p>
+
+            <p class="bold">
+                No right answers. Just you two.
+            </p>
+
+            <button id="startButton">
+                Start Aftercare
+            </button>
+
+        </section>
+
+
+        <!-- QUESTIONS -->
+        <section id="game" class="hidden">
+
+            <p id="progress"></p>
+
+            <div class="question-card">
+
+                <h2 id="question"></h2>
+
+            </div>
+
+            <button id="nextButton">
+                Next
+            </button>
+
+        </section>
+
+
+        <!-- FINISHED -->
+        <section id="finished" class="hidden">
+
+            <div class="logo">💗</div>
+
+            <h1>That's a wrap</h1>
+
+            <p>
+                Take a moment to enjoy being together.
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Game -->
+    <script src="app.js"></script>
+
+</body>
+</html>
