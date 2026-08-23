@@ -26,17 +26,20 @@ body {
 }
 
 .logo {
-    width: 120px;
+    width: 240px;
     height: auto;
     display: block;
     margin: 0 auto 20px auto;
 }
 
 h1 {
+    button {
+
     font-family: "Baloo 2", cursive;
+
     font-weight: 700;
-    font-size: 42px;
-    margin-bottom: 20px;
+
+    letter-spacing: -0.5px;
 }
 
 #question {
@@ -63,31 +66,33 @@ p {
 button {
     border: none;
 
-    padding: 15px 30px;
+    padding: 18px 34px;
 
-    border-radius: 30px;
+    border-radius: 34px;
 
-    font-family: "Nunito Sans", sans-serif;
+    font-family: "Baloo 2", cursive;
 
-    font-weight: 400;
+    font-weight: 700;
 
-    font-size: 18px;
+    font-size: 24px;
 
-    cursor: pointer;
+    letter-spacing: -0.4px;
 
     background: #F7E7C6;
 
     color: #4b3b38;
 
-    margin-top: 20px;
+    cursor: pointer;
 
-    transition: background 0.2s ease;
+    margin-top: 24px;
+
+    transition: background 0.2s ease, transform 0.15s ease;
 
 }
 
 button:hover {
-
     background: #EFD9AE;
+    transform: translateY(-1px);
 }
 
 .question-card {
