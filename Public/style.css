@@ -30,11 +30,14 @@ body {
 /* GAME ICON */
 
 .logo {
-    width: 220px;
-    max-width: 70vw;
+  width: 300px;
+
+    max-width: 80vw;
+
     height: auto;
 
     display: block;
+
     margin: 0 auto 28px auto;
 }
 
@@ -138,10 +141,13 @@ button:hover {
 /* FINISHED SCREEN IMAGE */
 
 .finish-logo {
-    width: 180px;
-    max-width: 60vw;
+  width: 300px;
+
+    max-width: 80vw;
+
     height: auto;
 
     display: block;
+
     margin: 0 auto 28px auto;
 }
