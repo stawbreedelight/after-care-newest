@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Mid Vanilla | Date Planner</title>
+    <title>Date Planner</title>
 
     <link rel="stylesheet" href="style.css">
 </head>
@@ -18,9 +18,7 @@
 
             <h1>Date Planner</h1>
 
-            <p>
-                Find a date you both actually want to do.
-            </p>
+            <p>Find a date you both actually want to do.</p>
 
             <button id="createButton">
                 Create a Date
