@@ -141,13 +141,28 @@ button:hover {
 /* FINISHED SCREEN IMAGE */
 
 .finish-logo {
-  width: 300px;
-
+    width: 300px;
     max-width: 80vw;
-
     height: auto;
-
     display: block;
-
     margin: 0 auto 28px auto;
+}
+
+
+/* VANILLA LEVEL GAME ICON */
+
+.game-icon {
+    width: 280px;
+    max-width: 70vw;
+    height: auto;
+    display: block;
+}
+
+.game-link {
+    display: inline-block;
+    text-decoration: none;
+}
+
+.game-link:hover {
+    transform: scale(1.03);
 }
