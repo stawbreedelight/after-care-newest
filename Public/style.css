@@ -8,11 +8,11 @@ body {
     margin: 0;
     min-height: 100vh;
 
+    background: #fff7f4;
+    color: #4b3b38;
+
     font-family: "Nunito Sans", sans-serif;
     font-weight: 400;
-
-    background-color: #FFF8EC;
-    color: #4b3b38;
 
     display: flex;
     justify-content: center;
@@ -21,38 +21,51 @@ body {
 
 .container {
     width: 90%;
-    max-width: 550px;
+    max-width: 600px;
+    margin: 0 auto;
     text-align: center;
 }
 
+
+/* GAME ICON */
+
 .logo {
-    width: 240px;
+    width: 220px;
+    max-width: 70vw;
     height: auto;
+
     display: block;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 28px auto;
 }
+
+
+/* HEADINGS */
 
 h1 {
-    button {
+    margin: 0 0 20px 0;
 
     font-family: "Baloo 2", cursive;
-
     font-weight: 700;
-
-    letter-spacing: -0.5px;
+    font-size: 42px;
+    line-height: 1.1;
 }
+
+
+/* QUESTION */
 
 #question {
     font-family: "Nunito Sans", sans-serif;
     font-weight: 600;
-}
-
-h2 {
     font-size: 28px;
     line-height: 1.4;
 }
 
+
+/* BODY TEXT */
+
 p {
+    margin: 0 0 20px 0;
+
     font-family: "Nunito Sans", sans-serif;
     font-weight: 400;
     font-size: 18px;
@@ -63,31 +76,29 @@ p {
     font-weight: 600;
 }
 
+
+/* BUTTONS */
+
 button {
     border: none;
-
-    padding: 18px 34px;
-
     border-radius: 34px;
 
-    font-family: "Baloo 2", cursive;
-
-    font-weight: 700;
-
-    font-size: 24px;
-
-    letter-spacing: -0.4px;
+    padding: 16px 32px;
+    margin-top: 18px;
 
     background: #F7E7C6;
-
     color: #4b3b38;
+
+    font-family: "Baloo 2", cursive;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1;
 
     cursor: pointer;
 
-    margin-top: 24px;
-
-    transition: background 0.2s ease, transform 0.15s ease;
-
+    transition:
+        background 0.2s ease,
+        transform 0.15s ease;
 }
 
 button:hover {
@@ -95,24 +106,32 @@ button:hover {
     transform: translateY(-1px);
 }
 
+
+/* QUESTION CARD */
+
 .question-card {
     background: white;
 
     padding: 45px 30px;
+    margin: 25px 0;
 
     border-radius: 25px;
 
-    margin: 30px 0;
-
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
 }
 
-.hidden {
-    display: none;
-}
+
+/* QUESTION NUMBER */
 
 #progress {
     font-family: "Nunito Sans", sans-serif;
     font-weight: 400;
     font-size: 15px;
+}
+
+
+/* VERY IMPORTANT — HIDES INACTIVE SCREENS */
+
+.hidden {
+    display: none !important;
 }
