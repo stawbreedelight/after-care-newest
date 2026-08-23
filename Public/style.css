@@ -135,3 +135,13 @@ button:hover {
 .hidden {
     display: none !important;
 }
+/* FINISHED SCREEN IMAGE */
+
+.finish-logo {
+    width: 180px;
+    max-width: 60vw;
+    height: auto;
+
+    display: block;
+    margin: 0 auto 28px auto;
+}
