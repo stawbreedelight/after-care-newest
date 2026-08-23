@@ -12,12 +12,12 @@ import {
 // ==============================
 
 const firebaseConfig = {
-  apiKey: "YOUR_FIREBASE_API_KEY",
+  apiKey: "AIzaSyD-xqPWrExGfmVRJ2hYk7usgZ3rhyoNDUc",
   authDomain: "mid-vanilla.firebaseapp.com",
   projectId: "mid-vanilla",
   storageBucket: "mid-vanilla.firebasestorage.app",
   messagingSenderId: "404095487133",
-  appId: "1:404095487133:web:f8f0b413180a878b2c5874"
+  appId: "1:404095487133:web:8dd0aee98284dde92c5874",
 };
 
 const app = initializeApp(firebaseConfig);
