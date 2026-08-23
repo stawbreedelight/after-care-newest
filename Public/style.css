@@ -12,10 +12,10 @@ body {
 
     background: #fff7f4;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+ display: flex;
+justify-content: center;
+align-items: center;
+    
     color: #4b3b38;
 }
     background: #fff7f4;
@@ -41,7 +41,7 @@ body {
 
 h1 {
     font-family: "Baloo 2", cursive;
-    font-weight: 700;
+    font-weight: 800;
 }
 
 #question {
