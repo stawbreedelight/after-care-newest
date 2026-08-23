@@ -174,9 +174,10 @@ document
     nextQuestion
   );
 document
-  .getElementById("finishButton")
+  .getElementById("levelButton")
+
   .addEventListener("click", () => {
 
-    window.location.href = "level.html";
+    window.location.href = "./level.html";
 
   });
