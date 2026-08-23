@@ -173,3 +173,10 @@ document
     "click",
     nextQuestion
   );
+document
+  .getElementById("finishButton")
+  .addEventListener("click", () => {
+
+    window.location.href = "level.html";
+
+  });
