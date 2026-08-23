@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&family=Nunito+Sans:wght@400;600;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    font-family: 'Nunito Sans', sans-serif;
+
+    background: #FFF7E8;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 24px;
+}
+
+main {
+    width: 100%;
+    max-width: 500px;
+}
+
+#intro {
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Baloo 2', cursive;
+    font-size: 3rem;
+
+    margin: 0 0 10px;
+
+    color: #B99AD9;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+
+    margin: 0 auto 32px;
+
+    color: #6F6258;
+}
+
+button {
+    width: 100%;
+
+    padding: 17px 24px;
+    margin-bottom: 14px;
+
+    border: none;
+    border-radius: 20px;
+
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+#createButton {
+    background: #F6A98D;
+    color: white;
+}
+
+#joinButton {
+    background: #A8C98F;
+    color: white;
+}
+
+button:active {
+    transform: scale(0.98);
+}
