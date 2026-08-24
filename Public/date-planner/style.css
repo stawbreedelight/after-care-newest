@@ -96,6 +96,13 @@ button {
   color: #4b3b38;
 }
 
+#showJoinButton,
+#noButton,
+#backButton {
+  background: #F7E7C6;
+  color: #4b3b38;
+}
+
 #createButton:hover,
 #yesButton:hover,
 #joinButton:hover {
