@@ -374,3 +374,34 @@ button:disabled {
 
   margin: 0 auto 18px auto;
 }
+/* VANILLA LAND LOGO */
+
+.vanilla-land-icon {
+  width: 280px;
+  max-width: 80vw;
+  height: auto;
+
+  display: block;
+  margin: 0 auto 20px auto;
+}
+
+
+/* VANILLA LAND GAME ICONS */
+
+.game-icon {
+  width: 220px;
+  max-width: 70vw;
+  height: auto;
+
+  display: block;
+  margin: 0 auto;
+}
+
+.game-link {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.game-link:hover {
+  transform: scale(1.03);
+}
