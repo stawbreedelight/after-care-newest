@@ -5,8 +5,36 @@ import {
   setDoc,
   getDoc,
   updateDoc,
-  serverTimestamp
+  serverTimestamp,
+  onSnapshot
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+let roomListener = null;
+function startRoomListener(roomCode) {
+  const roomRef = doc(
+    db,
+    "datePlannerRooms",
+    roomCode
+  );
+
+  if (roomListener) {
+    roomListener();
+  }
+
+  roomListener = onSnapshot(roomRef, (roomSnap) => {
+    if (!roomSnap.exists()) {
+      return;
+    }
+
+    const roomData = roomSnap.data();
+
+    if (
+      roomData.player1Finished === true &&
+      roomData.player2Finished === true
+    ) {
+      showMatches(roomData);
+    }
+  });
+}
 
 const createButton = document.getElementById("createButton");
 const joinButton = document.getElementById("joinButton");
@@ -107,6 +135,8 @@ function openGame(roomCode, player) {
   noButton.style.display = "block";
 
   showDateIdea();
+
+  startRoomListener(roomCode);
 }
 
 async function saveChoice(choice) {
