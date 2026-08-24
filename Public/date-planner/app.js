@@ -1,143 +1,463 @@
-<!DOCTYPE html>
-<html lang="en">
+import { db } from "./firebase-config.js";
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+import {
+  doc,
+  setDoc,
+  getDoc,
+  updateDoc,
+  serverTimestamp,
+  onSnapshot
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-    <title>Mid Vanilla | Date Planner</title>
+const createButton = document.getElementById("createButton");
+const showJoinButton = document.getElementById("showJoinButton");
+const joinButton = document.getElementById("joinButton");
+const backButton = document.getElementById("backButton");
 
-    <link rel="stylesheet" href="style.css">
-</head>
+const intro = document.getElementById("intro");
+const joinScreen = document.getElementById("joinScreen");
+const game = document.getElementById("game");
+const waiting = document.getElementById("waiting");
+const results = document.getElementById("results");
 
-<body>
+const roomCodeInput = document.getElementById("roomCodeInput");
+const roomCodeText = document.getElementById("roomCodeText");
+const progressText = document.getElementById("progressText");
 
-    <main>
+const dateTitle = document.getElementById("dateTitle");
+const dateDescription = document.getElementById("dateDescription");
 
-        <section id="intro">
+const yesButton = document.getElementById("yesButton");
+const noButton = document.getElementById("noButton");
 
-            <h1>Date Planner</h1>
+const matchList = document.getElementById("matchList");
 
-            <p class="intro-text">
-                Find a date you both actually want to do.
-            </p>
+let currentRoomCode = "";
+let currentPlayer = "";
+let currentDateIndex = 0;
+let roomListener = null;
 
-            <button id="createButton">
-                Create a Date
-            </button>
+const dateIdeas = [
+  {
+    id: "sunset-picnic",
+    title: "Sunset Picnic",
+    description: "Pack some snacks and watch the sunset together."
+  },
+  {
+    id: "ice-cream",
+    title: "Ice Cream Date",
+    description: "Go out for ice cream and pick a flavour for each other."
+  },
+  {
+    id: "movie-night",
+    title: "Movie Night",
+    description: "Choose a movie, grab some snacks, and get cosy together."
+  },
+  {
+    id: "stargazing",
+    title: "Stargazing",
+    description: "Grab a blanket and find somewhere quiet to look at the stars."
+  },
+  {
+    id: "cook-together",
+    title: "Cook Together",
+    description: "Choose a recipe neither of you has made before and cook it together."
+  },
+  {
+    id: "bookstore",
+    title: "Bookstore Date",
+    description: "Visit a bookstore and choose a book for each other."
+  },
+  {
+    id: "coffee-walk",
+    title: "Coffee Walk",
+    description: "Grab your favourite drinks and take a long walk together."
+  },
+  {
+    id: "game-night",
+    title: "Game Night",
+    description: "Pick a board game, card game, or video game and play together."
+  }
+];
 
-            <button id="showJoinButton">
-                Join a Date
-            </button>
+function hideAllScreens() {
+  intro.style.display = "none";
+  joinScreen.style.display = "none";
+  game.style.display = "none";
+  waiting.style.display = "none";
+  results.style.display = "none";
+}
 
-        </section>
+function generateRoomCode() {
+  const characters = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  let code = "";
 
+  for (let i = 0; i < 6; i++) {
+    code += characters.charAt(
+      Math.floor(Math.random() * characters.length)
+    );
+  }
 
-        <section id="joinScreen" style="display: none;">
+  return code;
+}
 
-            <h1>Join a Date</h1>
+function showDateIdea() {
+  const idea = dateIdeas[currentDateIndex];
 
-            <p>
-                Enter the code your person sent you.
-            </p>
+  dateTitle.textContent = idea.title;
+  dateDescription.textContent = idea.description;
 
-            <input
-                id="roomCodeInput"
-                type="text"
-                maxlength="6"
-                placeholder="ABC123"
-                autocomplete="off"
-            >
+  progressText.textContent =
+    `${currentDateIndex + 1} of ${dateIdeas.length}`;
+}
 
-            <button id="joinButton">
-                Join
-            </button>
+function openGame(roomCode, player) {
+  currentRoomCode = roomCode;
+  currentPlayer = player;
+  currentDateIndex = 0;
 
-            <button id="backButton" class="secondary-button">
-                Back
-            </button>
+  hideAllScreens();
 
-        </section>
+  game.style.display = "block";
 
+  roomCodeText.textContent =
+    `Date code: ${roomCode}`;
 
-        <section id="game" style="display: none;">
+  yesButton.style.display = "block";
+  noButton.style.display = "block";
 
-            <div class="game-top">
+  showDateIdea();
+  startRoomListener(roomCode);
+}
 
-                <p id="roomCodeText"></p>
+function startRoomListener(roomCode) {
+  const roomRef = doc(
+    db,
+    "datePlannerRooms",
+    roomCode
+  );
 
-                <p id="progressText">
-                    1 of 8
-                </p>
+  if (roomListener) {
+    roomListener();
+  }
 
-            </div>
+  roomListener = onSnapshot(roomRef, (roomSnap) => {
+    if (!roomSnap.exists()) {
+      return;
+    }
 
-            <div id="dateCard">
+    const roomData = roomSnap.data();
 
-                <div class="date-icon">
-                    🍦
-                </div>
+    if (
+      roomData.player1Finished === true &&
+      roomData.player2Finished === true
+    ) {
+      showMatches(roomData);
+    }
+  });
+}
 
-                <h2 id="dateTitle">
-                    Sunset Picnic
-                </h2>
+async function saveChoice(choice) {
+  const idea = dateIdeas[currentDateIndex];
 
-                <p id="dateDescription">
-                    Pack some snacks and watch the sunset together.
-                </p>
+  const roomRef = doc(
+    db,
+    "datePlannerRooms",
+    currentRoomCode
+  );
 
-                <button id="yesButton">
-                    Yes please 💕
-                </button>
+  const fieldName =
+    `${currentPlayer}Choices.${idea.id}`;
 
-                <button id="noButton" class="secondary-button">
-                    Not for me
-                </button>
+  await updateDoc(roomRef, {
+    [fieldName]: choice
+  });
+}
 
-            </div>
+function showWaitingScreen() {
+  hideAllScreens();
+  waiting.style.display = "block";
+}
 
-        </section>
+function showMatches(roomData) {
+  hideAllScreens();
+  results.style.display = "block";
 
+  matchList.innerHTML = "";
 
-        <section id="waiting" style="display: none;">
+  const player1Choices =
+    roomData.player1Choices || {};
 
-            <div class="waiting-icon">
-                💌
-            </div>
+  const player2Choices =
+    roomData.player2Choices || {};
 
-            <h1>You’re all done</h1>
+  const matches = dateIdeas.filter((idea) => {
+    return (
+      player1Choices[idea.id] === true &&
+      player2Choices[idea.id] === true
+    );
+  });
 
-            <p>
-                Your choices are saved.
-            </p>
+  if (matches.length === 0) {
+    matchList.innerHTML = `
+      <div class="match-card">
+        <h2>No matches this round</h2>
+        <p>Try again with some new ideas 💕</p>
+      </div>
+    `;
 
-            <p>
-                We’re waiting for your person to finish choosing.
-            </p>
+    return;
+  }
 
-        </section>
+  matches.forEach((idea) => {
+    const matchCard =
+      document.createElement("div");
 
+    matchCard.classList.add("match-card");
 
-        <section id="results" style="display: none;">
+    matchCard.innerHTML = `
+      <h2>${idea.title}</h2>
+      <p>${idea.description}</p>
+    `;
 
-            <div class="results-icon">
-                💕
-            </div>
+    matchList.appendChild(matchCard);
+  });
+}
 
-            <h1>It’s a Date!</h1>
+async function checkForMatches() {
+  const roomRef = doc(
+    db,
+    "datePlannerRooms",
+    currentRoomCode
+  );
 
-            <p>
-                These are the ideas you both chose.
-            </p>
+  const roomSnap =
+    await getDoc(roomRef);
 
-            <div id="matchList"></div>
+  if (!roomSnap.exists()) {
+    return false;
+  }
 
-        </section>
+  const roomData =
+    roomSnap.data();
 
-    </main>
+  if (
+    roomData.player1Finished === true &&
+    roomData.player2Finished === true
+  ) {
+    showMatches(roomData);
+    return true;
+  }
 
-    <script type="module" src="app.js?v=9"></script>
+  return false;
+}
 
-</body>
+async function finishPlayer() {
+  const roomRef = doc(
+    db,
+    "datePlannerRooms",
+    currentRoomCode
+  );
 
-</html>
+  const finishedField =
+    currentPlayer === "player1"
+      ? "player1Finished"
+      : "player2Finished";
+
+  await updateDoc(roomRef, {
+    [finishedField]: true
+  });
+
+  const bothFinished =
+    await checkForMatches();
+
+  if (!bothFinished) {
+    showWaitingScreen();
+  }
+}
+
+async function chooseDate(choice) {
+  try {
+    yesButton.disabled = true;
+    noButton.disabled = true;
+
+    await saveChoice(choice);
+
+    currentDateIndex++;
+
+    if (currentDateIndex >= dateIdeas.length) {
+      await finishPlayer();
+      return;
+    }
+
+    showDateIdea();
+
+  } catch (error) {
+    console.error(
+      "Error saving choice:",
+      error
+    );
+
+    alert(
+      "Firebase error:\n" +
+      error.code +
+      "\n" +
+      error.message
+    );
+
+  } finally {
+    yesButton.disabled = false;
+    noButton.disabled = false;
+  }
+}
+
+showJoinButton.addEventListener("click", () => {
+  hideAllScreens();
+
+  roomCodeInput.value = "";
+  joinScreen.style.display = "block";
+
+  roomCodeInput.focus();
+});
+
+backButton.addEventListener("click", () => {
+  hideAllScreens();
+  intro.style.display = "block";
+});
+
+createButton.addEventListener(
+  "click",
+  async () => {
+    try {
+      let roomCode;
+      let roomExists = true;
+
+      while (roomExists) {
+        roomCode =
+          generateRoomCode();
+
+        const roomRef = doc(
+          db,
+          "datePlannerRooms",
+          roomCode
+        );
+
+        const roomSnap =
+          await getDoc(roomRef);
+
+        roomExists =
+          roomSnap.exists();
+      }
+
+      const roomRef = doc(
+        db,
+        "datePlannerRooms",
+        roomCode
+      );
+
+      await setDoc(roomRef, {
+        createdAt:
+          serverTimestamp(),
+
+        player1Finished: false,
+        player2Finished: false,
+
+        player1Choices: {},
+        player2Choices: {}
+      });
+
+      openGame(
+        roomCode,
+        "player1"
+      );
+
+    } catch (error) {
+      console.error(
+        "Error creating room:",
+        error
+      );
+
+      alert(
+        "Firebase error:\n" +
+        error.code +
+        "\n" +
+        error.message
+      );
+    }
+  }
+);
+
+joinButton.addEventListener(
+  "click",
+  async () => {
+    const enteredCode =
+      roomCodeInput.value
+        .trim()
+        .toUpperCase();
+
+    if (!enteredCode) {
+      alert("Enter your date code first.");
+      return;
+    }
+
+    try {
+      const roomRef = doc(
+        db,
+        "datePlannerRooms",
+        enteredCode
+      );
+
+      const roomSnap =
+        await getDoc(roomRef);
+
+      if (!roomSnap.exists()) {
+        alert(
+          "That date code doesn't exist."
+        );
+
+        return;
+      }
+
+      openGame(
+        enteredCode,
+        "player2"
+      );
+
+    } catch (error) {
+      console.error(
+        "Error joining room:",
+        error
+      );
+
+      alert(
+        "Firebase error:\n" +
+        error.code +
+        "\n" +
+        error.message
+      );
+    }
+  }
+);
+
+roomCodeInput.addEventListener(
+  "keydown",
+  (event) => {
+    if (event.key === "Enter") {
+      joinButton.click();
+    }
+  }
+);
+
+yesButton.addEventListener(
+  "click",
+  async () => {
+    await chooseDate(true);
+  }
+);
+
+noButton.addEventListener(
+  "click",
+  async () => {
+    await chooseDate(false);
+  }
+);
