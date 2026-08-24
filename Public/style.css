@@ -149,13 +149,15 @@ button:hover {
 }
 
 
-/* VANILLA LEVEL GAME ICON */
+//* VANILLA LAND ICON */
 
-.game-icon {
-    width: 220px;
-    max-width: 70vw;
+.vanilla-land-icon {
+    width: 180px;
+    max-width: 65vw;
     height: auto;
+
     display: block;
+    margin: 0 auto 18px auto;
 }
 
 .game-link {
