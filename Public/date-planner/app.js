@@ -48,9 +48,14 @@ createButton.addEventListener("click", async () => {
     alert(`Your date code is: ${roomCode}`);
 
   } catch (error) {
-    console.error("Error creating room:", error);
+  console.error("Error creating room:", error);
 
-    alert("Something went wrong creating your date.");
+  alert(
+    "Firebase error:\n" +
+    error.code +
+    "\n" +
+    error.message
+  );
   }
 });
 
