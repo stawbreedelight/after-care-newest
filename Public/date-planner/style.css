@@ -335,3 +335,12 @@ button:disabled {
     font-size: 0.85rem;
   }
 }
+.date-planner-logo {
+  width: 320px;
+  max-width: 85vw;
+  height: auto;
+
+  display: block;
+
+  margin: 0 auto 18px auto;
+}
