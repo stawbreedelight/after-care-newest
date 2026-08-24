@@ -149,19 +149,33 @@ button:hover {
 }
 
 
-//* VANILLA LAND ICON */
+//* VANILLA LAND TOP LOGO */
 
 .vanilla-land-icon {
-    width: 180px;
-    max-width: 65vw;
+    width: 280px;
+    max-width: 80%;
     height: auto;
-
     display: block;
-    margin: 0 auto 18px auto;
+    margin: 0 auto 20px;
 }
+
+
+/* GAME ICONS */
+
+.game-icon {
+    width: 220px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/* CLICKABLE GAME ICON */
 
 .game-link {
     display: inline-block;
+    width: 220px;
+    max-width: 70vw;
     text-decoration: none;
 }
 
