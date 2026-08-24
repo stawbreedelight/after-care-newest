@@ -10,6 +10,10 @@ import {
 const createButton = document.getElementById("createButton");
 const joinButton = document.getElementById("joinButton");
 
+const intro = document.getElementById("intro");
+const game = document.getElementById("game");
+const roomCodeText = document.getElementById("roomCodeText");
+
 function generateRoomCode() {
   const characters = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
   let code = "";
@@ -21,6 +25,13 @@ function generateRoomCode() {
   }
 
   return code;
+}
+
+function openGame(roomCode) {
+  intro.style.display = "none";
+  game.style.display = "block";
+
+  roomCodeText.textContent = `Date code: ${roomCode}`;
 }
 
 createButton.addEventListener("click", async () => {
@@ -45,64 +56,48 @@ createButton.addEventListener("click", async () => {
       player2Finished: false
     });
 
-    alert(`Your date code is: ${roomCode}`);
+    openGame(roomCode);
 
   } catch (error) {
-  console.error("Error creating room:", error);
+    console.error("Error creating room:", error);
 
-  alert(
-    "Firebase error:\n" +
-    error.code +
-    "\n" +
-    error.message
-  );
+    alert(
+      "Firebase error:\n" +
+      error.code +
+      "\n" +
+      error.message
+    );
   }
 });
 
 joinButton.addEventListener("click", async () => {
-
   const enteredCode = prompt("Enter your date code:");
 
   if (!enteredCode) {
-
     return;
-
   }
 
   const roomCode = enteredCode.trim().toUpperCase();
 
   try {
-
     const roomRef = doc(db, "datePlannerRooms", roomCode);
-
     const roomSnap = await getDoc(roomRef);
 
     if (!roomSnap.exists()) {
-
       alert("That date code doesn't exist.");
-
       return;
-
     }
 
-    alert(`Joined date room: ${roomCode}`);
+    openGame(roomCode);
 
   } catch (error) {
-
     console.error("Error joining room:", error);
 
     alert(
-
       "Firebase error:\n" +
-
       error.code +
-
       "\n" +
-
       error.message
-
     );
-
   }
-
 });
