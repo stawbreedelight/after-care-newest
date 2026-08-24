@@ -18,7 +18,7 @@
 
             <h1>Date Planner</h1>
 
-            <p>
+            <p class="intro-text">
                 Find a date you both actually want to do.
             </p>
 
@@ -26,8 +26,35 @@
                 Create a Date
             </button>
 
-            <button id="joinButton">
+            <button id="showJoinButton">
                 Join a Date
+            </button>
+
+        </section>
+
+
+        <section id="joinScreen" style="display: none;">
+
+            <h1>Join a Date</h1>
+
+            <p>
+                Enter the code your person sent you.
+            </p>
+
+            <input
+                id="roomCodeInput"
+                type="text"
+                maxlength="6"
+                placeholder="ABC123"
+                autocomplete="off"
+            >
+
+            <button id="joinButton">
+                Join
+            </button>
+
+            <button id="backButton" class="secondary-button">
+                Back
             </button>
 
         </section>
@@ -35,9 +62,21 @@
 
         <section id="game" style="display: none;">
 
-            <p id="roomCodeText"></p>
+            <div class="game-top">
+
+                <p id="roomCodeText"></p>
+
+                <p id="progressText">
+                    1 of 8
+                </p>
+
+            </div>
 
             <div id="dateCard">
+
+                <div class="date-icon">
+                    🍦
+                </div>
 
                 <h2 id="dateTitle">
                     Sunset Picnic
@@ -51,7 +90,7 @@
                     Yes please 💕
                 </button>
 
-                <button id="noButton">
+                <button id="noButton" class="secondary-button">
                     Not for me
                 </button>
 
@@ -60,11 +99,32 @@
         </section>
 
 
+        <section id="waiting" style="display: none;">
+
+            <div class="waiting-icon">
+                💌
+            </div>
+
+            <h1>You’re all done</h1>
+
+            <p>
+                Your choices are saved.
+            </p>
+
+            <p>
+                We’re waiting for your person to finish choosing.
+            </p>
+
+        </section>
+
+
         <section id="results" style="display: none;">
 
-            <h1>
-                It’s a Date 💕
-            </h1>
+            <div class="results-icon">
+                💕
+            </div>
+
+            <h1>It’s a Date!</h1>
 
             <p>
                 These are the ideas you both chose.
@@ -76,8 +136,7 @@
 
     </main>
 
-
-   <script type="module" src="app.js?v=8"></script>
+    <script type="module" src="app.js?v=9"></script>
 
 </body>
 
