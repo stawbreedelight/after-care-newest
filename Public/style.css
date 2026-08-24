@@ -149,24 +149,35 @@ button:hover {
 }
 
 
-//* VANILLA LAND TOP LOGO */
+/* VANILLA LAND TOP LOGO */
 
-.vanilla-land-icon {
-    width: 280px;
-    max-width: 80%;
-    height: auto;
-    display: block;
-    margin: 0 auto 20px;
+img.vanilla-land-icon {
+    width: 280px !important;
+    max-width: 80vw !important;
+    height: auto !important;
+    display: block !important;
+    margin: 0 auto 24px auto !important;
 }
 
 
-/* GAME ICONS */
+/* DATE PLANNER LOGO */
 
-.game-icon {
-    width: 220px;
-    max-width: 100%;
-    height: auto;
-    display: block;
+img.date-planner-logo {
+    width: 220px !important;
+    max-width: 70vw !important;
+    height: auto !important;
+    display: block !important;
+    margin: 0 auto 24px auto !important;
+}
+
+
+/* PILLOW TALK / GAME ICONS */
+
+img.game-icon {
+    width: 220px !important;
+    max-width: 70vw !important;
+    height: auto !important;
+    display: block !important;
 }
 
 
