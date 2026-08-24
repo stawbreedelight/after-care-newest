@@ -152,7 +152,7 @@ button:hover {
 /* VANILLA LAND TOP LOGO */
 
 img.vanilla-land-icon {
-    width: 280px !important;
+    width: 300px !important;
     max-width: 80vw !important;
     height: auto !important;
     display: block !important;
@@ -163,7 +163,7 @@ img.vanilla-land-icon {
 /* DATE PLANNER LOGO */
 
 img.date-planner-logo {
-    width: 220px !important;
+    width: 200px !important;
     max-width: 70vw !important;
     height: auto !important;
     display: block !important;
@@ -174,7 +174,7 @@ img.date-planner-logo {
 /* PILLOW TALK / GAME ICONS */
 
 img.game-icon {
-    width: 220px !important;
+    width: 200px !important;
     max-width: 70vw !important;
     height: auto !important;
     display: block !important;
