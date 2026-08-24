@@ -69,41 +69,64 @@ p {
 /* BUTTONS */
 
 button {
-  width: 100%;
-
   border: none;
-  border-radius: 22px;
+  border-radius: 34px;
 
-  padding: 17px 22px;
-  margin-bottom: 14px;
+  padding: 16px 32px;
+  margin-top: 18px;
 
-  font-family: 'Nunito Sans', sans-serif;
-  font-size: 1.05rem;
+  font-family: "Baloo 2", cursive;
   font-weight: 700;
+  font-size: 22px;
+  line-height: 1;
 
   cursor: pointer;
 
-  background: #F6A98D;
-  color: #FFFFFF;
-
-  box-shadow: 0 7px 0 rgba(111, 98, 88, 0.10);
-
   transition:
-    transform 0.15s ease,
-    box-shadow 0.15s ease;
+    background 0.2s ease,
+    transform 0.15s ease;
+}
+
+/* Main cream buttons */
+
+#createButton,
+#yesButton,
+#joinButton {
+  background: #F7E7C6;
+  color: #4b3b38;
+}
+
+#createButton:hover,
+#yesButton:hover,
+#joinButton:hover {
+  background: #EFD9AE;
+  transform: translateY(-1px);
+}
+
+/* Secondary cream buttons */
+
+#showJoinButton,
+#noButton,
+#backButton {
+  background: #F7E7C6;
+  color: #4b3b38;
+}
+
+#showJoinButton:hover,
+#noButton:hover,
+#backButton:hover {
+  background: #EFD9AE;
+  transform: translateY(-1px);
 }
 
 button:active {
-  transform: translateY(3px);
-
-  box-shadow: 0 3px 0 rgba(111, 98, 88, 0.10);
+  transform: translateY(1px);
 }
 
 button:disabled {
   opacity: 0.6;
   cursor: default;
 }
-
 #createButton,
 #yesButton,
 #joinButton {
