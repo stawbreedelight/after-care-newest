@@ -14,6 +14,50 @@ const intro = document.getElementById("intro");
 const game = document.getElementById("game");
 const roomCodeText = document.getElementById("roomCodeText");
 
+const dateTitle = document.getElementById("dateTitle");
+const dateDescription = document.getElementById("dateDescription");
+
+const yesButton = document.getElementById("yesButton");
+const noButton = document.getElementById("noButton");
+
+let currentRoomCode = "";
+let currentDateIndex = 0;
+
+const dateIdeas = [
+  {
+    title: "Sunset Picnic",
+    description: "Pack some snacks and watch the sunset together."
+  },
+  {
+    title: "Ice Cream Date",
+    description: "Go out for ice cream and pick a flavour for each other."
+  },
+  {
+    title: "Movie Night",
+    description: "Choose a movie, grab some snacks, and get cosy together."
+  },
+  {
+    title: "Stargazing",
+    description: "Grab a blanket and find somewhere quiet to look at the stars."
+  },
+  {
+    title: "Cook Together",
+    description: "Choose a recipe neither of you has made before and cook it together."
+  },
+  {
+    title: "Bookstore Date",
+    description: "Visit a bookstore and choose a book for each other."
+  },
+  {
+    title: "Coffee Walk",
+    description: "Grab your favourite drinks and take a long walk together."
+  },
+  {
+    title: "Game Night",
+    description: "Pick a board game, card game, or video game and play together."
+  }
+];
+
 function generateRoomCode() {
   const characters = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
   let code = "";
@@ -27,11 +71,40 @@ function generateRoomCode() {
   return code;
 }
 
+function showDateIdea() {
+  const idea = dateIdeas[currentDateIndex];
+
+  dateTitle.textContent = idea.title;
+  dateDescription.textContent = idea.description;
+}
+
 function openGame(roomCode) {
+  currentRoomCode = roomCode;
+  currentDateIndex = 0;
+
   intro.style.display = "none";
   game.style.display = "block";
 
   roomCodeText.textContent = `Date code: ${roomCode}`;
+
+  showDateIdea();
+}
+
+function nextDate() {
+  currentDateIndex++;
+
+  if (currentDateIndex >= dateIdeas.length) {
+    dateTitle.textContent = "You're all done 💕";
+    dateDescription.textContent =
+      "You've finished choosing your date ideas.";
+
+    yesButton.style.display = "none";
+    noButton.style.display = "none";
+
+    return;
+  }
+
+  showDateIdea();
 }
 
 createButton.addEventListener("click", async () => {
@@ -100,4 +173,12 @@ joinButton.addEventListener("click", async () => {
       error.message
     );
   }
+});
+
+yesButton.addEventListener("click", () => {
+  nextDate();
+});
+
+noButton.addEventListener("click", () => {
+  nextDate();
 });
