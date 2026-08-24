@@ -193,3 +193,22 @@ img.game-icon {
 .game-link:hover {
     transform: scale(1.03);
 }
+/* DATE PLANNER BUTTON - REMOVE BACKGROUND */
+
+button.game-icon-button {
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+
+    width: auto;
+    height: auto;
+    display: inline-block;
+}
+
+button.game-icon-button:hover {
+    background: transparent !important;
+    transform: scale(1.03);
+}
