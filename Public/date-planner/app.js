@@ -59,6 +59,50 @@ createButton.addEventListener("click", async () => {
   }
 });
 
-joinButton.addEventListener("click", () => {
-  alert("Join a Date will be added next!");
+joinButton.addEventListener("click", async () => {
+
+  const enteredCode = prompt("Enter your date code:");
+
+  if (!enteredCode) {
+
+    return;
+
+  }
+
+  const roomCode = enteredCode.trim().toUpperCase();
+
+  try {
+
+    const roomRef = doc(db, "datePlannerRooms", roomCode);
+
+    const roomSnap = await getDoc(roomRef);
+
+    if (!roomSnap.exists()) {
+
+      alert("That date code doesn't exist.");
+
+      return;
+
+    }
+
+    alert(`Joined date room: ${roomCode}`);
+
+  } catch (error) {
+
+    console.error("Error joining room:", error);
+
+    alert(
+
+      "Firebase error:\n" +
+
+      error.code +
+
+      "\n" +
+
+      error.message
+
+    );
+
+  }
+
 });
