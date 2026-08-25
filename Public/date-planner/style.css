@@ -87,20 +87,40 @@ button {
     transform 0.15s ease;
 }
 
-/* Main cream buttons */
+#createButton {
+  background: #F7E7C6;
+  color: #4b3b38;
+}
 
-#createButton,
+#showJoinButton {
+  background: #F3D9DE;
+  color: #4b3b38;
+}
+
 #yesButton,
 #joinButton {
   background: #F7E7C6;
   color: #4b3b38;
 }
 
-#showJoinButton,
 #noButton,
 #backButton {
-  background: #F7E7C6;
+  background: #F3D9DE;
   color: #4b3b38;
+}
+
+#createButton:hover,
+#yesButton:hover,
+#joinButton:hover {
+  background: #EFD9AE;
+  transform: translateY(-1px);
+}
+
+#showJoinButton:hover,
+#noButton:hover,
+#backButton:hover {
+  background: #E8C8CF;
+  transform: translateY(-1px);
 }
 
 #createButton:hover,
