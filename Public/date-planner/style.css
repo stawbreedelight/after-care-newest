@@ -87,62 +87,35 @@ button {
     transform 0.15s ease;
 }
 
-#createButton {
-  background: #F7E7C6;
-  color: #4b3b38;
-}
+/* VANILLA / MAIN ACTIONS */
 
-#showJoinButton {
-  background: #F3D9DE;
-  color: #4b3b38;
-}
-
+#createButton,
 #yesButton,
 #joinButton {
   background: #F7E7C6;
   color: #4b3b38;
 }
 
+#createButton:hover,
+#yesButton:hover,
+#joinButton:hover {
+  background: #EFD9AE;
+  transform: translateY(-1px);
+}
+
+/* SOFT PINK / SECONDARY ACTIONS */
+
+#showJoinButton,
 #noButton,
 #backButton {
   background: #F3D9DE;
   color: #4b3b38;
 }
 
-#createButton:hover,
-#yesButton:hover,
-#joinButton:hover {
-  background: #EFD9AE;
-  transform: translateY(-1px);
-}
-
 #showJoinButton:hover,
 #noButton:hover,
 #backButton:hover {
   background: #E8C8CF;
-  transform: translateY(-1px);
-}
-
-#createButton:hover,
-#yesButton:hover,
-#joinButton:hover {
-  background: #EFD9AE;
-  transform: translateY(-1px);
-}
-
-/* Secondary cream buttons */
-
-#showJoinButton,
-#noButton,
-#backButton {
-  background: #F7E7C6;
-  color: #4b3b38;
-}
-
-#showJoinButton:hover,
-#noButton:hover,
-#backButton:hover {
-  background: #EFD9AE;
   transform: translateY(-1px);
 }
 
@@ -153,22 +126,6 @@ button:active {
 button:disabled {
   opacity: 0.6;
   cursor: default;
-}
-#createButton,
-#yesButton,
-#joinButton {
-  background: #F6A98D;
-}
-
-#showJoinButton {
-  background: #A8C98F;
-}
-
-.secondary-button,
-#noButton,
-#backButton {
-  background: #F0E4CF;
-  color: #6F6258;
 }
 
 
