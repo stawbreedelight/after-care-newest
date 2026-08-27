@@ -212,3 +212,16 @@ button.game-icon-button:hover {
     background: transparent !important;
     transform: scale(1.03);
 }
+/* PILLOW TALK INSTRUCTIONS IMAGE */
+
+.instructions-image {
+    width: 100%;
+    max-width: 550px;
+    max-height: 72vh;
+
+    height: auto;
+    object-fit: contain;
+
+    display: block;
+    margin: 0 auto 20px auto;
+}
