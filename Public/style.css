@@ -216,12 +216,12 @@ button.game-icon-button:hover {
 
 .instructions-image {
     width: 100%;
-    max-width: 550px;
-    max-height: 72vh;
+    max-width: 650px;
+    max-height: 75vh;
 
     height: auto;
     object-fit: contain;
 
     display: block;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 15px auto;
 }
