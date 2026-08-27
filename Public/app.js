@@ -180,4 +180,17 @@ document
 
     window.location.href = "./level.html";
 
+  );
+document
+  .getElementById("instructionButton")
+  .addEventListener("click", () => {
+
+    document
+      .getElementById("instructions")
+      .classList.add("hidden");
+
+    document
+      .getElementById("intro")
+      .classList.remove("hidden");
+
   });
