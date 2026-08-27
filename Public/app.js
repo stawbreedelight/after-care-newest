@@ -76,11 +76,10 @@ async function startPillowTalk() {
     currentQuestion = 0;
 
 
-    // Hide intro
-    document
-      .getElementById("intro")
-      .classList.add("hidden");
-
+   // Hide instructions
+document
+  .getElementById("instructions")
+  .classList.add("hidden");
 
     // Show game
     document
@@ -159,38 +158,39 @@ function nextQuestion() {
 // BUTTONS
 // ==============================
 
+// Welcome page → Instructions
 document
   .getElementById("startButton")
-  .addEventListener(
-    "click",
-    startPillowTalk
-  );
-
-
-document
-  .getElementById("nextButton")
-  .addEventListener(
-    "click",
-    nextQuestion
-  );
-document
-  .getElementById("levelButton")
-
   .addEventListener("click", () => {
-
-    window.location.href = "./level.html";
-
-  );
-document
-  .getElementById("instructionButton")
-  .addEventListener("click", () => {
-
-    document
-      .getElementById("instructions")
-      .classList.add("hidden");
 
     document
       .getElementById("intro")
+      .classList.add("hidden");
+
+    document
+      .getElementById("instructions")
       .classList.remove("hidden");
+
+  });
+
+
+// Instructions → Start questions
+document
+  .getElementById("instructionButton")
+  .addEventListener("click", startPillowTalk);
+
+
+// Next question
+document
+  .getElementById("nextButton")
+  .addEventListener("click", nextQuestion);
+
+
+// Finished → Vanilla Level
+document
+  .getElementById("levelButton")
+  .addEventListener("click", () => {
+
+    window.location.href = "./level.html";
 
   });
