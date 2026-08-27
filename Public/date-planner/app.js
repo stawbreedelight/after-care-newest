@@ -1,4 +1,4 @@
-import { db } from "./firebase-config.js";
+import { db, auth } from "./firebase-config.js";
 
 import {
   doc,
@@ -8,6 +8,11 @@ import {
   serverTimestamp,
   onSnapshot
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+import {
+  signInAnonymously
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
 
 const createButton = document.getElementById("createButton");
 const showJoinButton = document.getElementById("showJoinButton");
@@ -32,10 +37,12 @@ const noButton = document.getElementById("noButton");
 
 const matchList = document.getElementById("matchList");
 
+
 let currentRoomCode = "";
 let currentPlayer = "";
 let currentDateIndex = 0;
 let roomListener = null;
+
 
 const dateIdeas = [
   {
@@ -80,6 +87,18 @@ const dateIdeas = [
   }
 ];
 
+
+async function getSignedInUser() {
+  if (auth.currentUser) {
+    return auth.currentUser;
+  }
+
+  const userCredential = await signInAnonymously(auth);
+
+  return userCredential.user;
+}
+
+
 function hideAllScreens() {
   intro.style.display = "none";
   joinScreen.style.display = "none";
@@ -87,6 +106,7 @@ function hideAllScreens() {
   waiting.style.display = "none";
   results.style.display = "none";
 }
+
 
 function generateRoomCode() {
   const characters = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
@@ -101,6 +121,7 @@ function generateRoomCode() {
   return code;
 }
 
+
 function showDateIdea() {
   const idea = dateIdeas[currentDateIndex];
 
@@ -110,6 +131,7 @@ function showDateIdea() {
   progressText.textContent =
     `${currentDateIndex + 1} of ${dateIdeas.length}`;
 }
+
 
 function openGame(roomCode, player) {
   currentRoomCode = roomCode;
@@ -129,6 +151,7 @@ function openGame(roomCode, player) {
   showDateIdea();
   startRoomListener(roomCode);
 }
+
 
 function startRoomListener(roomCode) {
   const roomRef = doc(
@@ -157,6 +180,7 @@ function startRoomListener(roomCode) {
   });
 }
 
+
 async function saveChoice(choice) {
   const idea = dateIdeas[currentDateIndex];
 
@@ -174,10 +198,12 @@ async function saveChoice(choice) {
   });
 }
 
+
 function showWaitingScreen() {
   hideAllScreens();
   waiting.style.display = "block";
 }
+
 
 function showMatches(roomData) {
   hideAllScreens();
@@ -224,6 +250,7 @@ function showMatches(roomData) {
   });
 }
 
+
 async function checkForMatches() {
   const roomRef = doc(
     db,
@@ -252,6 +279,7 @@ async function checkForMatches() {
   return false;
 }
 
+
 async function finishPlayer() {
   const roomRef = doc(
     db,
@@ -275,6 +303,7 @@ async function finishPlayer() {
     showWaitingScreen();
   }
 }
+
 
 async function chooseDate(choice) {
   try {
@@ -311,6 +340,7 @@ async function chooseDate(choice) {
   }
 }
 
+
 showJoinButton.addEventListener("click", () => {
   hideAllScreens();
 
@@ -320,15 +350,20 @@ showJoinButton.addEventListener("click", () => {
   roomCodeInput.focus();
 });
 
+
 backButton.addEventListener("click", () => {
   hideAllScreens();
   intro.style.display = "block";
 });
 
+
 createButton.addEventListener(
   "click",
   async () => {
     try {
+
+      const user = await getSignedInUser();
+
       let roomCode;
       let roomExists = true;
 
@@ -359,6 +394,9 @@ createButton.addEventListener(
         createdAt:
           serverTimestamp(),
 
+        player1Uid: user.uid,
+        player2Uid: null,
+
         player1Finished: false,
         player2Finished: false,
 
@@ -387,6 +425,7 @@ createButton.addEventListener(
   }
 );
 
+
 joinButton.addEventListener(
   "click",
   async () => {
@@ -401,6 +440,9 @@ joinButton.addEventListener(
     }
 
     try {
+
+      const user = await getSignedInUser();
+
       const roomRef = doc(
         db,
         "datePlannerRooms",
@@ -417,6 +459,23 @@ joinButton.addEventListener(
 
         return;
       }
+
+      const roomData = roomSnap.data();
+
+      if (
+        roomData.player2Uid &&
+        roomData.player2Uid !== user.uid
+      ) {
+        alert(
+          "This date room already has two players."
+        );
+
+        return;
+      }
+
+      await updateDoc(roomRef, {
+        player2Uid: user.uid
+      });
 
       openGame(
         enteredCode,
@@ -439,6 +498,7 @@ joinButton.addEventListener(
   }
 );
 
+
 roomCodeInput.addEventListener(
   "keydown",
   (event) => {
@@ -448,12 +508,14 @@ roomCodeInput.addEventListener(
   }
 );
 
+
 yesButton.addEventListener(
   "click",
   async () => {
     await chooseDate(true);
   }
 );
+
 
 noButton.addEventListener(
   "click",
