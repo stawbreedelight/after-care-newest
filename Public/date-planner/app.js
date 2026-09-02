@@ -564,6 +564,18 @@ createButton.addEventListener(
         player2Choices:
           {},
 
+        player1Rankings:
+          {},
+
+        player2Rankings:
+          {},
+
+        rankingFinished1:
+          false,
+
+        rankingFinished2:
+          false,
+
         filters:
           null
       });
@@ -579,181 +591,6 @@ createButton.addEventListener(
     } catch (error) {
       console.error(
         "Error creating room:",
-        error
-      );
-
-      alert(
-        "Firebase error:\n" +
-        (error.code || "unknown") +
-        "\n" +
-        error.message
-      );
-    }
-  }
-);
-
-
-/* PLAYER 1 SAVES FILTERS */
-
-startFilteredGameButton.addEventListener(
-  "click",
-  async () => {
-    try {
-      const filters = {
-        budget:
-          budgetFilter.value,
-
-        energy:
-          energyFilter.value,
-
-        setting:
-          settingFilter.value
-      };
-
-      if (allDateIdeas.length === 0) {
-        await loadAllDateIdeas();
-      }
-
-      applyFilters(filters);
-
-      if (dateIdeas.length === 0) {
-        alert(
-          "No dates match those filters yet. Try choosing Any for one of the options."
-        );
-
-        return;
-      }
-
-      const roomRef = doc(
-        db,
-        "datePlannerRooms",
-        currentRoomCode
-      );
-
-      await updateDoc(roomRef, {
-        filters:
-          filters
-      });
-
-      await openGame(
-        currentRoomCode,
-        "player1",
-        filters
-      );
-
-    } catch (error) {
-      console.error(
-        "Error saving filters:",
-        error
-      );
-
-      alert(
-        "Firebase error:\n" +
-        (error.code || "unknown") +
-        "\n" +
-        error.message
-      );
-    }
-  }
-);
-
-
-/* JOIN ROOM */
-
-joinButton.addEventListener(
-  "click",
-  async () => {
-    const enteredCode =
-      roomCodeInput.value
-        .trim()
-        .toUpperCase();
-
-    if (!enteredCode) {
-      alert(
-        "Enter your date code first."
-      );
-
-      return;
-    }
-
-    try {
-      const user =
-        await getSignedInUser();
-
-      if (allDateIdeas.length === 0) {
-        await loadAllDateIdeas();
-      }
-
-      const roomRef = doc(
-        db,
-        "datePlannerRooms",
-        enteredCode
-      );
-
-      const roomSnap =
-        await getDoc(roomRef);
-
-      if (!roomSnap.exists()) {
-        alert(
-          "That date code doesn't exist."
-        );
-
-        return;
-      }
-
-      const roomData =
-        roomSnap.data();
-
-      if (
-        roomData.player1Uid ===
-        user.uid
-      ) {
-        alert(
-          "Open this date code in your partner's browser or device."
-        );
-
-        return;
-      }
-
-      if (
-        roomData.player2Uid &&
-        roomData.player2Uid !==
-          user.uid
-      ) {
-        alert(
-          "This date room already has two players."
-        );
-
-        return;
-      }
-
-      if (!roomData.filters) {
-        alert(
-          "Your partner is still choosing the date filters. Try again in a moment."
-        );
-
-        return;
-      }
-
-      if (!roomData.player2Uid) {
-        await updateDoc(
-          roomRef,
-          {
-            player2Uid:
-              user.uid
-          }
-        );
-      }
-
-      await openGame(
-        enteredCode,
-        "player2",
-        roomData.filters
-      );
-
-    } catch (error) {
-      console.error(
-        "Error joining room:",
         error
       );
 
