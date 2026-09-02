@@ -1,3 +1,5 @@
+import { db, auth } from "./firebase-config.js";
+
 import {
   doc,
   setDoc,
@@ -46,61 +48,68 @@ let currentPlayer = "";
 let currentDateIndex = 0;
 let roomListener = null;
 
+/*
+  Date ideas now come from Firebase instead
+  of being stored inside app.js.
+*/
+let dateIdeas = [];
 
-const dateIdeas = [
-  {
-    id: "sunset-picnic",
-    title: "Sunset Picnic",
-    description: "Pack some snacks and watch the sunset together."
-  },
-  {
-    id: "ice-cream",
-    title: "Ice Cream Date",
-    description: "Go out for ice cream and pick a flavour for each other."
-  },
-  {
-    id: "movie-night",
-    title: "Movie Night",
-    description: "Choose a movie, grab some snacks, and get cosy together."
-  },
-  {
-    id: "stargazing",
-    title: "Stargazing",
-    description: "Grab a blanket and find somewhere quiet to look at the stars."
-  },
-  {
-    id: "cook-together",
-    title: "Cook Together",
-    description: "Choose a recipe neither of you has made before and cook it together."
-  },
-  {
-    id: "bookstore",
-    title: "Bookstore Date",
-    description: "Visit a bookstore and choose a book for each other."
-  },
-  {
-    id: "coffee-walk",
-    title: "Coffee Walk",
-    description: "Grab your favourite drinks and take a long walk together."
-  },
-  {
-    id: "game-night",
-    title: "Game Night",
-    description: "Pick a board game, card game, or video game and play together."
-  }
-];
 
+/* -----------------------------
+   FIREBASE AUTH
+----------------------------- */
 
 async function getSignedInUser() {
   if (auth.currentUser) {
     return auth.currentUser;
   }
 
-  const userCredential = await signInAnonymously(auth);
+  const userCredential =
+    await signInAnonymously(auth);
 
   return userCredential.user;
 }
 
+
+/* -----------------------------
+   LOAD DATE IDEAS FROM FIREBASE
+----------------------------- */
+
+async function loadDateIdeas() {
+  const dateIdeasRef =
+    collection(db, "dateIdeas");
+
+  const dateIdeasQuery = query(
+    dateIdeasRef,
+    where("active", "==", true),
+    orderBy("order", "asc")
+  );
+
+  const snapshot =
+    await getDocs(dateIdeasQuery);
+
+  dateIdeas = snapshot.docs.map((docSnap) => {
+    return {
+      id: docSnap.id,
+      ...docSnap.data()
+    };
+  });
+
+  if (dateIdeas.length === 0) {
+    throw new Error(
+      "No active date ideas were found in Firebase."
+    );
+  }
+
+  console.log(
+    `${dateIdeas.length} date ideas loaded from Firebase`
+  );
+}
+
+
+/* -----------------------------
+   SCREEN HELPERS
+----------------------------- */
 
 function hideAllScreens() {
   intro.style.display = "none";
@@ -112,12 +121,16 @@ function hideAllScreens() {
 
 
 function generateRoomCode() {
-  const characters = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  const characters =
+    "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
   let code = "";
 
   for (let i = 0; i < 6; i++) {
     code += characters.charAt(
-      Math.floor(Math.random() * characters.length)
+      Math.floor(
+        Math.random() * characters.length
+      )
     );
   }
 
@@ -126,20 +139,48 @@ function generateRoomCode() {
 
 
 function showDateIdea() {
-  const idea = dateIdeas[currentDateIndex];
+  const idea =
+    dateIdeas[currentDateIndex];
 
-  dateTitle.textContent = idea.title;
-  dateDescription.textContent = idea.description;
+  if (!idea) {
+    console.error(
+      "No date idea found at index:",
+      currentDateIndex
+    );
+
+    return;
+  }
+
+  dateTitle.textContent =
+    idea.title;
+
+  dateDescription.textContent =
+    idea.description;
 
   progressText.textContent =
     `${currentDateIndex + 1} of ${dateIdeas.length}`;
 }
 
 
-function openGame(roomCode, player) {
+/* -----------------------------
+   OPEN GAME
+----------------------------- */
+
+async function openGame(
+  roomCode,
+  player
+) {
   currentRoomCode = roomCode;
   currentPlayer = player;
   currentDateIndex = 0;
+
+  /*
+    Only download the date ideas once
+    during this page session.
+  */
+  if (dateIdeas.length === 0) {
+    await loadDateIdeas();
+  }
 
   hideAllScreens();
 
@@ -152,9 +193,14 @@ function openGame(roomCode, player) {
   noButton.style.display = "block";
 
   showDateIdea();
+
   startRoomListener(roomCode);
 }
 
+
+/* -----------------------------
+   LIVE ROOM LISTENER
+----------------------------- */
 
 function startRoomListener(roomCode) {
   const roomRef = doc(
@@ -167,25 +213,49 @@ function startRoomListener(roomCode) {
     roomListener();
   }
 
-  roomListener = onSnapshot(roomRef, (roomSnap) => {
-    if (!roomSnap.exists()) {
-      return;
-    }
+  roomListener =
+    onSnapshot(
+      roomRef,
 
-    const roomData = roomSnap.data();
+      (roomSnap) => {
+        if (!roomSnap.exists()) {
+          return;
+        }
 
-    if (
-      roomData.player1Finished === true &&
-      roomData.player2Finished === true
-    ) {
-      showMatches(roomData);
-    }
-  });
+        const roomData =
+          roomSnap.data();
+
+        if (
+          roomData.player1Finished === true &&
+          roomData.player2Finished === true
+        ) {
+          showMatches(roomData);
+        }
+      },
+
+      (error) => {
+        console.error(
+          "Room listener error:",
+          error
+        );
+      }
+    );
 }
 
 
+/* -----------------------------
+   SAVE A CHOICE
+----------------------------- */
+
 async function saveChoice(choice) {
-  const idea = dateIdeas[currentDateIndex];
+  const idea =
+    dateIdeas[currentDateIndex];
+
+  if (!idea) {
+    throw new Error(
+      "Could not find the current date idea."
+    );
+  }
 
   const roomRef = doc(
     db,
@@ -202,15 +272,27 @@ async function saveChoice(choice) {
 }
 
 
+/* -----------------------------
+   WAITING SCREEN
+----------------------------- */
+
 function showWaitingScreen() {
   hideAllScreens();
-  waiting.style.display = "block";
+
+  waiting.style.display =
+    "block";
 }
 
 
+/* -----------------------------
+   MATCH RESULTS
+----------------------------- */
+
 function showMatches(roomData) {
   hideAllScreens();
-  results.style.display = "block";
+
+  results.style.display =
+    "block";
 
   matchList.innerHTML = "";
 
@@ -220,18 +302,21 @@ function showMatches(roomData) {
   const player2Choices =
     roomData.player2Choices || {};
 
-  const matches = dateIdeas.filter((idea) => {
-    return (
-      player1Choices[idea.id] === true &&
-      player2Choices[idea.id] === true
-    );
-  });
+  const matches =
+    dateIdeas.filter((idea) => {
+      return (
+        player1Choices[idea.id] === true &&
+        player2Choices[idea.id] === true
+      );
+    });
 
   if (matches.length === 0) {
     matchList.innerHTML = `
       <div class="match-card">
         <h2>No matches this round</h2>
-        <p>Try again with some new ideas 💕</p>
+        <p>
+          Try again with some new ideas 💕
+        </p>
       </div>
     `;
 
@@ -242,17 +327,25 @@ function showMatches(roomData) {
     const matchCard =
       document.createElement("div");
 
-    matchCard.classList.add("match-card");
+    matchCard.classList.add(
+      "match-card"
+    );
 
     matchCard.innerHTML = `
       <h2>${idea.title}</h2>
       <p>${idea.description}</p>
     `;
 
-    matchList.appendChild(matchCard);
+    matchList.appendChild(
+      matchCard
+    );
   });
 }
 
+
+/* -----------------------------
+   CHECK IF BOTH FINISHED
+----------------------------- */
 
 async function checkForMatches() {
   const roomRef = doc(
@@ -276,12 +369,17 @@ async function checkForMatches() {
     roomData.player2Finished === true
   ) {
     showMatches(roomData);
+
     return true;
   }
 
   return false;
 }
 
+
+/* -----------------------------
+   FINISH A PLAYER
+----------------------------- */
 
 async function finishPlayer() {
   const roomRef = doc(
@@ -308,6 +406,10 @@ async function finishPlayer() {
 }
 
 
+/* -----------------------------
+   YES / NO CHOICE
+----------------------------- */
+
 async function chooseDate(choice) {
   try {
     yesButton.disabled = true;
@@ -317,8 +419,12 @@ async function chooseDate(choice) {
 
     currentDateIndex++;
 
-    if (currentDateIndex >= dateIdeas.length) {
+    if (
+      currentDateIndex >=
+      dateIdeas.length
+    ) {
       await finishPlayer();
+
       return;
     }
 
@@ -332,7 +438,7 @@ async function chooseDate(choice) {
 
     alert(
       "Firebase error:\n" +
-      error.code +
+      (error.code || "unknown") +
       "\n" +
       error.message
     );
@@ -344,28 +450,61 @@ async function chooseDate(choice) {
 }
 
 
-showJoinButton.addEventListener("click", () => {
-  hideAllScreens();
+/* -----------------------------
+   SHOW JOIN SCREEN
+----------------------------- */
 
-  roomCodeInput.value = "";
-  joinScreen.style.display = "block";
+showJoinButton.addEventListener(
+  "click",
+  () => {
+    hideAllScreens();
 
-  roomCodeInput.focus();
-});
+    roomCodeInput.value = "";
+
+    joinScreen.style.display =
+      "block";
+
+    roomCodeInput.focus();
+  }
+);
 
 
-backButton.addEventListener("click", () => {
-  hideAllScreens();
-  intro.style.display = "block";
-});
+/* -----------------------------
+   BACK BUTTON
+----------------------------- */
 
+backButton.addEventListener(
+  "click",
+  () => {
+    hideAllScreens();
+
+    intro.style.display =
+      "block";
+  }
+);
+
+
+/* -----------------------------
+   CREATE A DATE
+----------------------------- */
 
 createButton.addEventListener(
   "click",
   async () => {
     try {
+      const user =
+        await getSignedInUser();
 
-      const user = await getSignedInUser();
+      /*
+        Load the date ideas before
+        creating the room.
+
+        This also confirms Firebase
+        can read dateIdeas correctly.
+      */
+      if (dateIdeas.length === 0) {
+        await loadDateIdeas();
+      }
 
       let roomCode;
       let roomExists = true;
@@ -397,17 +536,26 @@ createButton.addEventListener(
         createdAt:
           serverTimestamp(),
 
-        player1Uid: user.uid,
-        player2Uid: null,
+        player1Uid:
+          user.uid,
 
-        player1Finished: false,
-        player2Finished: false,
+        player2Uid:
+          null,
 
-        player1Choices: {},
-        player2Choices: {}
+        player1Finished:
+          false,
+
+        player2Finished:
+          false,
+
+        player1Choices:
+          {},
+
+        player2Choices:
+          {}
       });
 
-      openGame(
+      await openGame(
         roomCode,
         "player1"
       );
@@ -420,7 +568,7 @@ createButton.addEventListener(
 
       alert(
         "Firebase error:\n" +
-        error.code +
+        (error.code || "unknown") +
         "\n" +
         error.message
       );
@@ -428,6 +576,10 @@ createButton.addEventListener(
   }
 );
 
+
+/* -----------------------------
+   JOIN A DATE
+----------------------------- */
 
 joinButton.addEventListener(
   "click",
@@ -438,13 +590,20 @@ joinButton.addEventListener(
         .toUpperCase();
 
     if (!enteredCode) {
-      alert("Enter your date code first.");
+      alert(
+        "Enter your date code first."
+      );
+
       return;
     }
 
     try {
+      const user =
+        await getSignedInUser();
 
-      const user = await getSignedInUser();
+      if (dateIdeas.length === 0) {
+        await loadDateIdeas();
+      }
 
       const roomRef = doc(
         db,
@@ -463,11 +622,33 @@ joinButton.addEventListener(
         return;
       }
 
-      const roomData = roomSnap.data();
+      const roomData =
+        roomSnap.data();
 
+      /*
+        Prevent Player 1 from joining
+        their own room as Player 2.
+      */
+      if (
+        roomData.player1Uid ===
+        user.uid
+      ) {
+        alert(
+          "Open this date code in your partner's browser or device."
+        );
+
+        return;
+      }
+
+      /*
+        If the Player 2 position has
+        already been taken by somebody
+        else, don't let another person in.
+      */
       if (
         roomData.player2Uid &&
-        roomData.player2Uid !== user.uid
+        roomData.player2Uid !==
+          user.uid
       ) {
         alert(
           "This date room already has two players."
@@ -476,11 +657,21 @@ joinButton.addEventListener(
         return;
       }
 
-      await updateDoc(roomRef, {
-        player2Uid: user.uid
-      });
+      /*
+        Only claim Player 2 if this is
+        the first time this user joins.
+      */
+      if (!roomData.player2Uid) {
+        await updateDoc(
+          roomRef,
+          {
+            player2Uid:
+              user.uid
+          }
+        );
+      }
 
-      openGame(
+      await openGame(
         enteredCode,
         "player2"
       );
@@ -493,7 +684,7 @@ joinButton.addEventListener(
 
       alert(
         "Firebase error:\n" +
-        error.code +
+        (error.code || "unknown") +
         "\n" +
         error.message
       );
@@ -501,6 +692,10 @@ joinButton.addEventListener(
   }
 );
 
+
+/* -----------------------------
+   ENTER KEY ON ROOM CODE
+----------------------------- */
 
 roomCodeInput.addEventListener(
   "keydown",
@@ -512,6 +707,10 @@ roomCodeInput.addEventListener(
 );
 
 
+/* -----------------------------
+   YES BUTTON
+----------------------------- */
+
 yesButton.addEventListener(
   "click",
   async () => {
@@ -519,6 +718,10 @@ yesButton.addEventListener(
   }
 );
 
+
+/* -----------------------------
+   NO BUTTON
+----------------------------- */
 
 noButton.addEventListener(
   "click",
