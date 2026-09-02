@@ -7,25 +7,26 @@
 
     <title>Mid Vanilla | Date Planner</title>
 
-   <link rel="stylesheet" href="style.css?v=7">
+    <link rel="stylesheet" href="style.css?v=8">
 </head>
 
 <body>
 
     <main>
 
+        <!-- INTRO -->
         <section id="intro">
 
             <img
-    src="date-planner.PNG"
-    alt="Date Planner"
-    class="date-planner-logo"
->
+                src="date-planner.PNG"
+                alt="Date Planner"
+                class="date-planner-logo"
+            >
 
             <p class="intro-text">
                 Not sure if you’re on the same wavelength tonight?
-
-Choose what you’re in the mood for, and we’ll find where your moods match. No awkward guessing, just something you’re both feeling.
+                Choose what you’re in the mood for, and we’ll find where your moods match.
+                No awkward guessing, just something you’re both feeling.
             </p>
 
             <button id="createButton">
@@ -39,6 +40,7 @@ Choose what you’re in the mood for, and we’ll find where your moods match. N
         </section>
 
 
+        <!-- JOIN SCREEN -->
         <section id="joinScreen" style="display: none;">
 
             <h1>Join a Date</h1>
@@ -66,6 +68,53 @@ Choose what you’re in the mood for, and we’ll find where your moods match. N
         </section>
 
 
+        <!-- FILTER SCREEN -->
+        <section id="filterScreen" style="display: none;">
+
+            <h1>Set the Mood</h1>
+
+            <p>
+                Pick what kind of date feels right today.
+            </p>
+
+            <label for="budgetFilter">
+                Budget
+            </label>
+
+            <select id="budgetFilter">
+                <option value="any">Any</option>
+                <option value="free">Free</option>
+                <option value="low">Low</option>
+            </select>
+
+            <label for="energyFilter">
+                Energy
+            </label>
+
+            <select id="energyFilter">
+                <option value="any">Any</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+            </select>
+
+            <label for="settingFilter">
+                Setting
+            </label>
+
+            <select id="settingFilter">
+                <option value="any">Either</option>
+                <option value="indoors">Indoors</option>
+                <option value="outdoors">Outdoors</option>
+            </select>
+
+            <button id="startFilteredGameButton">
+                Show Us Some Dates
+            </button>
+
+        </section>
+
+
+        <!-- GAME -->
         <section id="game" style="display: none;">
 
             <div class="game-top">
@@ -105,6 +154,7 @@ Choose what you’re in the mood for, and we’ll find where your moods match. N
         </section>
 
 
+        <!-- WAITING -->
         <section id="waiting" style="display: none;">
 
             <div class="waiting-icon">
@@ -124,6 +174,7 @@ Choose what you’re in the mood for, and we’ll find where your moods match. N
         </section>
 
 
+        <!-- RESULTS -->
         <section id="results" style="display: none;">
 
             <div class="results-icon">
@@ -142,7 +193,7 @@ Choose what you’re in the mood for, and we’ll find where your moods match. N
 
     </main>
 
-    <script type="module" src="app.js?v=14"></script>
+    <script type="module" src="app.js?v=18"></script>
 
 </body>
 
