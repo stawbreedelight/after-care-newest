@@ -1,12 +1,15 @@
-import { db, auth } from "./firebase-config.js";
-
 import {
   doc,
   setDoc,
   getDoc,
   updateDoc,
   serverTimestamp,
-  onSnapshot
+  onSnapshot,
+  collection,
+  getDocs,
+  query,
+  where,
+  orderBy
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 import {
