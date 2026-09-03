@@ -143,6 +143,17 @@ button:disabled {
   margin: 0 auto 18px auto;
 }
 
+/* FILTER SCREEN LOGO */
+
+.filter-logo {
+  width: 220px;
+  max-width: 70vw;
+  height: auto;
+
+  display: block;
+
+  margin: 0 auto 20px auto;
+}
 
 /* JOIN SCREEN */
 
