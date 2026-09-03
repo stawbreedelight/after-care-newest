@@ -267,11 +267,19 @@ button:disabled {
 
 /* DATE CHOICE BUTTONS */
 
+.choice-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+
+  margin-top: 18px;
+}
+
 #yesButton,
 #noButton {
-  display: inline-block;
+  margin: 0;
   width: auto;
-  margin: 18px 8px 0;
 }
 
 
