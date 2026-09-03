@@ -87,6 +87,7 @@ button {
     transform 0.15s ease;
 }
 
+
 /* VANILLA / MAIN ACTIONS */
 
 #createButton,
@@ -102,6 +103,7 @@ button {
   background: #EFD9AE;
   transform: translateY(-1px);
 }
+
 
 /* SOFT PINK / SECONDARY ACTIONS */
 
@@ -126,6 +128,19 @@ button:active {
 button:disabled {
   opacity: 0.6;
   cursor: default;
+}
+
+
+/* INTRO LOGO */
+
+.date-planner-logo {
+  width: 320px;
+  max-width: 85vw;
+  height: auto;
+
+  display: block;
+
+  margin: 0 auto 18px auto;
 }
 
 
@@ -179,7 +194,11 @@ button:disabled {
 }
 
 
-/* GAME TOP */
+/* GAME */
+
+#game {
+  text-align: center;
+}
 
 .game-top {
   display: flex;
@@ -229,6 +248,21 @@ button:disabled {
   margin: 0 auto 18px auto;
 }
 
+#dateDescription {
+  max-width: 360px;
+  margin-bottom: 0;
+}
+
+
+/* CENTRE GAME BUTTONS */
+
+#yesButton,
+#noButton {
+  display: block;
+  width: fit-content;
+  margin: 18px auto 0;
+}
+
 
 /* WAITING */
 
@@ -259,13 +293,21 @@ button:disabled {
   background: #F0E4CF;
 }
 
+
+/* RESULTS ICON */
+
 .results-icon {
   margin: 0 auto 18px;
 }
 
+.icecream-gif {
+  width: 140px;
+  max-width: 45vw;
+  height: auto;
 
-.results-icon {
-  margin: 0 auto 18px;
+  display: block;
+
+  margin: 0 auto 18px auto;
 }
 
 
@@ -314,6 +356,42 @@ button:disabled {
 }
 
 
+/* VANILLA LAND LOGO */
+
+.vanilla-land-icon {
+  width: 280px;
+  max-width: 80vw;
+  height: auto;
+
+  display: block;
+
+  margin: 0 auto 20px auto;
+}
+
+
+/* VANILLA LAND GAME ICONS */
+
+.game-icon {
+  width: 220px;
+  max-width: 70vw;
+  height: auto;
+
+  display: block;
+
+  margin: 0 auto;
+}
+
+.game-link {
+  display: inline-block;
+
+  text-decoration: none;
+}
+
+.game-link:hover {
+  transform: scale(1.03);
+}
+
+
 /* SMALL SCREENS */
 
 @media (max-width: 420px) {
@@ -337,56 +415,4 @@ button:disabled {
   .game-top {
     font-size: 0.85rem;
   }
-}
-.date-planner-logo {
-  width: 320px;
-  max-width: 85vw;
-  height: auto;
-
-  display: block;
-
-  margin: 0 auto 18px auto;
-}
-/* VANILLA LAND LOGO */
-
-.vanilla-land-icon {
-  width: 280px;
-  max-width: 80vw;
-  height: auto;
-
-  display: block;
-  margin: 0 auto 20px auto;
-}
-
-
-/* VANILLA LAND GAME ICONS */
-
-.game-icon {
-  width: 220px;
-  max-width: 70vw;
-  height: auto;
-
-  display: block;
-  margin: 0 auto;
-}
-
-.game-link {
-  display: inline-block;
-  text-decoration: none;
-}
-
-.game-link:hover {
-  transform: scale(1.03);
-}
-
-/* ICE CREAM GIF */
-
-.icecream-gif {
-  width: 140px;
-  max-width: 45vw;
-  height: auto;
-
-  display: block;
-
-  margin: 0 auto 18px auto;
 }
