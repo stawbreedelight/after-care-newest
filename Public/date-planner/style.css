@@ -219,6 +219,7 @@ button:disabled {
 }
 
 .date-icon {
+  width: 100%;
   margin: 0 auto 14px;
 
   display: flex;
