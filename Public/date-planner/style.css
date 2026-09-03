@@ -254,8 +254,7 @@ button:disabled {
   box-shadow: 0 18px 45px rgba(111, 98, 88, 0.11);
 }
 
-.waiting-icon,
-.results-icon {
+.waiting-icon {
   width: 90px;
   height: 90px;
 
@@ -270,6 +269,15 @@ button:disabled {
   font-size: 3rem;
 
   background: #F0E4CF;
+}
+
+.results-icon {
+  margin: 0 auto 18px;
+}
+
+
+.results-icon {
+  margin: 0 auto 18px;
 }
 
 
@@ -381,4 +389,16 @@ button:disabled {
 
 .game-link:hover {
   transform: scale(1.03);
+}
+
+/* ICE CREAM GIF */
+
+.icecream-gif {
+  width: 140px;
+  max-width: 45vw;
+  height: auto;
+
+  display: block;
+
+  margin: 0 auto 18px auto;
 }
