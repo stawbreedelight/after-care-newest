@@ -265,13 +265,13 @@ button:disabled {
 }
 
 
-/* CENTRE GAME BUTTONS */
+/* DATE CHOICE BUTTONS */
 
 #yesButton,
 #noButton {
-  display: block;
-  width: fit-content;
-  margin: 18px auto 0;
+  display: inline-block;
+  width: auto;
+  margin: 18px 8px 0;
 }
 
 
