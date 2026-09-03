@@ -219,20 +219,17 @@ button:disabled {
 }
 
 .date-icon {
-  width: 80px;
-  height: 80px;
-
-  margin: 0 auto 10px;
-
-  border-radius: 50%;
+  margin: 0 auto 14px;
 
   display: flex;
   justify-content: center;
   align-items: center;
+}
 
-  background: #F0E4CF;
-
-  font-size: 2.8rem;
+.date-card-gif {
+  width: 90px;
+  height: auto;
+  display: block;
 }
 
 #dateDescription {
