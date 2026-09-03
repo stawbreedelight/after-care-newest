@@ -7,7 +7,7 @@
 
     <title>Mid Vanilla | Date Planner</title>
 
-    <link rel="stylesheet" href="style.css?v=11">
+    <link rel="stylesheet" href="style.css?v=12">
 </head>
 
 <body>
@@ -71,6 +71,12 @@
         <!-- FILTER SCREEN -->
         <section id="filterScreen" style="display: none;">
 
+            <img
+                src="date-planner.PNG"
+                alt="Date Planner"
+                class="filter-logo"
+            >
+
             <h1>Set the Mood</h1>
 
             <p>
@@ -85,6 +91,8 @@
                 <option value="any">Any</option>
                 <option value="free">Free</option>
                 <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
             </select>
 
             <label for="energyFilter">
@@ -95,6 +103,7 @@
                 <option value="any">Any</option>
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
+                <option value="high">High</option>
             </select>
 
             <label for="settingFilter">
@@ -115,41 +124,41 @@
 
 
         <!-- GAME -->
-<section id="game" style="display: none;">
+        <section id="game" style="display: none;">
 
-    <div class="game-top">
+            <div class="game-top">
 
-        <p id="roomCodeText"></p>
+                <p id="roomCodeText"></p>
 
-        <p id="progressText"></p>
+                <p id="progressText"></p>
 
-    </div>
+            </div>
+
+            <div id="dateCard">
+
+                <img
+                    src="icecream-logo.gif"
+                    alt="Ice cream"
+                    class="date-card-gif"
+                >
+
+                <h2 id="dateTitle"></h2>
+
+                <p id="dateDescription"></p>
+
+            </div>
+
+            <button id="yesButton">
+                Yes please 💕
+            </button>
+
+            <button id="noButton" class="secondary-button">
+                Not for me
+            </button>
+
+        </section>
 
 
-    <div id="dateCard">
-
-        <img
-            src="icecream-logo.gif"
-            alt="Ice cream"
-            class="date-card-gif"
-        >
-
-        <h2 id="dateTitle"></h2>
-
-        <p id="dateDescription"></p>
-
-    </div>
-
-
-    <button id="yesButton">
-        Yes please 💕
-    </button>
-
-    <button id="noButton" class="secondary-button">
-        Not for me
-    </button>
-
-</section>
         <!-- WAITING -->
         <section id="waiting" style="display: none;">
 
@@ -174,11 +183,13 @@
         <section id="results" style="display: none;">
 
             <div class="results-icon">
-                
+
                 <img
-        src="icecream-logo.GIF"
-        alt="Ice cream"
-        class="icecream-gif"
+                    src="icecream-logo.gif"
+                    alt="Ice cream"
+                    class="icecream-gif"
+                >
+
             </div>
 
             <h1>It’s a Date!</h1>
@@ -190,42 +201,50 @@
             <div id="matchList"></div>
 
         </section>
-<section id="rankingScreen" style="display: none;">
-
-    <h1>Rank Your Matches 💕</h1>
-
-    <p>
-        Put your favourite date first.
-        Your person won’t see your ranking.
-    </p>
-
-    <div id="rankingList"></div>
-
-    <button id="submitRankingButton">
-        Save My Ranking
-    </button>
-
-</section>
 
 
-<section id="finalResult" style="display: none;">
+        <!-- RANKING -->
+        <section id="rankingScreen" style="display: none;">
 
-    <div class="results-icon">
-    <img
-        src="icecream-logo.GIF"
-        alt="Ice cream"
-        class="icecream-gif"
-    >
-</div>
-    <h1>Your Date Is...</h1>
+            <h1>Rank Your Matches 💕</h1>
 
-    <div id="winningDate"></div>
+            <p>
+                Put your favourite date first.
+                Your person won’t see your ranking.
+            </p>
 
-</section>
-        
+            <div id="rankingList"></div>
+
+            <button id="submitRankingButton">
+                Save My Ranking
+            </button>
+
+        </section>
+
+
+        <!-- FINAL RESULT -->
+        <section id="finalResult" style="display: none;">
+
+            <div class="results-icon">
+
+                <img
+                    src="icecream-logo.gif"
+                    alt="Ice cream"
+                    class="icecream-gif"
+                >
+
+            </div>
+
+            <h1>Your Date Is...</h1>
+
+            <div id="winningDate"></div>
+
+        </section>
+
     </main>
 
-    <script type="module" src="app.js?v=22"></script>
+
+    <script type="module" src="app.js?v=24"></script>
 
 </body>
 
