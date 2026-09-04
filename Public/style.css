@@ -359,3 +359,23 @@ button.game-icon-button:hover {
     }
 
 }
+/* =========================
+   HOME PAGE FINAL OVERRIDE
+========================= */
+
+html,
+body {
+    min-height: 100%;
+}
+
+body.home-page {
+    margin: 0 !important;
+    min-height: 100vh !important;
+
+    background-image: url("images/home-background.PNG") !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+
+    background-color: #fff7eb;
+}
