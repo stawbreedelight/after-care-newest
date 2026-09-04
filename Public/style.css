@@ -361,3 +361,17 @@ button.game-icon-button:hover {
     }
 
 }
+/* =========================
+   HOME PAGE BACKGROUND
+========================= */
+
+body.home-page {
+    margin: 0;
+    min-height: 100vh;
+
+    background-image: url("images/home-background.jpg");
+    background-size: cover;
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+}
