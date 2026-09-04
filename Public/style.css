@@ -234,12 +234,10 @@ button.game-icon-button:hover {
     min-height: 100vh;
 
     background-image: url("images/home-background.PNG");
-
     background-size: cover;
     background-position: center bottom;
     background-repeat: no-repeat;
-
-    font-family: Arial, sans-serif;
+    background-attachment: scroll;
 }
    
 
