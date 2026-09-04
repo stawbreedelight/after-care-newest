@@ -233,13 +233,15 @@ button.game-icon-button:hover {
     margin: 0;
     min-height: 100vh;
 
-    background-image: url("images/home-background.PNG");
+    background-image: url("images/home-background.jpg");
+
     background-size: cover;
-    background-position: center;
+    background-position: center bottom;
     background-repeat: no-repeat;
 
     font-family: Arial, sans-serif;
 }
+   
 
 
 /* MAIN CONTENT */
@@ -250,53 +252,57 @@ button.game-icon-button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
 
     text-align: center;
 
-    padding: 40px 20px;
+    padding: 10px 20px 35px;
     box-sizing: border-box;
 }
-
 
 /* LOGO */
 
 .home-logo {
-    width: min(600px, 90%);
+    width: min(520px, 82%);
     height: auto;
 
-    margin-top: 20px;
-    margin-bottom: 20px;
+    display: block;
+
+    margin: 0 auto 10px;
 }
 
 
 /* TEXT */
 
 .home-tagline {
-    margin: 0 0 12px;
+    margin: 0 0 8px;
 
-    font-size: 1.5rem;
-    font-weight: 500;
+    font-size: 1.35rem;
+    line-height: 1.35;
+
+    color: #4b3b38;
 }
 
 .home-description {
-    max-width: 600px;
+    max-width: 620px;
 
-    margin: 0 auto 30px;
+    margin: 0 auto 22px;
 
-    font-size: 1.1rem;
-    line-height: 1.6;
+    font-size: 1.05rem;
+    line-height: 1.5;
+
+    color: #4b3b38;
 }
-
 
 /* BUTTON AREA */
 
 .home-buttons {
-    width: min(340px, 90%);
+    width: min(300px, 85%);
 
     display: flex;
     flex-direction: column;
 
-    gap: 16px;
+    gap: 12px;
 }
 
 
