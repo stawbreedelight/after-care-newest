@@ -389,7 +389,10 @@ body.home-page {
     margin: 0;
     min-height: 100vh;
 
-    background-color: #fff7eb;
+    background:
+        radial-gradient(circle at top left, rgba(255, 213, 224, 0.45), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(220, 204, 255, 0.35), transparent 36%),
+        #fff7eb;
 
     font-family: Arial, sans-serif;
 }
@@ -398,6 +401,8 @@ body.home-page {
 /* MAIN CONTAINER */
 
 .flavours-container {
+    position: relative;
+
     min-height: 100vh;
 
     display: flex;
@@ -406,27 +411,82 @@ body.home-page {
 
     text-align: center;
 
-    padding: 30px 20px 50px;
+    padding: 30px 20px 65px;
     box-sizing: border-box;
+
+    overflow: hidden;
+}
+
+
+/* SOFT BACKGROUND GLOWS */
+
+.flavours-container::before {
+    content: "";
+    position: absolute;
+
+    width: 360px;
+    height: 360px;
+
+    top: 110px;
+    left: -130px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 194, 214, 0.16);
+
+    filter: blur(55px);
+
+    pointer-events: none;
+}
+
+.flavours-container::after {
+    content: "";
+    position: absolute;
+
+    width: 380px;
+    height: 380px;
+
+    right: -140px;
+    bottom: 80px;
+
+    border-radius: 50%;
+
+    background: rgba(207, 190, 255, 0.14);
+
+    filter: blur(55px);
+
+    pointer-events: none;
+}
+
+
+/* KEEP CONTENT ABOVE BACKGROUND EFFECTS */
+
+.flavours-logo,
+.flavours-intro,
+.flavour-buttons {
+    position: relative;
+    z-index: 2;
 }
 
 
 /* OUR FLAVOURS LOGO */
 
 .flavours-logo {
-    width: min(500px, 90%);
+    width: min(500px, 88%);
     height: auto;
 
     display: block;
 
-    margin: 0 auto 16px;
+    margin: 0 auto 14px;
+
+    filter: drop-shadow(0 8px 18px rgba(98, 60, 80, 0.12));
 }
 
 
 /* INTRO TEXT */
 
 .flavours-intro {
-    margin: 0 0 28px;
+    margin: 0 0 32px;
 
     font-size: 1.35rem;
     line-height: 1.4;
@@ -444,7 +504,7 @@ body.home-page {
     flex-direction: column;
     align-items: center;
 
-    gap: 16px;
+    gap: 24px;
 }
 
 
@@ -452,9 +512,12 @@ body.home-page {
 
 .flavour-button {
     display: block;
+
     width: 100%;
 
     text-decoration: none;
+
+    border-radius: 24px;
 
     transition:
         transform 0.2s ease,
@@ -471,25 +534,29 @@ body.home-page {
     height: auto;
 
     margin: 0 auto;
+
+    border-radius: 22px;
+
+    filter: drop-shadow(0 10px 16px rgba(80, 55, 70, 0.13));
 }
 
 
 /* HOVER EFFECT */
 
 .flavour-button:hover {
-    transform: translateY(-3px);
+    transform: translateY(-4px) scale(1.01);
     filter: brightness(1.03);
 }
 
 .flavour-button:active {
-    transform: translateY(1px);
+    transform: translateY(1px) scale(0.99);
 }
 
 
 /* QUESTIONNAIRE BUTTON */
 
 .questionnaire-button {
-    margin-top: 8px;
+    margin-top: 12px;
 }
 
 
@@ -499,6 +566,7 @@ body.home-page {
 
     .flavours-container {
         padding-top: 20px;
+        padding-bottom: 50px;
     }
 
     .flavours-logo {
@@ -507,11 +575,11 @@ body.home-page {
 
     .flavours-intro {
         font-size: 1.15rem;
-        margin-bottom: 22px;
+        margin-bottom: 26px;
     }
 
     .flavour-buttons {
         width: 94%;
-        gap: 13px;
+        gap: 20px;
     }
 }
