@@ -379,3 +379,137 @@ body.home-page {
 
     background-color: #fff7eb;
 }
+/* =========================
+   OUR FLAVOURS PAGE
+========================= */
+
+.flavours-page {
+    margin: 0;
+    min-height: 100vh;
+
+    background-color: #fff7eb;
+
+    font-family: Arial, sans-serif;
+}
+
+
+/* MAIN CONTAINER */
+
+.flavours-container {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 30px 20px 50px;
+    box-sizing: border-box;
+}
+
+
+/* OUR FLAVOURS LOGO */
+
+.flavours-logo {
+    width: min(500px, 90%);
+    height: auto;
+
+    display: block;
+
+    margin: 0 auto 16px;
+}
+
+
+/* INTRO TEXT */
+
+.flavours-intro {
+    margin: 0 0 28px;
+
+    font-size: 1.35rem;
+    line-height: 1.4;
+
+    color: #4b3b38;
+}
+
+
+/* BUTTON AREA */
+
+.flavour-buttons {
+    width: min(420px, 92%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 16px;
+}
+
+
+/* EACH IMAGE BUTTON */
+
+.flavour-button {
+    display: block;
+    width: 100%;
+
+    text-decoration: none;
+
+    transition:
+        transform 0.2s ease,
+        filter 0.2s ease;
+}
+
+
+/* BUTTON IMAGES */
+
+.flavour-button img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    margin: 0 auto;
+}
+
+
+/* HOVER EFFECT */
+
+.flavour-button:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.03);
+}
+
+.flavour-button:active {
+    transform: translateY(1px);
+}
+
+
+/* QUESTIONNAIRE BUTTON */
+
+.questionnaire-button {
+    margin-top: 8px;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .flavours-container {
+        padding-top: 20px;
+    }
+
+    .flavours-logo {
+        width: 92%;
+    }
+
+    .flavours-intro {
+        font-size: 1.15rem;
+        margin-bottom: 22px;
+    }
+
+    .flavour-buttons {
+        width: 94%;
+        gap: 13px;
+    }
+}
