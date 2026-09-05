@@ -390,10 +390,13 @@ body.home-page {
     min-height: 100vh;
 
     background-image: url("images/levels-background.PNG");
-    background-size: cover;
+
+    /* slightly more zoomed out */
+    background-size: 90% auto;
     background-position: center top;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-repeat: repeat-y;
+
+    background-color: #fff7eb;
 
     font-family: Arial, sans-serif;
 }
@@ -402,12 +405,12 @@ body.home-page {
 
     font-family: Arial, sans-serif;
 }
+
 
 /* MAIN CONTAINER */
 
 .flavours-container {
-    position: relative;
-
+    width: 100%;
     min-height: 100vh;
 
     display: flex;
@@ -416,82 +419,35 @@ body.home-page {
 
     text-align: center;
 
-    padding: 30px 20px 65px;
+    padding: 30px 20px 60px;
     box-sizing: border-box;
-
-    overflow: hidden;
-}
-
-
-/* SOFT BACKGROUND GLOWS */
-
-.flavours-container::before {
-    content: "";
-    position: absolute;
-
-    width: 360px;
-    height: 360px;
-
-    top: 110px;
-    left: -130px;
-
-    border-radius: 50%;
-
-    background: rgba(255, 194, 214, 0.16);
-
-    filter: blur(55px);
-
-    pointer-events: none;
-}
-
-.flavours-container::after {
-    content: "";
-    position: absolute;
-
-    width: 380px;
-    height: 380px;
-
-    right: -140px;
-    bottom: 80px;
-
-    border-radius: 50%;
-
-    background: rgba(207, 190, 255, 0.14);
-
-    filter: blur(55px);
-
-    pointer-events: none;
-}
-
-
-/* KEEP CONTENT ABOVE BACKGROUND EFFECTS */
-
-.flavours-logo,
-.flavours-intro,
-.flavour-buttons {
-    position: relative;
-    z-index: 2;
 }
 
 
 /* OUR FLAVOURS LOGO */
 
 .flavours-logo {
-    width: min(500px, 88%);
+    width: min(500px, 90%);
     height: auto;
 
     display: block;
 
-    margin: 0 auto 14px;
+    margin: 0 auto 18px;
 
-    filter: drop-shadow(0 8px 18px rgba(98, 60, 80, 0.12));
+    filter: drop-shadow(
+        0 8px 16px rgba(86, 48, 67, 0.12)
+    );
 }
 
 
 /* INTRO TEXT */
 
 .flavours-intro {
-    margin: 0 0 32px;
+    width: 100%;
+
+    margin: 0 auto 32px;
+
+    text-align: center;
 
     font-size: 1.35rem;
     line-height: 1.4;
@@ -509,20 +465,22 @@ body.home-page {
     flex-direction: column;
     align-items: center;
 
+    margin: 0 auto;
+
     gap: 24px;
 }
 
 
-/* EACH IMAGE BUTTON */
+/* INDIVIDUAL BUTTON */
 
 .flavour-button {
     display: block;
 
     width: 100%;
 
-    text-decoration: none;
+    margin: 0 auto;
 
-    border-radius: 24px;
+    text-decoration: none;
 
     transition:
         transform 0.2s ease,
@@ -530,7 +488,7 @@ body.home-page {
 }
 
 
-/* BUTTON IMAGES */
+/* BUTTON IMAGE */
 
 .flavour-button img {
     display: block;
@@ -540,13 +498,13 @@ body.home-page {
 
     margin: 0 auto;
 
-    border-radius: 22px;
-
-    filter: drop-shadow(0 10px 16px rgba(80, 55, 70, 0.13));
+    filter: drop-shadow(
+        0 10px 15px rgba(75, 50, 65, 0.12)
+    );
 }
 
 
-/* HOVER EFFECT */
+/* HOVER */
 
 .flavour-button:hover {
     transform: translateY(-4px) scale(1.01);
@@ -554,11 +512,11 @@ body.home-page {
 }
 
 .flavour-button:active {
-    transform: translateY(1px) scale(0.99);
+    transform: translateY(1px);
 }
 
 
-/* QUESTIONNAIRE BUTTON */
+/* QUESTIONNAIRE */
 
 .questionnaire-button {
     margin-top: 12px;
@@ -570,8 +528,7 @@ body.home-page {
 @media (max-width: 600px) {
 
     .flavours-container {
-        padding-top: 20px;
-        padding-bottom: 50px;
+        padding: 20px 15px 50px;
     }
 
     .flavours-logo {
