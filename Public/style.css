@@ -225,9 +225,9 @@ button.game-icon-button:hover {
     display: block;
     margin: 0 auto 15px auto;
 }
-/* -------------------------
+/* =========================
    HOME PAGE
-------------------------- */
+========================= */
 
 .home-page {
     margin: 0;
@@ -235,11 +235,11 @@ button.game-icon-button:hover {
 
     background-image: url("images/home-background.PNG");
     background-size: cover;
-    background-position: center bottom;
+    background-position: center center;
     background-repeat: no-repeat;
-    background-attachment: scroll;
+
+    font-family: Arial, sans-serif;
 }
-   
 
 
 /* MAIN CONTENT */
@@ -257,6 +257,7 @@ button.game-icon-button:hover {
     padding: 10px 20px 35px;
     box-sizing: border-box;
 }
+
 
 /* LOGO */
 
@@ -291,6 +292,7 @@ button.game-icon-button:hover {
 
     color: #4b3b38;
 }
+
 
 /* BUTTON AREA */
 
@@ -330,7 +332,6 @@ button.game-icon-button:hover {
         box-shadow 0.2s ease;
 }
 
-
 .home-button:hover {
     transform: translateY(-3px);
 
@@ -338,7 +339,7 @@ button.game-icon-button:hover {
 }
 
 
-/* MOBILE */
+/* HOME MOBILE */
 
 @media (max-width: 600px) {
 
@@ -357,43 +358,14 @@ button.game-icon-button:hover {
     .home-description {
         font-size: 1rem;
     }
-
 }
-/* =========================
-   HOME PAGE FINAL OVERRIDE
-========================= */
-
-html,
-body {
-    min-height: 100%;
-}
-
-body.home-page {
-    margin: 0 !important;
-    min-height: 100vh !important;
-
-    background-image: url("images/home-background.PNG") !important;
-    background-size: cover !important;
-    background-position: center center !important;
-    background-repeat: no-repeat !important;
-
-    background-color: #fff7eb;
-}
-
 
 
 /* =========================
    OUR FLAVOURS PAGE
 ========================= */
 
-
-
-html,
-body {
-    min-height: 100%;
-}
-
-body.home-page {
+.flavours-page {
     margin: 0;
     min-height: 100vh;
 
@@ -433,17 +405,15 @@ body.home-page {
             #fdc39f 58%,
             #ffd6b0 78%,
             #ffe6c8 100%
-        ) !important;
-
-    background-color: #f9a08f;
+        );
 
     font-family: Arial, sans-serif;
 }
 
 
-/* DECORATIVE CLOUD / GLOW LAYER */
+/* CLOUD / GLOW LAYER */
 
-body.home-page::before {
+.flavours-page::before {
     content: "";
 
     position: fixed;
@@ -470,7 +440,7 @@ body.home-page::before {
 
 /* SPARKLES */
 
-body.home-page::after {
+.flavours-page::after {
     content: "";
 
     position: fixed;
@@ -493,17 +463,12 @@ body.home-page::after {
 }
 
 
-/* KEEP PAGE CONTENT ABOVE BACKGROUND */
-
-.home-container {
-    position: relative;
-    z-index: 1;
-
-    background: transparent !important;
-}
 /* MAIN CONTAINER */
 
 .flavours-container {
+    position: relative;
+    z-index: 1;
+
     width: 100%;
     min-height: 100vh;
 
@@ -515,6 +480,8 @@ body.home-page::after {
 
     padding: 30px 20px 60px;
     box-sizing: border-box;
+
+    background: transparent;
 }
 
 
@@ -617,7 +584,7 @@ body.home-page::after {
 }
 
 
-/* MOBILE */
+/* FLAVOURS MOBILE */
 
 @media (max-width: 600px) {
 
