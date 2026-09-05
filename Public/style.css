@@ -385,89 +385,123 @@ body.home-page {
    OUR FLAVOURS PAGE
 ========================= */
 
-.home-page {
+/* =========================
+   HOME PAGE BACKGROUND
+========================= */
 
+html,
+body {
+    min-height: 100%;
+}
+
+body.home-page {
     margin: 0;
-
     min-height: 100vh;
 
     position: relative;
-
     overflow-x: hidden;
 
     background:
+        radial-gradient(
+            circle at 20% 18%,
+            rgba(255, 210, 220, 0.45),
+            transparent 16%
+        ),
 
-        radial-gradient(circle at 20% 18%, rgba(255, 210, 220, 0.45), transparent 16%),
+        radial-gradient(
+            circle at 82% 20%,
+            rgba(255, 220, 190, 0.35),
+            transparent 18%
+        ),
 
-        radial-gradient(circle at 82% 20%, rgba(255, 220, 190, 0.35), transparent 18%),
+        radial-gradient(
+            circle at 18% 78%,
+            rgba(255, 185, 205, 0.28),
+            transparent 20%
+        ),
 
-        radial-gradient(circle at 18% 78%, rgba(255, 185, 205, 0.28), transparent 20%),
-
-        radial-gradient(circle at 85% 80%, rgba(255, 205, 160, 0.26), transparent 22%),
+        radial-gradient(
+            circle at 85% 80%,
+            rgba(255, 205, 160, 0.26),
+            transparent 22%
+        ),
 
         linear-gradient(
-
             180deg,
-
             #f98ea1 0%,
-
             #f9a08f 18%,
-
             #fbb193 38%,
-
             #fdc39f 58%,
-
             #ffd6b0 78%,
-
             #ffe6c8 100%
+        ) !important;
 
-        );
+    background-color: #f9a08f;
 
     font-family: Arial, sans-serif;
 }
-.home-page::before,
-.home-page::after {
+
+
+/* DECORATIVE CLOUD / GLOW LAYER */
+
+body.home-page::before {
     content: "";
+
     position: fixed;
     inset: 0;
+
     pointer-events: none;
+
+    background:
+        radial-gradient(circle at 7% 28%, rgba(255, 215, 220, 0.75) 0 6%, transparent 7%),
+        radial-gradient(circle at 14% 31%, rgba(255, 220, 225, 0.65) 0 7%, transparent 8%),
+
+        radial-gradient(circle at 88% 28%, rgba(255, 215, 220, 0.75) 0 6%, transparent 7%),
+        radial-gradient(circle at 95% 31%, rgba(255, 220, 225, 0.65) 0 7%, transparent 8%),
+
+        radial-gradient(circle at 10% 88%, rgba(255, 205, 215, 0.82) 0 9%, transparent 10%),
+        radial-gradient(circle at 22% 90%, rgba(255, 220, 225, 0.72) 0 10%, transparent 11%),
+
+        radial-gradient(circle at 80% 88%, rgba(255, 205, 215, 0.82) 0 9%, transparent 10%),
+        radial-gradient(circle at 94% 90%, rgba(255, 220, 225, 0.72) 0 10%, transparent 11%);
+
     z-index: 0;
 }
 
-.home-page::before {
+
+/* SPARKLES */
+
+body.home-page::after {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
     background:
-        radial-gradient(circle at 7% 28%, rgba(255, 215, 220, 0.9) 0 6%, transparent 7%),
-        radial-gradient(circle at 12% 31%, rgba(255, 210, 215, 0.75) 0 7%, transparent 8%),
-        radial-gradient(circle at 17% 28%, rgba(255, 220, 220, 0.78) 0 6%, transparent 7%),
+        radial-gradient(circle at 22% 24%, white 0 2px, transparent 3px),
+        radial-gradient(circle at 31% 16%, white 0 2px, transparent 3px),
+        radial-gradient(circle at 52% 22%, white 0 2px, transparent 3px),
+        radial-gradient(circle at 68% 17%, white 0 2px, transparent 3px),
+        radial-gradient(circle at 79% 26%, white 0 2px, transparent 3px),
+        radial-gradient(circle at 16% 52%, white 0 2px, transparent 3px),
+        radial-gradient(circle at 86% 54%, white 0 2px, transparent 3px);
 
-        radial-gradient(circle at 88% 28%, rgba(255, 215, 220, 0.88) 0 6%, transparent 7%),
-        radial-gradient(circle at 93% 31%, rgba(255, 210, 215, 0.72) 0 7%, transparent 8%),
-        radial-gradient(circle at 98% 28%, rgba(255, 220, 220, 0.75) 0 6%, transparent 7%),
+    opacity: 0.65;
 
-        radial-gradient(circle at 10% 84%, rgba(255, 205, 215, 0.95) 0 8%, transparent 9%),
-        radial-gradient(circle at 18% 87%, rgba(255, 220, 225, 0.85) 0 9%, transparent 10%),
-        radial-gradient(circle at 25% 84%, rgba(255, 210, 220, 0.78) 0 8%, transparent 9%),
-
-        radial-gradient(circle at 80% 84%, rgba(255, 210, 220, 0.95) 0 8%, transparent 9%),
-        radial-gradient(circle at 88% 87%, rgba(255, 220, 225, 0.82) 0 9%, transparent 10%),
-        radial-gradient(circle at 96% 84%, rgba(255, 210, 220, 0.78) 0 8%, transparent 9%);
+    z-index: 0;
 }
 
-.home-page::after {
-    background:
-        radial-gradient(circle at 22% 24%, rgba(255, 255, 255, 0.9) 0 0.35%, transparent 0.5%),
-        radial-gradient(circle at 31% 16%, rgba(255, 255, 255, 0.85) 0 0.3%, transparent 0.45%),
-        radial-gradient(circle at 52% 22%, rgba(255, 255, 255, 0.9) 0 0.35%, transparent 0.5%),
-        radial-gradient(circle at 68% 17%, rgba(255, 255, 255, 0.85) 0 0.3%, transparent 0.45%),
-        radial-gradient(circle at 79% 26%, rgba(255, 255, 255, 0.9) 0 0.35%, transparent 0.5%),
-        radial-gradient(circle at 16% 52%, rgba(255, 255, 255, 0.8) 0 0.25%, transparent 0.4%),
-        radial-gradient(circle at 86% 54%, rgba(255, 255, 255, 0.8) 0 0.25%, transparent 0.4%);
-}
+
+/* KEEP PAGE CONTENT ABOVE BACKGROUND */
+
 .home-container {
     position: relative;
     z-index: 1;
-}
 
+    background: transparent !important;
+}
 /* MAIN CONTAINER */
 
 .flavours-container {
