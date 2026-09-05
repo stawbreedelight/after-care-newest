@@ -390,13 +390,22 @@ body.home-page {
     min-height: 100vh;
 
     background:
-        radial-gradient(circle at top left, rgba(255, 213, 224, 0.45), transparent 32%),
-        radial-gradient(circle at bottom right, rgba(220, 204, 255, 0.35), transparent 36%),
-        #fff7eb;
+        radial-gradient(circle at 15% 10%, rgba(255, 126, 177, 0.35), transparent 24%),
+        radial-gradient(circle at 85% 18%, rgba(180, 120, 255, 0.28), transparent 26%),
+        radial-gradient(circle at 20% 75%, rgba(255, 190, 95, 0.28), transparent 24%),
+        radial-gradient(circle at 82% 82%, rgba(139, 214, 120, 0.20), transparent 24%),
+        linear-gradient(
+            180deg,
+            #fff3e8 0%,
+            #ffe6ef 35%,
+            #f6e8ff 68%,
+            #fff3df 100%
+        );
+
+    background-attachment: fixed;
 
     font-family: Arial, sans-serif;
 }
-
 
 /* MAIN CONTAINER */
 
