@@ -687,6 +687,8 @@ button.game-icon-button:hover {
             #ffd6b0 78%,
             #ffe6c8 100%
         );
+
+    isolation: isolate;
 }
 
 
@@ -701,19 +703,19 @@ button.game-icon-button:hover {
     pointer-events: none;
 
     background:
-        radial-gradient(circle at 7% 28%, rgba(255, 215, 220, 0.75) 0 6%, transparent 7%),
-        radial-gradient(circle at 14% 31%, rgba(255, 220, 225, 0.65) 0 7%, transparent 8%),
+        radial-gradient(circle at 7% 28%, rgba(255, 215, 220, 0.60) 0 6%, transparent 7%),
+        radial-gradient(circle at 14% 31%, rgba(255, 220, 225, 0.50) 0 7%, transparent 8%),
 
-        radial-gradient(circle at 88% 28%, rgba(255, 215, 220, 0.75) 0 6%, transparent 7%),
-        radial-gradient(circle at 95% 31%, rgba(255, 220, 225, 0.65) 0 7%, transparent 8%),
+        radial-gradient(circle at 88% 28%, rgba(255, 215, 220, 0.60) 0 6%, transparent 7%),
+        radial-gradient(circle at 95% 31%, rgba(255, 220, 225, 0.50) 0 7%, transparent 8%),
 
-        radial-gradient(circle at 10% 88%, rgba(255, 205, 215, 0.82) 0 9%, transparent 10%),
-        radial-gradient(circle at 22% 90%, rgba(255, 220, 225, 0.72) 0 10%, transparent 11%),
+        radial-gradient(circle at 10% 88%, rgba(255, 205, 215, 0.62) 0 9%, transparent 10%),
+        radial-gradient(circle at 22% 90%, rgba(255, 220, 225, 0.55) 0 10%, transparent 11%),
 
-        radial-gradient(circle at 80% 88%, rgba(255, 205, 215, 0.82) 0 9%, transparent 10%),
-        radial-gradient(circle at 94% 90%, rgba(255, 220, 225, 0.72) 0 10%, transparent 11%);
+        radial-gradient(circle at 80% 88%, rgba(255, 205, 215, 0.62) 0 9%, transparent 10%),
+        radial-gradient(circle at 94% 90%, rgba(255, 220, 225, 0.55) 0 10%, transparent 11%);
 
-    z-index: 0;
+    z-index: -2;
 }
 
 
@@ -736,7 +738,69 @@ button.game-icon-button:hover {
         radial-gradient(circle at 16% 52%, white 0 2px, transparent 3px),
         radial-gradient(circle at 86% 54%, white 0 2px, transparent 3px);
 
-    opacity: 0.65;
+    opacity: 0.55;
 
-    z-index: 0;
+    z-index: -1;
+}
+
+
+/* PEACH CONTENT */
+
+.peach-container {
+    position: relative;
+    z-index: 1;
+
+    width: 90%;
+    max-width: 600px;
+    min-height: 100vh;
+
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 30px 20px 60px;
+    box-sizing: border-box;
+
+    background: transparent;
+}
+
+
+/* PEACH LAND LOGO */
+
+img.peach-land-icon {
+    width: 360px !important;
+    max-width: 88vw !important;
+    height: auto !important;
+
+    display: block !important;
+
+    margin: 0 auto 24px !important;
+}
+
+
+/* PEACH INTRO */
+
+.peach-intro {
+    max-width: 520px;
+
+    margin: 0 auto 30px;
+
+    color: #4b3b38;
+}
+
+
+/* PEACH GAMES */
+
+.peach-games {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 24px;
 }
