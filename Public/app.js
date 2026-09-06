@@ -3,7 +3,9 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.17.1/fireba
 import {
   getFirestore,
   collection,
-  getDocs
+  getDocs,
+  addDoc,
+  serverTimestamp,
 } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
 
 
@@ -194,3 +196,84 @@ document
     window.location.href = "./level.html";
 
   });
+
+// ==============================
+// FEEDBACK
+// ==============================
+
+const feedbackCard = document.querySelector(".feedback-card");
+
+if (feedbackCard) {
+
+  const feedbackForm =
+    feedbackCard.querySelector(".feedback-form");
+
+  const feedbackMessage =
+    feedbackCard.querySelector(".feedback-message");
+
+
+  feedbackForm.addEventListener("submit", async (event) => {
+
+    event.preventDefault();
+
+    const level = feedbackCard.dataset.level;
+
+    const rating =
+      feedbackForm.querySelector(
+        'input[name="rating"]:checked'
+      )?.value || "";
+
+    const moreOf = Array.from(
+      feedbackForm.querySelectorAll(
+        'input[name="moreOf"]:checked'
+      )
+    ).map(input => input.value);
+
+    const comment =
+      feedbackForm
+        .querySelector('textarea[name="comment"]')
+        .value
+        .trim();
+
+
+    if (!rating) {
+
+      feedbackMessage.textContent =
+        "Please choose how this level felt 💛";
+
+      return;
+    }
+
+
+    try {
+
+      await addDoc(
+        collection(db, "feedback"),
+        {
+          level: level,
+          rating: rating,
+          moreOf: moreOf,
+          comment: comment,
+          createdAt: serverTimestamp()
+        }
+      );
+
+
+      feedbackMessage.textContent =
+        "Thank you for helping us make Mid Vanilla sweeter 🍦";
+
+      feedbackForm.reset();
+
+
+    } catch (error) {
+
+      console.error("Feedback error:", error);
+
+      feedbackMessage.textContent =
+        "Oops — something went wrong. Please try again.";
+
+    }
+
+  });
+
+}
