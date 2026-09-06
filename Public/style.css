@@ -804,3 +804,201 @@ img.peach-land-icon {
 
     gap: 24px;
 }
+/* =========================
+   CUTE FEEDBACK CARD
+========================= */
+
+.feedback-card {
+    width: min(92%, 700px);
+    margin: 50px auto 70px auto;
+    padding: 34px 28px;
+
+    background: rgba(255, 250, 240, 0.82);
+
+    border: 2px solid rgba(255, 255, 255, 0.75);
+    border-radius: 34px;
+
+    box-shadow:
+        0 12px 30px rgba(120, 80, 60, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+
+    text-align: center;
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+
+/* TITLE */
+
+.feedback-card h2 {
+    margin: 0 0 12px 0;
+
+    font-size: 30px;
+    line-height: 1.2;
+
+    color: #4b3b38;
+}
+
+
+/* INTRO TEXT */
+
+.feedback-card > p {
+    max-width: 520px;
+    margin: 0 auto 28px auto;
+
+    font-size: 17px;
+    line-height: 1.5;
+
+    color: #6a5752;
+}
+
+
+/* QUESTION LABELS */
+
+.feedback-label {
+    display: block;
+
+    margin: 28px 0 14px 0;
+
+    font-size: 18px;
+    font-weight: 700;
+
+    color: #4b3b38;
+}
+
+
+/* OPTION GROUPS */
+
+.feedback-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    gap: 10px;
+}
+
+
+/* EACH PILL */
+
+.feedback-options label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 11px 15px;
+
+    background: #fff8ed;
+
+    border: 1px solid rgba(160, 120, 100, 0.12);
+    border-radius: 999px;
+
+    color: #574642;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.feedback-options label:hover {
+    transform: translateY(-2px);
+
+    background: #fff2df;
+
+    box-shadow: 0 5px 12px rgba(120, 80, 60, 0.08);
+}
+
+
+/* HIDE DEFAULT RADIO + CHECKBOX LOOK */
+
+.feedback-options input {
+    margin-right: 7px;
+
+    accent-color: #d49c8f;
+}
+
+
+/* TEXT AREA */
+
+.feedback-card textarea {
+    width: 100%;
+    min-height: 95px;
+
+    box-sizing: border-box;
+
+    margin-top: 6px;
+    padding: 15px 16px;
+
+    background: rgba(255, 255, 255, 0.78);
+
+    border: 1px solid rgba(140, 105, 90, 0.18);
+    border-radius: 20px;
+
+    font-family: inherit;
+    font-size: 16px;
+
+    color: #4b3b38;
+
+    resize: vertical;
+
+    outline: none;
+}
+
+
+.feedback-card textarea:focus {
+    border-color: #e0b2a5;
+
+    box-shadow: 0 0 0 4px rgba(224, 178, 165, 0.15);
+}
+
+
+/* SEND BUTTON */
+
+.feedback-button {
+    margin-top: 22px;
+
+    padding: 14px 28px;
+
+    border: none;
+    border-radius: 999px;
+
+    background: #F7E7C6;
+
+    color: #4b3b38;
+
+    font-family: inherit;
+    font-size: 18px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow: 0 6px 14px rgba(120, 80, 60, 0.08);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+
+.feedback-button:hover {
+    background: #EFD9AE;
+
+    transform: translateY(-2px);
+}
+
+
+/* SUCCESS / ERROR TEXT */
+
+.feedback-message {
+    min-height: 24px;
+
+    margin-top: 16px;
+
+    color: #6a5752;
+
+    font-weight: 600;
+}
