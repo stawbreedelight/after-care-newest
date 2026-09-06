@@ -627,6 +627,13 @@ button.game-icon-button:hover {
 
 @media (max-width: 600px) {
 
+    .flavours-page {
+        background-image: url("images/flavours-background-mobile.PNG");
+        background-size: cover;
+        background-position: center top;
+        background-repeat: no-repeat;
+    }
+
     .flavours-container {
         padding: 20px 15px 50px;
     }
@@ -645,8 +652,6 @@ button.game-icon-button:hover {
         gap: 20px;
     }
 }
-
-
 /* =========================
    PEACH LAND BACKGROUND
 ========================= */
