@@ -452,6 +452,13 @@ button.game-icon-button:hover {
 
 @media (max-width: 600px) {
 
+    .home-page {
+        background-image: url("images/home-background-mobile.PNG");
+        background-size: cover;
+        background-position: center top;
+        background-repeat: no-repeat;
+    }
+
     .home-container {
         padding-top: 25px;
     }
@@ -468,8 +475,6 @@ button.game-icon-button:hover {
         font-size: 1rem;
     }
 }
-
-
 /* =========================
    OUR FLAVOURS PAGE
 ========================= */
