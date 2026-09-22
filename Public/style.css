@@ -1013,6 +1013,57 @@ img.peach-land-icon {
     font-weight: 600;
 }
 /* ==============================
+   ABOUT PAGE BACKGROUND
+============================== */
+
+.about-container {
+    width: 100%;
+    max-width: none;
+
+    margin: 0;
+    padding: 30px 30px 70px;
+
+    box-sizing: border-box;
+
+    background:
+        radial-gradient(
+            circle at 8% 12%,
+            rgba(255, 174, 200, 0.45) 0px,
+            rgba(255, 174, 200, 0.20) 160px,
+            transparent 280px
+        ),
+
+        radial-gradient(
+            circle at 92% 25%,
+            rgba(255, 211, 157, 0.38) 0px,
+            rgba(255, 211, 157, 0.18) 170px,
+            transparent 290px
+        ),
+
+        radial-gradient(
+            circle at 15% 70%,
+            rgba(255, 204, 220, 0.35) 0px,
+            rgba(255, 204, 220, 0.15) 180px,
+            transparent 300px
+        ),
+
+        radial-gradient(
+            circle at 90% 85%,
+            rgba(246, 187, 203, 0.30) 0px,
+            rgba(246, 187, 203, 0.12) 160px,
+            transparent 280px
+        ),
+
+        linear-gradient(
+            180deg,
+            #fff8ef 0%,
+            #fff0f4 48%,
+            #fff8ef 100%
+        ) !important;
+
+    min-height: 100vh;
+}
+/* ==============================
    ABOUT PAGE LOGO
 ============================== */
 
