@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Strawberry Delight — Her Story</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="story-book">
+
+        <div class="book-page">
+
+            <img
+                id="storyPage"
+                src="images/strawberry-story/page-1.PNG"
+                alt="Strawberry Delight story page 1"
+            >
+
+        </div>
+
+
+        <div class="book-controls">
+
+            <button id="previousPage">
+                ← Previous
+            </button>
+
+            <span id="pageNumber">
+                Page 1 of 14
+            </span>
+
+            <button id="nextPage">
+                Next →
+            </button>
+
+        </div>
+
+
+        <a href="about.html" class="back-to-about">
+            ← Back to About
+        </a>
+
+    </main>
+
+
+    <script>
+
+        const totalPages = 10;
+        let currentPage = 1;
+
+        const storyPage =
+            document.getElementById("storyPage");
+
+        const pageNumber =
+            document.getElementById("pageNumber");
+
+        const previousButton =
+            document.getElementById("previousPage");
+
+        const nextButton =
+            document.getElementById("nextPage");
+
+
+        function updatePage() {
+
+            storyPage.src =
+                `images/strawberry-story/page-${currentPage}.PNG`;
+
+            storyPage.alt =
+                `Strawberry Delight story page ${currentPage}`;
+
+            pageNumber.textContent =
+                `Page ${currentPage} of ${totalPages}`;
+
+            previousButton.disabled =
+                currentPage === 1;
+
+            nextButton.disabled =
+                currentPage === totalPages;
+        }
+
+
+        previousButton.addEventListener("click", () => {
+
+            if (currentPage > 1) {
+                currentPage--;
+                updatePage();
+            }
+
+        });
+
+
+        nextButton.addEventListener("click", () => {
+
+            if (currentPage < totalPages) {
+                currentPage++;
+                updatePage();
+            }
+
+        });
+
+
+        updatePage();
+
+    </script>
+
+</body>
+
+</html>
