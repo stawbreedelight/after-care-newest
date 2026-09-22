@@ -1323,37 +1323,112 @@ img.peach-land-icon {
    FOUNDER STORY IMAGES
 ============================== */
 
-.founder-row .founder-image {
-    flex: 0 0 auto;
-    width: auto;
+.founder-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 40px;
+
+    max-width: 900px;
+    margin: 60px auto;
+}
+
+
+/* IMAGE CONTAINER */
+
+.founder-image {
+    flex: 0 0 240px !important;
+
+    width: 240px !important;
+    max-width: 240px !important;
 
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.founder-row .founder-image img {
+
+/* CLICKABLE IMAGE */
+
+.founder-image-link {
+    display: block;
+
     width: 220px !important;
     max-width: 220px !important;
 
-    height: auto !important;
-    max-height: 320px;
-
-    object-fit: contain;
-
-    display: block;
     margin: 0 auto;
 }
 
 
-/* MOBILE */
+/* ACTUAL STRAWBERRY + HUNTER IMAGE */
+
+.founder-character-image {
+    display: block !important;
+
+    width: 220px !important;
+    max-width: 220px !important;
+
+    height: auto !important;
+    max-height: 300px !important;
+
+    object-fit: contain !important;
+
+    margin: 0 auto !important;
+}
+
+
+/* FOUNDER TEXT */
+
+.founder-text {
+    flex: 1;
+
+    max-width: 550px;
+}
+
+
+/* ==============================
+   MOBILE
+============================== */
 
 @media (max-width: 700px) {
 
-    .founder-row .founder-image img {
+    .founder-row {
+        flex-direction: column;
+
+        gap: 25px;
+
+        margin: 45px auto;
+    }
+
+
+    .founder-image {
+        flex: none !important;
+
         width: 180px !important;
         max-width: 180px !important;
-        max-height: 260px;
+    }
+
+
+    .founder-image-link {
+        width: 180px !important;
+        max-width: 180px !important;
+    }
+
+
+    .founder-character-image {
+        width: 180px !important;
+        max-width: 180px !important;
+
+        height: auto !important;
+        max-height: 250px !important;
+    }
+
+
+    .founder-text {
+        width: 100%;
+
+        text-align: center;
     }
 
 }
