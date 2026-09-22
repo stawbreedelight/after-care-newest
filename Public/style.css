@@ -1012,7 +1012,46 @@ img.peach-land-icon {
 
     font-weight: 600;
 }
+/* ==============================
+   ABOUT PAGE LOGO
+============================== */
 
+.about-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 20px auto 40px;
+    padding: 0;
+}
+
+.about-header .about-logo {
+    width: 320px !important;
+    max-width: 80vw !important;
+
+    height: auto !important;
+    max-height: 320px;
+
+    object-fit: contain;
+
+    display: block;
+
+    margin: 0 auto;
+}
+
+
+/* ABOUT LOGO MOBILE */
+
+@media (max-width: 700px) {
+
+    .about-header .about-logo {
+        width: 250px !important;
+        max-width: 75vw !important;
+        max-height: 250px;
+    }
+
+}
 /* ==============================
    STORY BOOK
 ============================== */
