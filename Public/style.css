@@ -334,6 +334,25 @@ button.game-icon-button:hover {
     transform: scale(1.03);
 }
 
+/* COMING SOON ICON */
+
+.coming-soon-item {
+    width: 220px;
+    max-width: 70vw;
+
+    margin: 0 auto;
+}
+
+img.coming-soon-icon {
+    width: 160px !important;
+    max-width: 70vw !important;
+    height: auto !important;
+
+    display: block !important;
+
+    margin: 0 auto !important;
+}
+
 /* =========================
    HOME PAGE
 ========================= */
