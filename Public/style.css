@@ -361,7 +361,7 @@ img.coming-soon-icon {
     margin: 0;
     min-height: 100vh;
 
-    background-image: url("images/home-background.PNG");
+    background-image: url("images/home-background.gif");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -472,7 +472,7 @@ img.coming-soon-icon {
 @media (max-width: 600px) {
 
     .home-page {
-        background-image: url("images/home-background-mobile.PNG");
+        background-image: url("images/home-background-mobile.gif");
         background-size: cover;
         background-position: center top;
         background-repeat: no-repeat;
