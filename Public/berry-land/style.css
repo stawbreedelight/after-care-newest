@@ -1,0 +1,232 @@
+
+/* ==============================
+   BERRY LAND - MAIN STYLES
+============================== */
+
+:root {
+  --berry-pink: #f7d8eb;
+  --berry-cream: #fff7f2;
+  --berry-purple: #b89adf;
+  --berry-dark: #76537e;
+  --berry-accent: #e89aba;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  background: var(--berry-pink);
+  color: var(--berry-dark);
+}
+
+.berry-land {
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      #fff4fa 0 75px,
+      transparent 76px
+    ),
+    radial-gradient(
+      circle at 85% 35%,
+      #efd6ff 0 95px,
+      transparent 96px
+    ),
+    linear-gradient(
+      180deg,
+      #f9e3f2 0%,
+      #ebd7fa 55%,
+      #f7d8eb 100%
+    );
+}
+
+/* HEADER */
+
+.berry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1000px;
+  margin: auto;
+  padding: 25px;
+}
+
+.berry-back {
+  color: var(--berry-dark);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.berry-label {
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+}
+
+/* HERO */
+
+.berry-hero {
+  max-width: 800px;
+  margin: 20px auto 35px;
+  padding: 20px;
+  text-align: center;
+}
+
+.berry-decoration {
+  font-size: 2rem;
+}
+
+.berry-hero h1 {
+  font-size: clamp(3rem, 9vw, 5.5rem);
+  color: #af68a6;
+  text-shadow: 3px 4px 0 #fff5fa;
+  margin: 15px 0;
+}
+
+.berry-subtitle {
+  font-size: 1.2rem;
+}
+
+.berry-character {
+  font-size: 6rem;
+  margin: 25px auto;
+  animation: berry-float 3s ease-in-out infinite;
+}
+
+@keyframes berry-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .berry-character {
+    animation: none;
+  }
+}
+
+/* LEVEL BUTTONS */
+
+.berry-levels {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto 55px;
+  padding: 0 25px;
+}
+
+.berry-level {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  border: 3px solid white;
+  border-radius: 28px;
+  background: var(--berry-cream);
+  color: var(--berry-dark);
+  padding: 28px 12px;
+  font: inherit;
+  font-size: 1.3rem;
+  font-weight: bold;
+  box-shadow: 0 7px 0 #dbaed7;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.berry-level:not(:disabled):hover {
+  transform: translateY(-5px);
+}
+
+.berry-level:focus-visible,
+.berry-close:focus-visible,
+.berry-back:focus-visible {
+  outline: 3px solid #76537e;
+  outline-offset: 4px;
+}
+
+.berry-level:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.level-icon {
+  font-size: 3rem;
+}
+
+.berry-level small {
+  font-size: 0.8rem;
+  font-weight: normal;
+}
+
+/* GAME AREA */
+
+.berry-game {
+  max-width: 650px;
+  margin: 20px auto 60px;
+  padding: 35px 20px;
+  border: 3px solid white;
+  border-radius: 30px;
+  background: #fff7fc;
+  text-align: center;
+}
+
+.berry-game[hidden] {
+  display: none;
+}
+
+.berry-close {
+  padding: 14px 25px;
+  border: 0;
+  border-radius: 30px;
+  background: var(--berry-purple);
+  color: white;
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.berry-footer {
+  text-align: center;
+  padding: 30px 15px;
+  font-size: 0.85rem;
+}
+
+/* ==============================
+   BERRY LAND MOBILE
+============================== */
+
+@media (max-width: 600px) {
+  .berry-header {
+    padding: 20px 15px;
+  }
+
+  .berry-hero {
+    margin-top: 10px;
+    padding: 15px;
+  }
+
+  .berry-character {
+    font-size: 5rem;
+  }
+
+  .berry-levels {
+    grid-template-columns: 1fr;
+    max-width: 370px;
+    gap: 20px;
+  }
+
+  .berry-level {
+    padding: 22px;
+  }
+
+  .berry-game {
+    margin: 20px 15px 45px;
+  }
+}
