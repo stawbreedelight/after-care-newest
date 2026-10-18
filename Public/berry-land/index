@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7d8eb">
+  <title>Berry Land | Vanilla Land</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
+</head>
+<body>
+  <main class="berry-land">
+    <header class="berry-header">
+      <a class="berry-back" href="../index.html">
+        ← Home
+      </a>
+      <span class="berry-label">VANILLA LAND</span>
+    </header>
+
+    <section class="berry-hero">
+      <div class="berry-decoration" aria-hidden="true">
+        🍓 🫐 🍒
+      </div>
+
+      <h1>Berry Land</h1>
+      <p class="berry-subtitle">
+        A little world full of sweet adventures!
+      </p>
+
+      <div class="berry-character" aria-hidden="true">
+        🍓
+      </div>
+
+      <h2>Choose your adventure</h2>
+      <p>Explore a new world together, one level at a time.</p>
+    </section>
+
+    <section class="berry-levels" aria-label="Game levels">
+      <button class="berry-level" data-level="1">
+        <span class="level-icon">🍓</span>
+        <span>Level 1</span>
+        <small>Start Adventure</small>
+      </button>
+
+      <button class="berry-level" data-level="2" disabled>
+        <span class="level-icon">🫐</span>
+        <span>Level 2</span>
+        <small>Coming Soon 🔒</small>
+      </button>
+
+      <button class="berry-level" data-level="3" disabled>
+        <span class="level-icon">🍒</span>
+        <span>Level 3</span>
+        <small>Coming Soon 🔒</small>
+      </button>
+    </section>
+
+    <section id="berry-game" class="berry-game" hidden>
+      <h2 id="berry-game-title">Level 1</h2>
+      <p id="berry-game-message">
+        Your berry adventure begins here!
+      </p>
+      <button id="berry-close" class="berry-close">
+        Back to Levels
+      </button>
+    </section>
+
+    <footer class="berry-footer">
+      Made with love ♡ Vanilla Land
+    </footer>
+  </main>
+</body>
+</html>
