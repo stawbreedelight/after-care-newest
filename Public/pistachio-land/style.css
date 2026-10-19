@@ -1,0 +1,133 @@
+
+/* =========================
+   PISTACHIO LAND
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body.pistachio-land {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Trebuchet MS", Arial, sans-serif;
+    color: #526b43;
+
+    background: linear-gradient(
+        180deg,
+        #e9f4dc 0%,
+        #cde3bb 55%,
+        #a8ca9b 100%
+    );
+}
+
+/* HEADER */
+
+.pistachio-header {
+    padding: 25px;
+}
+
+.back-button {
+    display: inline-block;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 30px;
+    background: #f8f4dc;
+    color: #526b43;
+    text-decoration: none;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* MAIN PAGE */
+
+.pistachio-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px 20px 80px;
+    text-align: center;
+}
+
+.pistachio-container h1 {
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    color: #638657;
+    margin-bottom: 15px;
+}
+
+.pistachio-intro {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    font-size: 1.2rem;
+    line-height: 1.7;
+}
+
+.pistachio-image {
+    font-size: 6rem;
+    margin: 40px auto;
+}
+
+/* LEVEL BUTTONS */
+
+.pistachio-levels {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 850px;
+    margin: 35px auto;
+}
+
+.level-button {
+    padding: 30px 15px;
+    background: #f7f3d9;
+    color: #526b43;
+    border: 3px solid #ffffff;
+    border-radius: 25px;
+    box-shadow: 0 6px 0 #a5c294;
+    font: inherit;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.level-button:hover {
+    transform: translateY(-4px);
+}
+
+/* GAME AREA */
+
+.pistachio-game {
+    max-width: 650px;
+    margin: 40px auto;
+    padding: 30px;
+    background: #fffdf0;
+    border-radius: 25px;
+}
+
+.pistachio-game[hidden] {
+    display: none;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+    .pistachio-container {
+        padding: 20px 15px 60px;
+    }
+
+    .pistachio-levels {
+        grid-template-columns: 1fr;
+        max-width: 350px;
+    }
+
+    .pistachio-image {
+        font-size: 4.5rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .level-button {
+        transition: none;
+    }
+}
