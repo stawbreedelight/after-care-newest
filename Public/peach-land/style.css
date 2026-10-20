@@ -250,18 +250,21 @@ button {
 }
 
 
+
 /* ==============================
    PEACH LAND LOGO
 ============================== */
 
 img.peach-land-icon {
-    width: 360px !important;
-    max-width: 88vw !important;
-    height: auto !important;
+    display: block;
 
-    display: block !important;
+    width: 360px;
+    max-width: 88vw;
+    height: auto;
 
-    margin: 0 auto 24px !important;
+    object-fit: contain;
+
+    margin: 0 auto 24px;
 }
 
 
@@ -298,11 +301,13 @@ img.peach-land-icon {
 ============================== */
 
 img.game-icon {
-    width: 160px !important;
-    max-width: 70vw !important;
-    height: auto !important;
+    width: 160px;
+    max-width: 100%;
+    height: auto;
 
-    display: block !important;
+    object-fit: contain;
+
+    display: block;
 }
 
 
@@ -311,7 +316,9 @@ img.game-icon {
 ============================== */
 
 .game-link {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     width: 220px;
     max-width: 70vw;
@@ -338,8 +345,8 @@ img.game-icon {
     }
 
     img.peach-land-icon {
-        width: 300px !important;
-        max-width: 90vw !important;
+        width: 300px;
+        max-width: 90vw;
     }
 
     .peach-intro {
