@@ -1,0 +1,370 @@
+
+/* ==============================
+   PEACH LAND - FONTS
+============================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&family=Nunito+Sans:wght@400;600&display=swap');
+
+
+/* ==============================
+   PEACH LAND - BASE STYLES
+============================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    color: #4b3b38;
+    font-family: "Nunito Sans", sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    margin: 0 0 20px;
+
+    font-family: "Baloo 2", cursive;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+p {
+    margin: 0 0 20px;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+button {
+    border: none;
+    border-radius: 34px;
+
+    padding: 16px 32px;
+    margin-top: 18px;
+
+    background: #F7E7C6;
+    color: #4b3b38;
+
+    font-family: "Baloo 2", cursive;
+    font-weight: 700;
+    font-size: 22px;
+
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ==============================
+   PEACH LAND BACKGROUND
+============================== */
+
+.peach-page {
+    margin: 0;
+    min-height: 100vh;
+
+    position: relative;
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(
+            circle at 12% 20%,
+            rgba(255, 225, 235, 0.48),
+            transparent 17%
+        ),
+
+        radial-gradient(
+            circle at 88% 24%,
+            rgba(255, 225, 210, 0.42),
+            transparent 18%
+        ),
+
+        radial-gradient(
+            circle at 15% 72%,
+            rgba(255, 205, 220, 0.32),
+            transparent 20%
+        ),
+
+        radial-gradient(
+            circle at 86% 78%,
+            rgba(255, 220, 190, 0.30),
+            transparent 22%
+        ),
+
+        linear-gradient(
+            180deg,
+            #f991a5 0%,
+            #f9a394 22%,
+            #fbb69a 45%,
+            #fdc9a8 70%,
+            #ffe4c8 100%
+        );
+
+    isolation: isolate;
+}
+
+
+/* ==============================
+   SOFT CLOUDS / CANDY BLOBS
+============================== */
+
+.peach-page::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+
+        /* TOP LEFT */
+        radial-gradient(
+            circle at 3% 18%,
+            rgba(255, 235, 240, 0.72) 0 5%,
+            transparent 5.5%
+        ),
+
+        radial-gradient(
+            circle at 11% 20%,
+            rgba(255, 225, 235, 0.58) 0 7%,
+            transparent 7.5%
+        ),
+
+        /* TOP RIGHT */
+        radial-gradient(
+            circle at 91% 19%,
+            rgba(255, 235, 240, 0.66) 0 6%,
+            transparent 6.5%
+        ),
+
+        radial-gradient(
+            circle at 99% 22%,
+            rgba(255, 225, 230, 0.55) 0 8%,
+            transparent 8.5%
+        ),
+
+        /* LOWER LEFT */
+        radial-gradient(
+            circle at 4% 72%,
+            rgba(255, 225, 235, 0.68) 0 8%,
+            transparent 8.5%
+        ),
+
+        radial-gradient(
+            circle at 15% 75%,
+            rgba(255, 215, 225, 0.50) 0 10%,
+            transparent 10.5%
+        ),
+
+        /* LOWER RIGHT */
+        radial-gradient(
+            circle at 87% 77%,
+            rgba(255, 225, 235, 0.65) 0 9%,
+            transparent 9.5%
+        ),
+
+        radial-gradient(
+            circle at 99% 74%,
+            rgba(255, 215, 225, 0.52) 0 10%,
+            transparent 10.5%
+        );
+
+    z-index: -2;
+}
+
+
+/* ==============================
+   SPARKLES / CANDY DOTS
+============================== */
+
+.peach-page::after {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+
+        /* WHITE SPARKLES */
+        radial-gradient(circle at 18% 17%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+        radial-gradient(circle at 33% 27%, rgba(255,255,255,0.8) 0 2px, transparent 3px),
+        radial-gradient(circle at 55% 14%, rgba(255,255,255,0.85) 0 2px, transparent 3px),
+        radial-gradient(circle at 72% 31%, rgba(255,255,255,0.9) 0 2px, transparent 3px),
+        radial-gradient(circle at 86% 15%, rgba(255,255,255,0.75) 0 2px, transparent 3px),
+
+        radial-gradient(circle at 15% 53%, rgba(255,255,255,0.8) 0 2px, transparent 3px),
+        radial-gradient(circle at 88% 57%, rgba(255,255,255,0.8) 0 2px, transparent 3px),
+
+        radial-gradient(circle at 29% 82%, rgba(255,255,255,0.85) 0 2px, transparent 3px),
+        radial-gradient(circle at 72% 88%, rgba(255,255,255,0.85) 0 2px, transparent 3px),
+
+        /* PINK CANDY DOTS */
+        radial-gradient(circle at 10% 38%, rgba(255, 170, 195, 0.45) 0 5px, transparent 6px),
+        radial-gradient(circle at 91% 43%, rgba(255, 180, 195, 0.40) 0 4px, transparent 5px),
+        radial-gradient(circle at 22% 66%, rgba(255, 185, 205, 0.35) 0 4px, transparent 5px),
+        radial-gradient(circle at 80% 69%, rgba(255, 180, 190, 0.35) 0 5px, transparent 6px);
+
+    opacity: 0.75;
+
+    z-index: -1;
+}
+
+
+/* ==============================
+   PEACH LAND CONTENT
+============================== */
+
+.peach-container {
+    position: relative;
+    z-index: 1;
+
+    width: 90%;
+    max-width: 600px;
+    min-height: 100vh;
+
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 30px 20px 60px;
+
+    background: transparent;
+}
+
+
+/* ==============================
+   PEACH LAND LOGO
+============================== */
+
+img.peach-land-icon {
+    width: 360px !important;
+    max-width: 88vw !important;
+    height: auto !important;
+
+    display: block !important;
+
+    margin: 0 auto 24px !important;
+}
+
+
+/* ==============================
+   PEACH LAND INTRO
+============================== */
+
+.peach-intro {
+    max-width: 520px;
+
+    margin: 0 auto 30px;
+
+    color: #4b3b38;
+}
+
+
+/* ==============================
+   PEACH LAND GAMES
+============================== */
+
+.peach-games {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 24px;
+}
+
+
+/* ==============================
+   GAME ICONS
+============================== */
+
+img.game-icon {
+    width: 160px !important;
+    max-width: 70vw !important;
+    height: auto !important;
+
+    display: block !important;
+}
+
+
+/* ==============================
+   CLICKABLE GAME ICONS
+============================== */
+
+.game-link {
+    display: inline-block;
+
+    width: 220px;
+    max-width: 70vw;
+
+    text-decoration: none;
+
+    transition: transform 0.2s ease;
+}
+
+.game-link:hover {
+    transform: scale(1.03);
+}
+
+
+/* ==============================
+   MOBILE PEACH LAND
+============================== */
+
+@media (max-width: 600px) {
+
+    .peach-container {
+        width: 100%;
+        padding: 20px 15px 60px;
+    }
+
+    img.peach-land-icon {
+        width: 300px !important;
+        max-width: 90vw !important;
+    }
+
+    .peach-intro {
+        font-size: 17px;
+        line-height: 1.6;
+    }
+
+    .peach-games {
+        gap: 20px;
+    }
+
+    .game-link {
+        width: 220px;
+        max-width: 80vw;
+    }
+}
+
+
+/* ==============================
+   REDUCED MOTION
+============================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .game-link {
+        transition: none;
+    }
+}
