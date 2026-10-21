@@ -1512,37 +1512,9 @@ createButton
         }
 
 
-        let roomCode;
 
-        let roomExists =
-          true;
+const roomCode = generateRoomCode();
 
-
-        while (
-          roomExists
-        ) {
-
-          roomCode =
-            generateRoomCode();
-
-
-          const roomRef =
-            doc(
-              db,
-              "datePlannerRooms",
-              roomCode
-            );
-
-
-          const roomSnap =
-            await getDoc(
-              roomRef
-            );
-
-
-          roomExists =
-            roomSnap.exists();
-        }
 
 
         const roomRef =
