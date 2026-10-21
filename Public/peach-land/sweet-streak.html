@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Sweet Streak | Mid Vanilla</title>
+
+  <link
+    rel="stylesheet"
+    href="sweet-streak.css"
+  >
+</head>
+
+<body>
+
+  <main class="sweet-streak-container">
+
+    <!-- HOME / CREATE SCREEN -->
+    <section
+      id="createScreen"
+      class="game-screen active"
+    >
+
+      <div class="game-card">
+
+        <p class="eyebrow">
+          MID VANILLA
+        </p>
+
+        <h1>
+          Sweet Streak
+        </h1>
+
+        <p class="intro-text">
+          Set a challenge. Pick the stakes.
+          Keep your streak sweet.
+        </p>
+
+        <form id="challengeForm">
+
+          <label for="taskInput">
+            What's the challenge?
+          </label>
+
+          <textarea
+            id="taskInput"
+            placeholder="Example: Put away the laundry"
+            required
+          ></textarea>
+
+
+          <label for="playerSelect">
+            Who is doing it?
+          </label>
+
+          <select
+            id="playerSelect"
+            required
+          >
+            <option value="Me">
+              Me
+            </option>
+
+            <option value="My Partner">
+              My Partner
+            </option>
+          </select>
+
+
+          <label for="timeSelect">
+            How long do they have?
+          </label>
+
+          <select
+            id="timeSelect"
+            required
+          >
+            <option value="30">
+              30 minutes
+            </option>
+
+            <option value="60">
+              1 hour
+            </option>
+
+            <option value="120">
+              2 hours
+            </option>
+
+            <option value="240">
+              4 hours
+            </option>
+
+            <option value="720">
+              12 hours
+            </option>
+
+            <option value="1440">
+              24 hours
+            </option>
+          </select>
+
+
+          <label for="rewardInput">
+            Reward
+          </label>
+
+          <input
+            id="rewardInput"
+            type="text"
+            placeholder="Example: 15-minute massage"
+            required
+          >
+
+
+          <label for="forfeitInput">
+            If they don't do it...
+          </label>
+
+          <input
+            id="forfeitInput"
+            type="text"
+            placeholder="Example: Make breakfast tomorrow"
+            required
+          >
+
+
+          <button
+            type="submit"
+            class="primary-button"
+          >
+            Create Challenge
+          </button>
+
+        </form>
+
+      </div>
+
+    </section>
+
+
+    <!-- ACCEPT SCREEN -->
+    <section
+      id="acceptScreen"
+      class="game-screen"
+    >
+
+      <div class="game-card">
+
+        <p class="eyebrow">
+          YOUR SWEET STREAK
+        </p>
+
+        <h2>
+          Challenge Ready
+        </h2>
+
+        <div class="challenge-summary">
+
+          <div class="summary-item">
+            <span>Challenge</span>
+            <strong id="acceptTask"></strong>
+          </div>
+
+          <div class="summary-item">
+            <span>Player</span>
+            <strong id="acceptPlayer"></strong>
+          </div>
+
+          <div class="summary-item">
+            <span>Time</span>
+            <strong id="acceptTime"></strong>
+          </div>
+
+          <div class="summary-item reward-box">
+            <span>Reward 💕</span>
+            <strong id="acceptReward"></strong>
+          </div>
+
+          <div class="summary-item forfeit-box">
+            <span>Forfeit 😈</span>
+            <strong id="acceptForfeit"></strong>
+          </div>
+
+        </div>
+
+        <button
+          id="acceptButton"
+          class="primary-button"
+        >
+          Accept Challenge
+        </button>
+
+        <button
+          id="editButton"
+          class="secondary-button"
+        >
+          Change the Stakes
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- ACTIVE CHALLENGE SCREEN -->
+    <section
+      id="activeScreen"
+      class="game-screen"
+    >
+
+      <div class="game-card">
+
+        <p class="eyebrow">
+          SWEET STREAK ACTIVE
+        </p>
+
+        <h2 id="activeTask"></h2>
+
+        <p class="player-name">
+          <span id="activePlayer"></span>
+          is on the clock.
+        </p>
+
+        <div class="timer-wrap">
+
+          <p class="timer-label">
+            TIME LEFT
+          </p>
+
+          <div id="countdown">
+            00:00:00
+          </div>
+
+        </div>
+
+        <div class="stakes-grid">
+
+          <div class="stake-card">
+            <span>
+              If you do it 💕
+            </span>
+
+            <strong id="activeReward"></strong>
+          </div>
+
+          <div class="stake-card">
+            <span>
+              If you don't 😈
+            </span>
+
+            <strong id="activeForfeit"></strong>
+          </div>
+
+        </div>
+
+        <button
+          id="doneButton"
+          class="primary-button"
+        >
+          I Did It!
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- CONFIRMATION SCREEN -->
+    <section
+      id="confirmScreen"
+      class="game-screen"
+    >
+
+      <div class="game-card">
+
+        <p class="eyebrow">
+          PARTNER CHECK
+        </p>
+
+        <h2>
+          Did they complete the challenge?
+        </h2>
+
+        <p
+          id="confirmTask"
+          class="confirm-task"
+        ></p>
+
+        <button
+          id="confirmYesButton"
+          class="primary-button"
+        >
+          Yes! 💕
+        </button>
+
+        <button
+          id="confirmNoButton"
+          class="secondary-button"
+        >
+          Not Quite 😈
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- RESULT SCREEN -->
+    <section
+      id="resultScreen"
+      class="game-screen"
+    >
+
+      <div class="game-card result-card">
+
+        <div
+          id="resultEmoji"
+          class="result-emoji"
+        >
+          🍦
+        </div>
+
+        <p class="eyebrow">
+          SWEET STREAK RESULT
+        </p>
+
+        <h2 id="resultTitle"></h2>
+
+        <p
+          id="resultMessage"
+          class="result-message"
+        ></p>
+
+        <div
+          id="resultStake"
+          class="result-stake"
+        ></div>
+
+        <button
+          id="playAgainButton"
+          class="primary-button"
+        >
+          Start Another Challenge
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <script
+    type="module"
+    src="sweet-streak.app.js"
+  ></script>
+
+</body>
+</html>
