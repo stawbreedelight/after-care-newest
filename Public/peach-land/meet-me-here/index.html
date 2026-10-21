@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Meet Me Here</title>
+
+  <link rel="stylesheet" href="./meet-me-here.css">
+</head>
+
+<body>
+
+  <main class="meet-me-here-page">
+
+    <section class="game-card">
+
+      <h1>Meet Me Here</h1>
+
+      <p class="tagline">
+        What are you in the mood for tonight?
+      </p>
+
+      <div id="introScreen">
+
+        <button
+          id="createRoomButton"
+          class="primary-button"
+          type="button"
+        >
+          Create a Room
+        </button>
+
+        <button
+          id="showJoinButton"
+          class="secondary-button"
+          type="button"
+        >
+          Join Your Partner
+        </button>
+
+      </div>
+
+
+      <div id="joinScreen" class="hidden">
+
+        <h2>Join Your Partner</h2>
+
+        <label for="roomCodeInput">
+          Room code
+        </label>
+
+        <input
+          id="roomCodeInput"
+          type="text"
+          maxlength="6"
+          placeholder="ABC123"
+          autocomplete="off"
+        >
+
+        <button
+          id="joinRoomButton"
+          class="primary-button"
+          type="button"
+        >
+          Join Room
+        </button>
+
+        <button
+          id="backButton"
+          class="text-button"
+          type="button"
+        >
+          Back
+        </button>
+
+      </div>
+
+
+      <div id="roomScreen" class="hidden">
+
+        <p class="small-label">
+          Your room code
+        </p>
+
+        <div id="roomCodeDisplay" class="room-code">
+          ------
+        </div>
+
+        <p id="roomStatus">
+          Waiting for your partner...
+        </p>
+
+      </div>
+
+
+      <p
+        id="message"
+        class="message"
+        aria-live="polite"
+      ></p>
+
+    </section>
+
+  </main>
+
+  <script
+    type="module"
+    src="./meet-me-here.js"
+  ></script>
+
+</body>
+</html>
