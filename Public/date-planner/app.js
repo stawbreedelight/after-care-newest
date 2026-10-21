@@ -1594,7 +1594,7 @@ createButton
               [],
 
             filters:
-              null
+              {}
           }
         );
 
