@@ -1,0 +1,80 @@
+
+/* MID VANILLA LOGIN */
+
+.login-page {
+    min-height: 100vh;
+    margin: 0;
+    background: #fff7f0;
+    font-family: inherit;
+}
+
+.login-container {
+    width: 90%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.login-logo {
+    width: 85%;
+    max-width: 280px;
+    height: auto;
+}
+
+.login-container h1 {
+    color: #a76d88;
+    margin: 20px 0 10px;
+}
+
+.login-container p {
+    color: #87546d;
+}
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 30px;
+    text-align: left;
+}
+
+#loginForm label {
+    color: #87546d;
+    font-weight: bold;
+}
+
+#loginForm input {
+    padding: 14px;
+    border: 2px solid #f0cbd8;
+    border-radius: 12px;
+    font-size: 16px;
+}
+
+#loginForm button {
+    margin-top: 12px;
+    padding: 15px;
+    border: none;
+    border-radius: 25px;
+    background: #d995ad;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.signup-text {
+    margin-top: 25px;
+}
+
+.signup-text a,
+.back-link {
+    color: #a76d88;
+    font-weight: bold;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 25px;
+}
