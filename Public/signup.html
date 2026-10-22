@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account | Mid Vanilla</title>
+
+    <!-- FREDOKA FONT -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" href="style.css?v=11">
+    <link rel="stylesheet" href="login.css?v=4">
+    <link rel="stylesheet" href="signup.css?v=3">
+
+</head>
+
+<body class="login-page">
+
+    <main class="login-container">
+
+        <!-- LOGO -->
+        <img
+            src="images/mid-vanilla.PNG"
+            alt="Mid Vanilla"
+            class="login-logo"
+        >
+
+        <!-- HEADING -->
+        <h1>Join Mid Vanilla ♡</h1>
+
+        <p>Create your little world for two</p>
+
+        <!-- SIGNUP FORM -->
+        <form id="signupForm">
+
+            <label for="username">
+                Choose a Username
+            </label>
+
+            <input
+                type="text"
+                id="username"
+                autocomplete="username"
+                minlength="3"
+                maxlength="24"
+                required
+            >
+
+            <label for="password">
+                Create a Password
+            </label>
+
+            <input
+                type="password"
+                id="password"
+                autocomplete="new-password"
+                minlength="12"
+                required
+            >
+
+            <label for="confirmPassword">
+                Confirm Password
+            </label>
+
+            <input
+                type="password"
+                id="confirmPassword"
+                autocomplete="new-password"
+                required
+            >
+
+            <button type="submit">
+                Create My Account ♡
+            </button>
+
+        </form>
+
+        <!-- MESSAGE -->
+        <p id="signupMessage" role="status"></p>
+
+        <!-- LOGIN LINK -->
+        <p class="signup-text">
+            Already have an account?
+            <a href="login.html">Log In</a>
+        </p>
+
+        <!-- HOME LINK -->
+        <a href="index.html" class="back-link">
+            ← Back to Home
+        </a>
+
+    </main>
+
+    <script type="module" src="signup.app.js"></script>
+
+</body>
+</html>
