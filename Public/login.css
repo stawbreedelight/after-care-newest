@@ -1,7 +1,8 @@
 
+
 /* ==============================
    MID VANILLA LOGIN PAGE
-   LOGO-INSPIRED PURPLE THEME
+   LOGO-INSPIRED LILAC THEME
 ============================== */
 
 .login-page {
@@ -18,10 +19,10 @@
 
 .login-container {
     width: 90%;
-    max-width: 400px;
+    max-width: 440px;
 
     margin: 0 auto;
-    padding: 40px 20px 60px;
+    padding: 30px 20px 50px;
 
     text-align: center;
     box-sizing: border-box;
@@ -32,13 +33,15 @@
    MID VANILLA LOGO
 ============================== */
 
-.login-logo {
-    width: 85%;
-    max-width: 280px;
+.login-container .login-logo {
+    display: block;
+
+    width: 75%;
+    max-width: 250px;
     height: auto;
 
-    display: block;
-    margin: 0 auto 25px;
+    margin: 0 auto 20px;
+    object-fit: contain;
 }
 
 
@@ -47,12 +50,18 @@
 ============================== */
 
 .login-container h1 {
-    color: #75468F;
-    margin: 20px 0 10px;
+    color: #83468E;
+
+    font-size: 2rem;
+    line-height: 1.2;
+
+    margin: 15px 0 10px;
 }
 
 .login-container p {
-    color: #75468F;
+    color: #83468E;
+    font-size: 1rem;
+    line-height: 1.5;
 }
 
 
@@ -65,30 +74,34 @@
     flex-direction: column;
     gap: 12px;
 
-    margin-top: 30px;
+    margin-top: 25px;
     text-align: left;
 }
 
 #loginForm label {
-    color: #75468F;
+    color: #83468E;
     font-weight: bold;
+    font-size: 1rem;
 }
 
 #loginForm input {
+    display: block;
+
     width: 100%;
     padding: 14px;
 
-    border: 2px solid #C58BD9;
+    border: 2px solid #CF9DE2;
     border-radius: 12px;
 
     background: #FFFFFF;
-    font-size: 16px;
+    color: #4F285E;
 
+    font-size: 16px;
     box-sizing: border-box;
 }
 
 #loginForm input:focus {
-    outline: 2px solid #A66BC4;
+    outline: 2px solid #83468E;
     outline-offset: 2px;
 }
 
@@ -99,6 +112,7 @@
 
 #loginForm button {
     width: 100%;
+
     margin-top: 12px;
     padding: 15px;
 
@@ -107,15 +121,18 @@
 
     background: linear-gradient(
         135deg,
-        #C58BD9,
-        #A66BC4
+        #E4BDF1 0%,
+        #CF9DE2 50%,
+        #B77ACF 100%
     );
 
-    color: #FFFFFF;
+    color: #4F285E;
+
     font-size: 17px;
     font-weight: bold;
 
-    box-shadow: 0 4px 12px rgba(117, 70, 143, 0.15);
+    box-shadow:
+        0 4px 12px rgba(131, 70, 142, 0.15);
 
     cursor: pointer;
 
@@ -127,11 +144,17 @@
 #loginForm button:hover {
     transform: translateY(-2px);
 
-    box-shadow: 0 6px 16px rgba(117, 70, 143, 0.25);
+    box-shadow:
+        0 6px 16px rgba(131, 70, 142, 0.25);
 }
 
 #loginForm button:active {
     transform: translateY(0);
+}
+
+#loginForm button:focus-visible {
+    outline: 2px solid #83468E;
+    outline-offset: 3px;
 }
 
 
@@ -144,13 +167,13 @@
 }
 
 .signup-text a {
-    color: #75468F;
+    color: #83468E;
     font-weight: bold;
     text-decoration: underline;
 }
 
 .signup-text a:hover {
-    color: #A66BC4;
+    color: #B77ACF;
 }
 
 
@@ -160,15 +183,16 @@
 
 .back-link {
     display: inline-block;
+
     margin-top: 25px;
 
-    color: #75468F;
+    color: #83468E;
     font-weight: bold;
     text-decoration: underline;
 }
 
 .back-link:hover {
-    color: #A66BC4;
+    color: #B77ACF;
 }
 
 
@@ -177,9 +201,31 @@
 ============================== */
 
 #loginMessage {
-    color: #75468F;
+    color: #83468E;
+
     margin-top: 15px;
     text-align: center;
+}
+
+
+/* ==============================
+   TABLET
+============================== */
+
+@media (min-width: 601px) and (max-width: 1024px) {
+
+    .login-container {
+        max-width: 440px;
+        padding-top: 35px;
+    }
+
+    .login-container .login-logo {
+        max-width: 250px;
+    }
+
+    .login-container h1 {
+        font-size: 2rem;
+    }
 }
 
 
@@ -191,16 +237,27 @@
 
     .login-container {
         width: 92%;
-        padding: 30px 18px 50px;
+        padding: 25px 18px 45px;
     }
 
-    .login-logo {
-        width: 85%;
-        max-width: 250px;
+    .login-container .login-logo {
+        width: 75%;
+        max-width: 220px;
+
+        margin-bottom: 15px;
     }
 
     .login-container h1 {
-        font-size: 1.8rem;
+        font-size: 1.75rem;
+        margin-top: 10px;
+    }
+
+    .login-container p {
+        font-size: 0.95rem;
+    }
+
+    #loginForm {
+        margin-top: 20px;
     }
 
     #loginForm input {
@@ -211,25 +268,3 @@
         padding: 15px;
     }
 }
-
-/* LOGO-INSPIRED PURPLE DETAILS */
-
-#loginForm button,
-#signupForm button {
-    background: linear-gradient(
-        135deg,
-        #C58BD9,
-        #A66BC4
-    );
-
-    box-shadow: 0 4px 12px rgba(117, 70, 143, 0.15);
-
-    transition: transform 0.2s ease;
-}
-
-#loginForm button:hover,
-#signupForm button:hover {
-    transform: translateY(-2px);
-    background: #A66BC4;
-}
-
