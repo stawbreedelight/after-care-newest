@@ -4,7 +4,7 @@
 .login-page {
     min-height: 100vh;
     margin: 0;
-    background: #fff7f0;
+    background: #F8F5F0;
     font-family: inherit;
 }
 
@@ -24,12 +24,12 @@
 }
 
 .login-container h1 {
-    color: #a76d88;
+    color: #594175;
     margin: 20px 0 10px;
 }
 
 .login-container p {
-    color: #87546d;
+    color: #594175;
 }
 
 #loginForm {
@@ -41,15 +41,21 @@
 }
 
 #loginForm label {
-    color: #87546d;
+    color: #594175;
     font-weight: bold;
 }
 
 #loginForm input {
     padding: 14px;
-    border: 2px solid #f0cbd8;
+    border: 2px solid #B6A0D5;
     border-radius: 12px;
     font-size: 16px;
+    background: white;
+}
+
+#loginForm input:focus {
+    outline: 2px solid #8664AE;
+    outline-offset: 2px;
 }
 
 #loginForm button {
@@ -57,11 +63,15 @@
     padding: 15px;
     border: none;
     border-radius: 25px;
-    background: #d995ad;
+    background: #8664AE;
     color: white;
     font-size: 17px;
     font-weight: bold;
     cursor: pointer;
+}
+
+#loginForm button:hover {
+    background: #594175;
 }
 
 .signup-text {
@@ -70,7 +80,7 @@
 
 .signup-text a,
 .back-link {
-    color: #a76d88;
+    color: #594175;
     font-weight: bold;
 }
 
