@@ -1,90 +1,213 @@
 
-/* MID VANILLA LOGIN */
+/* ==============================
+   MID VANILLA LOGIN PAGE
+   LOGO-INSPIRED PURPLE THEME
+============================== */
 
 .login-page {
     min-height: 100vh;
     margin: 0;
-    background: #F8F5F0;
+    background: #F9F5F0;
     font-family: inherit;
 }
+
+
+/* ==============================
+   LOGIN CONTAINER
+============================== */
 
 .login-container {
     width: 90%;
     max-width: 400px;
+
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 40px 20px 60px;
+
     text-align: center;
     box-sizing: border-box;
 }
+
+
+/* ==============================
+   MID VANILLA LOGO
+============================== */
 
 .login-logo {
     width: 85%;
     max-width: 280px;
     height: auto;
+
+    display: block;
+    margin: 0 auto 25px;
 }
 
+
+/* ==============================
+   HEADINGS & TEXT
+============================== */
+
 .login-container h1 {
-    color: #594175;
+    color: #75468F;
     margin: 20px 0 10px;
 }
 
 .login-container p {
-    color: #594175;
+    color: #75468F;
 }
+
+
+/* ==============================
+   LOGIN FORM
+============================== */
 
 #loginForm {
     display: flex;
     flex-direction: column;
     gap: 12px;
+
     margin-top: 30px;
     text-align: left;
 }
 
 #loginForm label {
-    color: #594175;
+    color: #75468F;
     font-weight: bold;
 }
 
 #loginForm input {
+    width: 100%;
     padding: 14px;
-    border: 2px solid #B6A0D5;
+
+    border: 2px solid #C58BD9;
     border-radius: 12px;
+
+    background: #FFFFFF;
     font-size: 16px;
-    background: white;
+
+    box-sizing: border-box;
 }
 
 #loginForm input:focus {
-    outline: 2px solid #8664AE;
+    outline: 2px solid #A66BC4;
     outline-offset: 2px;
 }
 
+
+/* ==============================
+   LOGIN BUTTON
+============================== */
+
 #loginForm button {
+    width: 100%;
     margin-top: 12px;
     padding: 15px;
+
     border: none;
     border-radius: 25px;
-    background: #8664AE;
-    color: white;
+
+    background: linear-gradient(
+        135deg,
+        #C58BD9,
+        #A66BC4
+    );
+
+    color: #FFFFFF;
     font-size: 17px;
     font-weight: bold;
+
+    box-shadow: 0 4px 12px rgba(117, 70, 143, 0.15);
+
     cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 #loginForm button:hover {
-    background: #594175;
+    transform: translateY(-2px);
+
+    box-shadow: 0 6px 16px rgba(117, 70, 143, 0.25);
 }
+
+#loginForm button:active {
+    transform: translateY(0);
+}
+
+
+/* ==============================
+   CREATE ACCOUNT LINK
+============================== */
 
 .signup-text {
     margin-top: 25px;
 }
 
-.signup-text a,
-.back-link {
-    color: #594175;
+.signup-text a {
+    color: #75468F;
     font-weight: bold;
+    text-decoration: underline;
 }
+
+.signup-text a:hover {
+    color: #A66BC4;
+}
+
+
+/* ==============================
+   BACK TO HOME LINK
+============================== */
 
 .back-link {
     display: inline-block;
     margin-top: 25px;
+
+    color: #75468F;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.back-link:hover {
+    color: #A66BC4;
+}
+
+
+/* ==============================
+   LOGIN MESSAGES
+============================== */
+
+#loginMessage {
+    color: #75468F;
+    margin-top: 15px;
+    text-align: center;
+}
+
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media (max-width: 600px) {
+
+    .login-container {
+        width: 92%;
+        padding: 30px 18px 50px;
+    }
+
+    .login-logo {
+        width: 85%;
+        max-width: 250px;
+    }
+
+    .login-container h1 {
+        font-size: 1.8rem;
+    }
+
+    #loginForm input {
+        padding: 13px;
+    }
+
+    #loginForm button {
+        padding: 15px;
+    }
 }
