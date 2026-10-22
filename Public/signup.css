@@ -1,0 +1,44 @@
+
+/* MID VANILLA SIGNUP */
+
+#signupForm {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 30px;
+    text-align: left;
+}
+
+#signupForm label {
+    color: #594175;
+    font-weight: bold;
+}
+
+#signupForm input {
+    padding: 14px;
+    border: 2px solid #B6A0D5;
+    border-radius: 12px;
+    font-size: 16px;
+    background: white;
+}
+
+#signupForm input:focus {
+    outline: 2px solid #8664AE;
+    outline-offset: 2px;
+}
+
+#signupForm button {
+    margin-top: 12px;
+    padding: 15px;
+    border: none;
+    border-radius: 25px;
+    background: #8664AE;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#signupForm button:hover {
+    background: #594175;
+}
