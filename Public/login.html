@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Log In | Mid Vanilla</title>
+
+    <link rel="stylesheet" href="style.css?v=11">
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body class="login-page">
+
+    <main class="login-container">
+
+        <img
+            src="images/mid-vanilla.PNG"
+            alt="Mid Vanilla"
+            class="login-logo"
+        >
+
+        <h1>Welcome Back ♡</h1>
+
+        <p>Your little world for two</p>
+
+        <form id="loginForm">
+
+            <label for="username">Username</label>
+            <input
+                type="text"
+                id="username"
+                autocomplete="username"
+                required
+            >
+
+            <label for="password">Password</label>
+            <input
+                type="password"
+                id="password"
+                autocomplete="current-password"
+                required
+            >
+
+            <button type="submit">
+                Log In ♡
+            </button>
+
+        </form>
+
+        <p id="loginMessage" role="status"></p>
+
+        <p class="signup-text">
+            New to Mid Vanilla?
+            <a href="signup.html">Create an Account</a>
+        </p>
+
+        <a href="index.html" class="back-link">
+            ← Back to Home
+        </a>
+
+    </main>
+
+</body>
+</html>
