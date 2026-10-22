@@ -1,51 +1,230 @@
 
-/* MID VANILLA SIGNUP */
+/* ==============================
+   MID VANILLA SIGNUP PAGE
+   PURPLE LOGO THEME
+============================== */
+
+/* PAGE */
+
+body.login-page {
+    min-height: 100vh;
+    margin: 0;
+    background: #F9F5F0;
+    font-family: 'Fredoka', sans-serif;
+}
+
+
+/* ==============================
+   SIGNUP CONTAINER
+============================== */
+
+.login-page .login-container {
+    width: 90%;
+    max-width: 440px;
+
+    margin: 0 auto;
+    padding: 30px 20px 50px;
+
+    text-align: center;
+    box-sizing: border-box;
+}
+
+
+/* ==============================
+   LOGO
+============================== */
+
+.login-page .login-container .login-logo {
+    display: block;
+
+    width: 75%;
+    max-width: 250px;
+    height: auto;
+
+    margin: 0 auto 20px;
+    object-fit: contain;
+}
+
+
+/* ==============================
+   HEADINGS
+============================== */
+
+.login-page .login-container h1 {
+    color: #83468E;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 2rem;
+    line-height: 1.2;
+
+    margin: 15px 0 10px;
+}
+
+.login-page .login-container p {
+    color: #83468E;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+
+/* ==============================
+   SIGNUP FORM
+============================== */
 
 #signupForm {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    margin-top: 30px;
+
+    width: 100%;
+    margin-top: 25px;
+
     text-align: left;
 }
 
 #signupForm label {
-    color: #594175;
-    font-weight: bold;
+    display: block;
+
+    color: #83468E;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
 }
 
+
+/* ==============================
+   INPUT FIELDS
+============================== */
+
 #signupForm input {
+    display: block;
+
+    width: 100%;
+    height: auto;
     padding: 14px;
-    border: 2px solid #B6A0D5;
+
+    border: 2px solid #CF9DE2;
     border-radius: 12px;
+
+    background: #FFFFFF;
+    color: #4F285E;
+
+    font-family: 'Fredoka', sans-serif;
     font-size: 16px;
-    background: white;
+
+    box-sizing: border-box;
 }
 
 #signupForm input:focus {
-    outline: 2px solid #8664AE;
+    outline: 2px solid #83468E;
     outline-offset: 2px;
 }
 
+
+/* ==============================
+   CREATE ACCOUNT BUTTON
+============================== */
+
 #signupForm button {
+    display: block;
+    width: 100%;
+
     margin-top: 12px;
     padding: 15px;
+
     border: none;
     border-radius: 25px;
-    background: #8664AE;
-    color: white;
+
+    background: linear-gradient(
+        135deg,
+        #E4BDF1 0%,
+        #CF9DE2 50%,
+        #B77ACF 100%
+    );
+
+    color: #4F285E;
+
+    font-family: 'Fredoka', sans-serif;
     font-size: 17px;
-    font-weight: bold;
+    font-weight: 600;
+
+    box-shadow:
+        0 4px 12px rgba(131, 70, 142, 0.15);
+
     cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
 #signupForm button:hover {
-    background: #594175;
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 16px rgba(131, 70, 142, 0.25);
 }
+
+
 /* ==============================
-   CONSISTENT MID VANILLA FONT
+   LINKS
 ============================== */
 
+.login-page .signup-text {
+    margin-top: 25px;
+}
 
+.login-page .signup-text a,
+.login-page .back-link {
+    color: #83468E;
     font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.login-page .back-link {
+    display: inline-block;
+    margin-top: 25px;
+}
+
+
+/* ==============================
+   SIGNUP MESSAGE
+============================== */
+
+#signupMessage {
+    color: #83468E;
+    margin-top: 15px;
+    text-align: center;
+}
+
+
+/* ==============================
+   MOBILE
+============================== */
+
+@media (max-width: 600px) {
+
+    .login-page .login-container {
+        width: 92%;
+        padding: 25px 18px 45px;
+    }
+
+    .login-page .login-container .login-logo {
+        width: 75%;
+        max-width: 220px;
+        margin-bottom: 15px;
+    }
+
+    .login-page .login-container h1 {
+        font-size: 1.75rem;
+    }
+
+    #signupForm {
+        margin-top: 20px;
+    }
+
+    #signupForm input {
+        padding: 13px;
+    }
 }
