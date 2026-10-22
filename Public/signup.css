@@ -42,3 +42,14 @@
 #signupForm button:hover {
     background: #594175;
 }
+/* ==============================
+   CONSISTENT MID VANILLA FONT
+============================== */
+
+.login-page,
+.login-page input,
+.login-page button,
+.login-page label,
+.login-page a {
+    font-family: 'Fredoka', sans-serif;
+}
