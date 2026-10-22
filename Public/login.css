@@ -211,3 +211,25 @@
         padding: 15px;
     }
 }
+
+/* LOGO-INSPIRED PURPLE DETAILS */
+
+#loginForm button,
+#signupForm button {
+    background: linear-gradient(
+        135deg,
+        #C58BD9,
+        #A66BC4
+    );
+
+    box-shadow: 0 4px 12px rgba(117, 70, 143, 0.15);
+
+    transition: transform 0.2s ease;
+}
+
+#loginForm button:hover,
+#signupForm button:hover {
+    transform: translateY(-2px);
+    background: #A66BC4;
+}
+
