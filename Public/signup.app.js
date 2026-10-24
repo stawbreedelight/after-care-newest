@@ -1,3 +1,4 @@
+import { db, auth } from "./date-planner/firebase-config.js";
 
 const signupForm = document.getElementById("signupForm");
 const signupMessage = document.getElementById("signupMessage");
