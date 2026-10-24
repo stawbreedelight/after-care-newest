@@ -228,3 +228,33 @@ body.login-page {
         padding: 13px;
     }
 }
+
+
+/* ==============================
+   TEST ACCOUNT REMINDER
+============================== */
+
+.account-reminder {
+    margin: 22px auto;
+    padding: 18px;
+
+    background: #F1E4F7;
+    border: 1px solid #CF9DE2;
+    border-radius: 16px;
+
+    color: #83468E;
+    font-family: 'Fredoka', sans-serif;
+    text-align: center;
+}
+
+.account-reminder strong {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.account-reminder p {
+    margin: 8px 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
