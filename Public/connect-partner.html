@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Connect Partner | Mid Vanilla</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap"
+      rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="connect-partner.css?v=1">
+</head>
+
+<body class="partner-page">
+
+    <main id="partnerPage" class="partner-container"
+          hidden>
+
+        <img src="images/mid-vanilla.PNG"
+             alt="Mid Vanilla"
+             class="partner-logo">
+
+        <h1>Connect Your Worlds ♡</h1>
+
+        <p class="partner-intro">
+            Two accounts. One shared adventure.
+        </p>
+
+        <section class="partner-card">
+            <h2>Invite Your Partner ♡</h2>
+
+            <p>
+                Generate a private code to share
+                with your partner.
+            </p>
+
+            <button type="button" id="generateCode">
+                Generate My Code ♡
+            </button>
+
+            <div id="invitationResult" hidden>
+                <p>Your invitation code:</p>
+
+                <div id="invitationCode"
+                     class="invitation-code"></div>
+
+                <button type="button"
+                        id="copyCode">
+                    Copy Code
+                </button>
+
+                <p class="expiry-note">
+                    This code expires after 15 minutes.
+                </p>
+            </div>
+        </section>
+
+        <section class="partner-card">
+            <h2>Have a Partner Code?</h2>
+
+            <p>
+                Enter the invitation code your
+                partner shared with you.
+            </p>
+
+            <form id="joinPartnerForm">
+                <label for="partnerCode">
+                    Invitation Code
+                </label>
+
+                <input id="partnerCode"
+                       type="text"
+                       maxlength="32"
+                       autocomplete="off"
+                       autocapitalize="characters"
+                       spellcheck="false"
+                       placeholder="Enter your code"
+                       required>
+
+                <button type="submit" disabled>
+                    Join Partner — Coming Next
+                </button>
+            </form>
+        </section>
+
+        <p id="partnerMessage" role="status"></p>
+
+        <a href="dashboard.html"
+           class="back-dashboard">
+            ← Back to My World
+        </a>
+
+    </main>
+
+    <p id="partnerLoading" class="partner-loading"
+       role="status">
+        Opening your world ♡
+    </p>
+
+    <script type="module"
+            src="connect-partner.app.js?v=1"></script>
+</body>
+</html>
