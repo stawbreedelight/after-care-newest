@@ -1,0 +1,241 @@
+
+/* ==============================
+   MID VANILLA DASHBOARD
+   LILAC & CREAM THEME
+============================== */
+
+* {
+    box-sizing: border-box;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+body.dashboard-page {
+    margin: 0;
+    min-height: 100vh;
+    background: #F9F5F0;
+    color: #83468E;
+    font-family: 'Fredoka', sans-serif;
+}
+
+/* MAIN CONTAINER */
+
+.dashboard-container {
+    width: 92%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px 20px 60px;
+    text-align: center;
+}
+
+/* LOGO */
+
+.dashboard-logo {
+    display: block;
+    width: 65%;
+    max-width: 240px;
+    height: auto;
+    margin: 0 auto 20px;
+    object-fit: contain;
+}
+
+/* HEADINGS */
+
+.dashboard-container h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin: 15px 0 8px;
+    color: #83468E;
+}
+
+.dashboard-intro {
+    margin: 0 0 12px;
+    font-size: 1.1rem;
+}
+
+.dashboard-greeting {
+    margin: 0 0 30px;
+    color: #75468F;
+    font-weight: 500;
+}
+
+/* FEATURE GRID */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+/* FEATURE CARDS */
+
+.dashboard-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 200px;
+    padding: 24px 18px;
+
+    background: #F1E4F7;
+    border: 2px solid #E4BDF1;
+    border-radius: 22px;
+
+    color: #83468E;
+    text-align: center;
+    text-decoration: none;
+
+    box-shadow: 0 4px 12px rgba(131, 70, 142, 0.08);
+}
+
+.card-icon {
+    font-size: 2.2rem;
+    margin-bottom: 10px;
+}
+
+.dashboard-card h2 {
+    font-size: 1.4rem;
+    margin: 5px 0 8px;
+}
+
+.dashboard-card p {
+    margin: 0 0 18px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* CARD LABELS */
+
+.coming-soon,
+.card-action {
+    display: inline-block;
+    margin-top: auto;
+    padding: 9px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.coming-soon {
+    background: #E4D5EB;
+    color: #75468F;
+}
+
+.card-action {
+    background: #B77ACF;
+    color: #FFFFFF;
+}
+
+/* ACTIVE GAME CARD */
+
+.game-card {
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 18px rgba(131, 70, 142, 0.2);
+}
+
+.game-card:focus-visible,
+.logout-button:focus-visible {
+    outline: 3px solid #75468F;
+    outline-offset: 3px;
+}
+
+/* LOGOUT */
+
+.logout-button {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 14px 35px;
+
+    border: none;
+    border-radius: 25px;
+
+    background: linear-gradient(
+        135deg,
+        #E4BDF1,
+        #B77ACF
+    );
+
+    color: #4F285E;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background: #CF9DE2;
+}
+
+.logout-button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+/* MESSAGES */
+
+.loading-message {
+    margin: 20vh auto 0;
+    padding: 20px;
+    text-align: center;
+    color: #83468E;
+    font-size: 1.2rem;
+}
+
+#dashboardMessage {
+    margin-top: 15px;
+    color: #83468E;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .dashboard-container {
+        width: 95%;
+        padding: 25px 15px 50px;
+    }
+
+    .dashboard-logo {
+        max-width: 200px;
+    }
+
+    .dashboard-container h1 {
+        font-size: 1.7rem;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .dashboard-card {
+        min-height: 175px;
+        padding: 20px;
+    }
+
+    .dashboard-card h2 {
+        font-size: 1.25rem;
+    }
+
+    .logout-button {
+        width: 100%;
+        max-width: 320px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .game-card {
+        transition: none;
+    }
+}
