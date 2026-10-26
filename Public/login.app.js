@@ -57,17 +57,28 @@ loginForm.addEventListener("submit", async (event) => {
             return;
         }
 
-        await signInWithCustomToken(
-            auth,
-            data.token
-        );
+        
+const credential = await signInWithCustomToken(
+    auth,
+    data.token
+);
 
-        loginMessage.textContent =
-            "Welcome back, " +
-            data.username +
-            "! You are now logged in ♡";
+// Save username for the dashboard greeting.
+// This is not used for authentication.
 
-        loginForm.reset();
+sessionStorage.setItem(
+    "midVanillaUsername",
+    data.username
+);
+
+sessionStorage.setItem(
+    "midVanillaUID",
+    credential.user.uid
+);
+
+// Open the member dashboard.
+
+window.location.replace("dashboard.html");
 
     } catch (error) {
         console.error(
