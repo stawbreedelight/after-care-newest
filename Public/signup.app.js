@@ -32,6 +32,22 @@ signupForm.addEventListener("submit", async (event) => {
     const button =
         signupForm.querySelector('button[type="submit"]');
 
+   
+/* CHECK PASSWORD LENGTH */
+
+if (password.length < 12) {
+    signupMessage.textContent =
+        "Your password must be at least 12 characters long.";
+    return;
+}
+
+if (password.length > 128) {
+    signupMessage.textContent =
+        "Your password must be 128 characters or fewer.";
+    return;
+}
+
+   
     /* CHECK PASSWORDS */
 
     if (password !== confirmPassword) {
