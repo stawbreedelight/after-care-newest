@@ -1,0 +1,148 @@
+
+/* MID VANILLA — CONNECT PARTNER */
+
+* {
+    box-sizing: border-box;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+body.partner-page {
+    margin: 0;
+    min-height: 100vh;
+    background: #F9F5F0;
+    color: #83468E;
+    font-family: 'Fredoka', sans-serif;
+}
+
+.partner-container {
+    width: 92%;
+    max-width: 540px;
+    margin: 0 auto;
+    padding: 25px 18px 55px;
+    text-align: center;
+}
+
+.partner-logo {
+    display: block;
+    width: 75%;
+    max-width: 230px;
+    height: auto;
+    margin: 0 auto 20px;
+}
+
+.partner-container h1 {
+    font-size: 2rem;
+    margin: 15px 0 8px;
+}
+
+.partner-intro {
+    margin-bottom: 28px;
+}
+
+.partner-card {
+    padding: 24px;
+    margin: 18px 0;
+    border: 2px solid #E4BDF1;
+    border-radius: 22px;
+    background: #F1E4F7;
+}
+
+.partner-card h2 {
+    margin-top: 0;
+    font-size: 1.4rem;
+}
+
+.partner-card p {
+    line-height: 1.5;
+}
+
+.partner-card button {
+    border: 0;
+    border-radius: 25px;
+    padding: 14px 24px;
+    background: linear-gradient(
+        135deg,
+        #E4BDF1,
+        #B77ACF
+    );
+    color: #4F285E;
+    font: 600 1rem 'Fredoka', sans-serif;
+    cursor: pointer;
+}
+
+.partner-card button:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+#joinPartnerForm {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#joinPartnerForm label {
+    text-align: left;
+    font-weight: 600;
+}
+
+#partnerCode {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #CF9DE2;
+    border-radius: 12px;
+    font: 1rem 'Fredoka', sans-serif;
+    text-transform: uppercase;
+}
+
+.invitation-code {
+    padding: 15px 8px;
+    margin: 12px 0;
+    border: 2px dashed #B77ACF;
+    border-radius: 12px;
+    background: white;
+    color: #75468F;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    overflow-wrap: anywhere;
+    user-select: all;
+}
+
+.expiry-note {
+    font-size: 0.85rem;
+}
+
+#partnerMessage {
+    min-height: 24px;
+    line-height: 1.5;
+}
+
+.back-dashboard {
+    display: inline-block;
+    margin-top: 15px;
+    color: #83468E;
+    font-weight: 600;
+}
+
+.partner-loading {
+    margin: 25vh auto 0;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .partner-container h1 {
+        font-size: 1.7rem;
+    }
+
+    .partner-card {
+        padding: 20px 15px;
+    }
+
+    .partner-card button {
+        width: 100%;
+    }
+}
