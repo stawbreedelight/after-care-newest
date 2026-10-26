@@ -62,17 +62,20 @@
                 required
             >
 
-            <label for="password">
-                Create a Password
-            </label>
+            
+<label for="password">
+    Create a Password (12 characters minimum)
+</label>
 
-            <input
-                type="password"
-                id="password"
-                autocomplete="new-password"
-                minlength="12"
-                required
-            >
+<input
+    type="password"
+    id="password"
+    autocomplete="new-password"
+    minlength="12"
+    maxlength="128"
+    required
+>
+
 
             <label for="confirmPassword">
                 Confirm Password
