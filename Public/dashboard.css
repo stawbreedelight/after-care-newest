@@ -260,12 +260,14 @@ body.dashboard-page {
     margin-bottom: 12px;
 }
 
+
 #partnerCardIcon svg {
     width: 55px;
     height: 55px;
-    filter: drop-shadow(
-        0 3px 3px rgba(131, 70, 142, 0.10)
-    );
+    stroke: #83468E;
+    stroke-width: 1.8;
+    fill: none;
+    filter: none;
 }
 
 #partnerCardTitle {
