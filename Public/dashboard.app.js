@@ -91,10 +91,10 @@ async function updatePartnerCard(user) {
                 "Connected ♡";
 
             partnerCardDescription.textContent =
-                data.partnerUsername
-                    ? "You & " + data.partnerUsername
-                    : "Your worlds are connected ♡";
-
+    data.partnerUsername
+        ? "You & " + data.partnerUsername + " ♡"
+        : "Your worlds are connected ♡";
+           
             partnerCardAction.textContent =
                 "Our Connection ♡";
 
