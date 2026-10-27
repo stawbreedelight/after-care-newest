@@ -27,6 +27,85 @@ const logoutButton =
 const dashboardMessage =
     document.getElementById("dashboardMessage");
 
+/* PARTNER CARD ELEMENTS */
+
+const partnerCardIcon =
+    document.getElementById("partnerCardIcon");
+
+const partnerCardTitle =
+    document.getElementById("partnerCardTitle");
+
+const partnerCardDescription =
+    document.getElementById("partnerCardDescription");
+
+const partnerCardAction =
+    document.getElementById("partnerCardAction");
+
+
+/* UPDATE CONNECTED PARTNER CARD */
+
+async function updatePartnerCard(user) {
+
+    try {
+        const token = await user.getIdToken();
+
+        const response = await fetch(
+            "https://auth.midvanilla.com/partner/status",
+            {
+                method: "GET",
+                headers: {
+                    "Authorization": "Bearer " + token
+                }
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error("Partner status unavailable");
+        }
+
+        const data = await response.json();
+
+        if (data.connected) {
+
+            partnerCardIcon.textContent = "💜";
+
+            partnerCardTitle.textContent =
+                "Connected ♡";
+
+            partnerCardDescription.textContent =
+                data.partnerUsername
+                    ? "You & " + data.partnerUsername
+                    : "Your worlds are connected ♡";
+
+            partnerCardAction.textContent =
+                "Our Connection ♡";
+
+        } else {
+
+            partnerCardIcon.textContent = "♡";
+
+            partnerCardTitle.textContent =
+                "Connect Partner";
+
+            partnerCardDescription.textContent =
+                "Link your accounts and start sharing.";
+
+            partnerCardAction.textContent =
+                "Connect Your Worlds →";
+        }
+
+    } catch (error) {
+        console.error(
+            "Unable to load partner status:",
+            error.name
+        );
+
+        // Leave the existing card unchanged
+        // if connection status is unavailable.
+    }
+}
+
+
 /* CHECK LOGIN STATUS */
 
 onAuthStateChanged(auth, (user) => {
