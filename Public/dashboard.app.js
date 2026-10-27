@@ -134,6 +134,11 @@ onAuthStateChanged(auth, (user) => {
 
     dashboard.hidden = false;
     loadingMessage.hidden = true;
+   
+/* CHECK PARTNER CONNECTION */
+
+updatePartnerCard(user);
+
 
 }, (error) => {
 
