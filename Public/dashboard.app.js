@@ -65,38 +65,37 @@ async function updatePartnerCard(user) {
 
         const data = await response.json();
 
-        if (data.connected) {
+        
+if (data.connected) {
 
-            partnerCardIcon.innerHTML = `
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="55"
-        height="55"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="#83468E"
-        stroke-width="1.8"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        aria-hidden="true"
-    >
-        <path d="M12 21.35 3.1 12.7a5.5 5.5 0 0 1 7.8-7.8L12 6l1.1-1.1a5.5 5.5 0 0 1 7.8 7.8Z"/>
-        <path d="m8 12 2.4-2.4a2 2 0 0 1 2.8 0L16 12"/>
-        <path d="m6.5 15.5 2.2-2.2"/>
-        <path d="m15.3 15.3 2.2-2.2"/>
-    </svg>
-`;
+    // Display the Lucide heart-handshake icon
 
-            partnerCardTitle.textContent =
-                "Connected ♡";
+    partnerCardIcon.innerHTML = `
+        <i data-lucide="heart-handshake"></i>
+    `;
 
-            partnerCardDescription.textContent =
-    data.partnerUsername
-        ? "You & " + data.partnerUsername + " ♡"
-        : "Your worlds are connected ♡";
-           
-            partnerCardAction.textContent =
-                "Our Connection ♡";
+    // Turn the icon placeholder into an SVG
+
+    if (window.lucide) {
+        window.lucide.createIcons({
+            nodes: [
+                partnerCardIcon.querySelector(
+                    "[data-lucide]"
+                )
+            ]
+        });
+    }
+
+    partnerCardTitle.textContent =
+        "Connected ♡";
+
+    partnerCardDescription.textContent =
+        data.partnerUsername
+            ? "You & " + data.partnerUsername + " ♡"
+            : "Your worlds are connected ♡";
+
+    partnerCardAction.textContent =
+        "Our Connection ♡";
 
         } else {
 
