@@ -239,3 +239,59 @@ body.dashboard-page {
         transition: none;
     }
 }
+
+/* ==============================
+   CONNECTED PARTNER CARD
+   CUTE LILAC DETAILS
+============================== */
+
+#partnerDashboardCard {
+    background: #F1E4F7;
+    border: 2px solid #E4BDF1;
+    border-radius: 26px;
+    padding: 30px 22px;
+}
+
+#partnerCardIcon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 62px;
+    margin-bottom: 12px;
+}
+
+#partnerCardIcon svg {
+    width: 55px;
+    height: 55px;
+    filter: drop-shadow(
+        0 3px 3px rgba(131, 70, 142, 0.10)
+    );
+}
+
+#partnerCardTitle {
+    color: #83468E;
+    font-size: 1.55rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+#partnerCardDescription {
+    color: #75468F;
+    font-size: 1.08rem;
+    margin-bottom: 20px;
+}
+
+#partnerCardAction {
+    background: #B77ACF;
+    color: white;
+    border-radius: 30px;
+    padding: 12px 22px;
+    font-weight: 600;
+    box-shadow: 0 3px 8px rgba(131, 70, 142, 0.14);
+}
+
+#partnerDashboardCard:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(131, 70, 142, 0.15);
+}
+
