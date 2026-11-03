@@ -196,7 +196,4 @@ logoutButton.addEventListener("click", async () => {
 
         logoutButton.disabled = false;
     }
-       
-<script type="module" src="calendar/calendar.js?v=1"></script>
-
 });
