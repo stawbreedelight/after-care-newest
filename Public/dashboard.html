@@ -100,6 +100,137 @@
 
         </div>
 
+<!-- OUR CALENDAR -->
+<section class="couple-calendar" id="ourCalendar">
+
+    <div class="calendar-header">
+        <h2>📅 Our Calendar ♡</h2>
+
+        <button type="button"
+                id="addCalendarEvent"
+                class="calendar-add-button">
+            + Add Event
+        </button>
+    </div>
+
+    <p class="calendar-subtitle">
+        Making time for us, one date at a time ♡
+    </p>
+
+    <!-- MONTH NAVIGATION -->
+    <div class="calendar-navigation">
+
+        <button type="button"
+                id="prevMonth"
+                aria-label="Previous month">
+            ❮
+        </button>
+
+        <h3 id="calendarMonth"></h3>
+
+        <button type="button"
+                id="nextMonth"
+                aria-label="Next month">
+            ❯
+        </button>
+
+    </div>
+
+    <!-- WEEKDAY HEADINGS -->
+    <div class="calendar-weekdays">
+        <span>Sun</span>
+        <span>Mon</span>
+        <span>Tue</span>
+        <span>Wed</span>
+        <span>Thu</span>
+        <span>Fri</span>
+        <span>Sat</span>
+    </div>
+
+    <!-- CALENDAR DATES -->
+    <div id="calendarDays"
+         class="calendar-days"></div>
+
+    <!-- SELECTED DAY EVENTS -->
+    <div class="calendar-event-list">
+
+        <h3 id="selectedDateTitle"></h3>
+
+        <div id="selectedDateEvents"></div>
+
+    </div>
+
+    <!-- ADD / EDIT EVENT FORM -->
+    <div id="calendarEventPanel"
+         class="calendar-event-panel"
+         hidden>
+
+        <h3 id="eventPanelTitle">
+            Plan Something Sweet ♡
+        </h3>
+
+        <form id="calendarEventForm">
+
+            <label for="eventTitle">
+                Our Plan ♡
+            </label>
+
+            <input id="eventTitle"
+                   type="text"
+                   maxlength="100"
+                   placeholder="Date night..."
+                   required>
+
+            <label for="eventTime">
+                Time
+            </label>
+
+            <input id="eventTime"
+                   type="time">
+
+            <label for="eventNotes">
+                Little Details
+            </label>
+
+            <textarea id="eventNotes"
+                      maxlength="1000"
+                      placeholder="What shall we do together?"></textarea>
+
+            <label for="eventColour">
+                Event Colour
+            </label>
+
+            <select id="eventColour">
+                <option value="pink">💗 Pink</option>
+                <option value="purple">💜 Purple</option>
+                <option value="green">💚 Green</option>
+            </select>
+
+            <div class="calendar-form-actions">
+
+                <button type="submit"
+                        class="calendar-save-button">
+                    Save Our Date ♡
+                </button>
+
+                <button type="button"
+                        id="cancelCalendarEvent"
+                        class="calendar-cancel-button">
+                    Cancel
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+    <p id="calendarStatus"
+       role="status"
+       aria-live="polite"></p>
+
+</section>
+
         <!-- LOGOUT -->
         <button id="logoutButton"
                 type="button"
