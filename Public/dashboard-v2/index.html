@@ -1,0 +1,538 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Our World | Mid Vanilla</title>
+
+    <!-- FREDOKA FONT -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- LUCIDE ICONS -->
+    <script
+        src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"
+        defer>
+    </script>
+
+    <!-- DASHBOARD V2 CSS -->
+    <link rel="stylesheet" href="./dashboard-v2.css?v=1">
+
+    <!-- EXISTING CALENDAR CSS -->
+    <link rel="stylesheet" href="../calendar/calendar.css?v=3">
+
+</head>
+
+<body class="dashboard-v2-page">
+
+    <!-- AUTHENTICATION LOADING SCREEN -->
+    <p id="loadingMessage"
+       class="loading-message"
+       role="status">
+        Opening your adventure ♡
+    </p>
+
+    <!-- MAIN DASHBOARD -->
+    <div id="dashboardV2" hidden>
+
+        <!-- TOP HEADER -->
+        <header class="v2-header">
+
+            <a href="../index.html"
+               class="v2-logo-link"
+               aria-label="Mid Vanilla home">
+
+                <img
+                    src="../images/mid-vanilla.PNG"
+                    alt="Mid Vanilla"
+                    class="v2-logo"
+                >
+
+            </a>
+
+            <div class="v2-header-actions">
+
+                <button type="button"
+                        id="notificationButton"
+                        class="v2-icon-button"
+                        aria-label="Notifications">
+                    <i data-lucide="bell"></i>
+                </button>
+
+                <a href="../connect-partner.html"
+                   class="v2-icon-button"
+                   aria-label="Our connection">
+                    <i data-lucide="users"></i>
+                </a>
+
+            </div>
+
+        </header>
+
+        <!-- DASHBOARD LAYOUT -->
+        <div class="v2-layout">
+
+            <!-- SIDEBAR -->
+            <aside class="v2-sidebar">
+
+                <nav class="v2-navigation"
+                     aria-label="Dashboard navigation">
+
+                    <a href="#dashboardHome" class="active">
+                        <i data-lucide="house"></i>
+                        Dashboard
+                    </a>
+
+                    <a href="../levels.html">
+                        <i data-lucide="gamepad-2"></i>
+                        Games
+                    </a>
+
+                    <a href="#ourCalendar">
+                        <i data-lucide="calendar-days"></i>
+                        Calendar
+                    </a>
+
+                    <a href="#ourAdventure">
+                        <i data-lucide="map"></i>
+                        Our World
+                    </a>
+
+                    <a href="#ourScrapbook">
+                        <i data-lucide="book-heart"></i>
+                        Scrapbook
+                    </a>
+
+                    <a href="#ourRewards">
+                        <i data-lucide="gift"></i>
+                        Rewards
+                    </a>
+
+                    <a href="#ourProgress">
+                        <i data-lucide="chart-no-axes-column-increasing"></i>
+                        Our Progress
+                    </a>
+
+                    <a href="#ourAvatars">
+                        <i data-lucide="shirt"></i>
+                        Customize
+                    </a>
+
+                </nav>
+
+                <button type="button"
+                        id="logoutButton"
+                        class="v2-logout-button">
+                    Log Out ♡
+                </button>
+
+            </aside>
+
+            <!-- MAIN CONTENT -->
+            <main class="v2-main" id="dashboardHome">
+
+                <!-- RELATIONSHIP LEVEL -->
+                <section class="v2-panel relationship-panel"
+                         id="ourAvatars">
+
+                    <h2>Our Relationship ♡</h2>
+
+                    <div class="relationship-level">
+                        <span>Level <span id="relationshipLevel">1</span></span>
+                        <h3 id="relationshipLevelName">
+                            The New Adventurers
+                        </h3>
+                    </div>
+
+                    <div class="couple-avatars">
+
+                        <div class="avatar-profile">
+                            <div class="avatar-placeholder">
+                                <i data-lucide="user-round"></i>
+                            </div>
+                            <span id="playerOneName">Player One</span>
+                        </div>
+
+                        <span class="avatar-heart">♡</span>
+
+                        <div class="avatar-profile">
+                            <div class="avatar-placeholder">
+                                <i data-lucide="user-round"></i>
+                            </div>
+                            <span id="playerTwoName">Player Two</span>
+                        </div>
+
+                    </div>
+
+                    <div class="xp-progress">
+                        <div class="xp-progress-fill"
+                             id="xpProgressFill"
+                             style="width:0%">
+                        </div>
+                    </div>
+
+                    <p id="xpProgressText">
+                        0 / 100 XP
+                    </p>
+
+                    <div class="relationship-stats">
+
+                        <div>
+                            <strong id="gamesCompleted">0</strong>
+                            <span>Games</span>
+                        </div>
+
+                        <div>
+                            <strong id="datesCompleted">0</strong>
+                            <span>Dates</span>
+                        </div>
+
+                        <div>
+                            <strong id="badgesEarned">0</strong>
+                            <span>Badges</span>
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- CALENDAR -->
+                <section class="v2-panel calendar-panel"
+                         id="ourCalendar">
+
+                    <div class="v2-panel-header">
+                        <h2>Our Calendar ♡</h2>
+
+                        <button type="button"
+                                id="addCalendarEvent"
+                                class="v2-primary-button">
+                            + Add Event
+                        </button>
+                    </div>
+
+                    <div class="calendar-navigation">
+
+                        <button type="button"
+                                id="prevMonth"
+                                aria-label="Previous month">
+                            ❮
+                        </button>
+
+                        <h3 id="calendarMonth"></h3>
+
+                        <button type="button"
+                                id="nextMonth"
+                                aria-label="Next month">
+                            ❯
+                        </button>
+
+                    </div>
+
+                    <div class="calendar-weekdays">
+                        <span>Sun</span>
+                        <span>Mon</span>
+                        <span>Tue</span>
+                        <span>Wed</span>
+                        <span>Thu</span>
+                        <span>Fri</span>
+                        <span>Sat</span>
+                    </div>
+
+                    <div id="calendarDays"
+                         class="calendar-days"></div>
+
+                    <div class="calendar-event-list">
+
+                        <h3 id="selectedDateTitle"></h3>
+
+                        <div id="selectedDateEvents"></div>
+
+                    </div>
+
+                    <!-- EVENT EDITOR -->
+                    <div id="calendarEventPanel"
+                         class="calendar-event-panel"
+                         hidden>
+
+                        <h3 id="eventPanelTitle">
+                            Plan Something Sweet ♡
+                        </h3>
+
+                        <form id="calendarEventForm">
+
+                            <label for="eventTitle">Our Plan</label>
+
+                            <input type="text"
+                                   id="eventTitle"
+                                   maxlength="100"
+                                   required>
+
+                            <label for="eventTime">Time</label>
+                            <input type="time" id="eventTime">
+
+                            <label for="eventNotes">Details</label>
+                            <textarea id="eventNotes"
+                                      maxlength="1000"></textarea>
+
+                            <label for="eventColour">Colour</label>
+
+                            <select id="eventColour">
+                                <option value="pink">Pink</option>
+                                <option value="purple">Purple</option>
+                                <option value="green">Green</option>
+                            </select>
+
+                            <div class="calendar-form-actions">
+                                <button type="submit"
+                                        class="calendar-save-button">
+                                    Save Our Date ♡
+                                </button>
+
+                                <button type="button"
+                                        id="cancelCalendarEvent"
+                                        class="calendar-cancel-button">
+                                    Cancel
+                                </button>
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                    <p id="calendarStatus"
+                       role="status"></p>
+
+                </section>
+
+                <!-- RELATIONSHIP SKILLS -->
+                <section class="v2-panel skills-panel"
+                         id="ourProgress">
+
+                    <div class="v2-panel-header">
+                        <h2>Our Relationship Skills</h2>
+                        <span>Level Up Together ♡</span>
+                    </div>
+
+                    <div class="skills-list">
+
+                        <div class="skill-item" data-skill="time">
+                            <span>⏳ Quality Time</span>
+                            <div class="skill-bar"><div style="width:0%"></div></div>
+                            <span class="skill-level">Lv. 1</span>
+                        </div>
+
+                        <div class="skill-item" data-skill="connection">
+                            <span>💗 Connection</span>
+                            <div class="skill-bar"><div style="width:0%"></div></div>
+                            <span class="skill-level">Lv. 1</span>
+                        </div>
+
+                        <div class="skill-item" data-skill="communication">
+                            <span>💬 Communication</span>
+                            <div class="skill-bar"><div style="width:0%"></div></div>
+                            <span class="skill-level">Lv. 1</span>
+                        </div>
+
+                        <div class="skill-item" data-skill="intimacy">
+                            <span>💕 Intimacy</span>
+                            <div class="skill-bar"><div style="width:0%"></div></div>
+                            <span class="skill-level">Lv. 1</span>
+                        </div>
+
+                        <div class="skill-item" data-skill="support">
+                            <span>🤝 Support</span>
+                            <div class="skill-bar"><div style="width:0%"></div></div>
+                            <span class="skill-level">Lv. 1</span>
+                        </div>
+
+                        <div class="skill-item" data-skill="trust">
+                            <span>🛡️ Trust</span>
+                            <div class="skill-bar"><div style="width:0%"></div></div>
+                            <span class="skill-level">Lv. 1</span>
+                        </div>
+
+                        <div class="skill-item" data-skill="playfulness">
+                            <span>✨ Fun & Playfulness</span>
+                            <div class="skill-bar"><div style="width:0%"></div></div>
+                            <span class="skill-level">Lv. 1</span>
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- QUICK ACTIONS -->
+                <section class="v2-panel quick-actions-panel">
+
+                    <h2>Quick Actions</h2>
+
+                    <div class="quick-actions-grid">
+
+                        <a href="../levels.html">
+                            🎮
+                            <span>Play a Game</span>
+                        </a>
+
+                        <a href="#ourCalendar">
+                            📅
+                            <span>Plan a Date</span>
+                        </a>
+
+                        <a href="#ourScrapbook">
+                            📖
+                            <span>Scrapbook</span>
+                        </a>
+
+                        <a href="#ourAvatars">
+                            👕
+                            <span>Avatars</span>
+                        </a>
+
+                    </div>
+
+                </section>
+
+                <!-- FOUR WORLDS -->
+                <section class="v2-panel adventure-panel"
+                         id="ourAdventure">
+
+                    <h2>Our Adventure ♡</h2>
+
+                    <p>
+                        Explore the worlds, play games,
+                        and grow together.
+                    </p>
+
+                    <div class="adventure-worlds">
+
+                        <a href="../vanilla-level.html"
+                           class="world-card vanilla-world">
+                            <span>🍦</span>
+                            <strong>Vanilla Land</strong>
+                            <small>Connection</small>
+                        </a>
+
+                        <a href="../peach-land/"
+                           class="world-card peach-world">
+                            <span>🍑</span>
+                            <strong>Peach Land</strong>
+                            <small>Romance</small>
+                        </a>
+
+                        <a href="../berry-land/"
+                           class="world-card berry-world">
+                            <span>🫐</span>
+                            <strong>Berry Land</strong>
+                            <small>Deeper Intimacy</small>
+                        </a>
+
+                        <a href="../pistachio-land/"
+                           class="world-card pistachio-world">
+                            <span>🌿</span>
+                            <strong>Pistachio Land</strong>
+                            <small>Adventure</small>
+                        </a>
+
+                    </div>
+
+                </section>
+
+                <!-- ACHIEVEMENTS -->
+                <section class="v2-panel achievements-panel">
+
+                    <h2>🏆 Achievements</h2>
+
+                    <div class="achievements-grid">
+
+                        <div class="achievement">
+                            <span>💗</span>
+                            <strong>First Date</strong>
+                            <small>Plan your first date.</small>
+                        </div>
+
+                        <div class="achievement">
+                            <span>💬</span>
+                            <strong>The Listeners</strong>
+                            <small>Complete 3 check-ins.</small>
+                        </div>
+
+                        <div class="achievement">
+                            <span>⭐</span>
+                            <strong>Adventure Together</strong>
+                            <small>Explore all four worlds.</small>
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- SCRAPBOOK -->
+                <section class="v2-panel scrapbook-panel"
+                         id="ourScrapbook">
+
+                    <h2>📖 Our Scrapbook</h2>
+
+                    <p>
+                        Collect stickers, add memories,
+                        and celebrate your journey.
+                    </p>
+
+                    <span class="v2-coming-soon">
+                        Coming Soon ♡
+                    </span>
+
+                </section>
+
+                <!-- REWARDS -->
+                <section class="v2-panel rewards-panel"
+                         id="ourRewards">
+
+                    <h2>🎁 Rewards & Unlocks</h2>
+
+                    <div class="rewards-preview">
+                        <span>🎩</span>
+                        <span>👕</span>
+                        <span>🌿</span>
+                        <span>🖼️</span>
+                        <span>⭐</span>
+                    </div>
+
+                    <p>
+                        Earn XP to unlock avatars,
+                        outfits, stickers, and backgrounds!
+                    </p>
+
+                </section>
+
+            </main>
+
+        </div>
+
+        <p id="dashboardMessage" role="status"></p>
+
+    </div>
+
+    <!-- V2 SCRIPT -->
+    <script type="module"
+            src="./dashboard-v2.app.js?v=1"></script>
+
+    <!-- EXISTING CALENDAR SCRIPT -->
+    <script type="module"
+            src="../calendar/calendar.apps.js?v=3"></script>
+
+</body>
+</html>
