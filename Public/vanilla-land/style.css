@@ -225,7 +225,7 @@ body::after {
    COMING SOON
 ========================= */
 
-.coming-soon-item {
+.coming-soon-logo {
     width: 100%;
     width: 100%;
     max-width: 220px;
@@ -252,7 +252,7 @@ body::after {
         padding: 20px 14px 45px;
     }
 
-    .vanilla-land-icon {
+    .vanilla-land-logo {
         width: 92%;
     }
 
@@ -270,9 +270,14 @@ body::after {
 
     .game-icon,
     .date-planner-logo,
-    .coming-soon-icon {
+    .coming-soon-logo {
         max-width: 170px;
+
     }
+
+   /* =========================
+   HEART TO HEART
+========================= */
    .heart-caption {
     margin: 6px auto 0;
     max-width: 320px;
