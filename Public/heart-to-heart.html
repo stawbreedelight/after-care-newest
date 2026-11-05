@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Mid Vanilla — Heart to Heart</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="heart-page">
+
+    <main class="heart-container">
+
+        <section class="heart-card">
+
+            <div class="heart-icon">♡</div>
+
+            <h1>Heart to Heart</h1>
+
+            <p class="heart-subtitle">
+                Your direct line to the Mid Vanilla team
+            </p>
+
+            <p class="heart-intro">
+                This is your community too! Whether you need a little
+                support, have an idea, or think something could be better,
+                we'd love to hear from you.
+            </p>
+
+            <form id="heartForm">
+
+                <h2>What's on your mind?</h2>
+
+                <div class="heart-options">
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="category"
+                            value="relationship-support"
+                        >
+                        ♡ Relationship advice & support
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="category"
+                            value="website-help"
+                        >
+                        🔧 Help with Mid Vanilla
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="category"
+                            value="ideas"
+                        >
+                        💡 Ideas & improvements
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="category"
+                            value="game-request"
+                        >
+                        🎮 Games & feature requests
+                    </label>
+
+                    <label>
+                        <input
+                            type="radio"
+                            name="category"
+                            value="hello"
+                        >
+                        💬 Just saying hello!
+                    </label>
+
+                </div>
+
+                <label class="heart-message-label">
+                    Your message
+                </label>
+
+                <textarea
+                    id="heartMessage"
+                    placeholder="Tell us a little more..."
+                    rows="6"
+                ></textarea>
+
+                <button type="submit" class="heart-send-button">
+                    Send to Mid Vanilla ♡
+                </button>
+
+                <p id="heartStatus"></p>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <script type="module" src="heart-to-heart.js"></script>
+
+</body>
+
+</html>
