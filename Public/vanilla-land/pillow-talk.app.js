@@ -1,0 +1,162 @@
+// ==============================
+// START PILLOW TALK
+// ==============================
+
+async function startPillowTalk() {
+
+  try {
+
+    const snapshot = await getDocs(
+      collection(db, "questions")
+    );
+
+    const questionBank = [];
+
+    snapshot.forEach((doc) => {
+
+      const data = doc.data();
+
+      if (data.question) {
+        questionBank.push(data.question);
+      }
+
+    });
+
+
+    if (questionBank.length === 0) {
+      alert("No questions were found in Firebase.");
+      return;
+    }
+
+
+    // Shuffle questions
+    questionBank.sort(() => Math.random() - 0.5);
+
+
+    // Select up to 3 questions
+    questions = questionBank.slice(
+      0,
+      Math.min(3, questionBank.length)
+    );
+
+    currentQuestion = 0;
+
+
+   // Hide instructions
+document
+  .getElementById("instructions")
+  .classList.add("hidden");
+
+    // Show game
+    document
+      .getElementById("game")
+      .classList.remove("hidden");
+
+
+    showQuestion();
+
+  } catch (error) {
+
+    console.error("Firebase error:", error);
+
+    alert(
+      "The questions could not be loaded. Please try again."
+    );
+
+  }
+
+}
+
+
+// ==============================
+// SHOW QUESTION
+// ==============================
+
+function showQuestion() {
+
+  document
+    .getElementById("question")
+    .textContent = questions[currentQuestion];
+
+
+  document
+    .getElementById("progress")
+    .textContent =
+      "Question " +
+      (currentQuestion + 1) +
+      " of " +
+      questions.length;
+
+}
+
+
+// ==============================
+// NEXT QUESTION
+// ==============================
+
+function nextQuestion() {
+
+  currentQuestion++;
+
+
+  if (currentQuestion >= questions.length) {
+
+    document
+      .getElementById("game")
+      .classList.add("hidden");
+
+
+    document
+      .getElementById("finished")
+      .classList.remove("hidden");
+
+    return;
+
+  }
+
+
+  showQuestion();
+
+}
+
+
+// ==============================
+// BUTTONS
+// ==============================
+
+// Welcome page → Instructions
+document
+  .getElementById("startButton")
+  .addEventListener("click", () => {
+
+    document
+      .getElementById("intro")
+      .classList.add("hidden");
+
+    document
+      .getElementById("instructions")
+      .classList.remove("hidden");
+
+  });
+
+
+// Instructions → Start questions
+document
+  .getElementById("instructionButton")
+  .addEventListener("click", startPillowTalk);
+
+
+// Next question
+document
+  .getElementById("nextButton")
+  .addEventListener("click", nextQuestion);
+
+
+// Finished → Vanilla Level
+document
+  .getElementById("levelButton")
+  .addEventListener("click", () => {
+
+    window.location.href = "./level.html";
+
+  });
