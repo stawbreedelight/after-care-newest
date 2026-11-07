@@ -72,7 +72,18 @@ function initializeIcons() {
 
     if (window.lucide) {
         window.lucide.createIcons();
+        return;
     }
+
+    window.addEventListener(
+        "load",
+        () => {
+            if (window.lucide) {
+                window.lucide.createIcons();
+            }
+        },
+        { once: true }
+    );
 
 }
 
