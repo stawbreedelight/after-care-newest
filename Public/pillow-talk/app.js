@@ -1,3 +1,22 @@
+/* ==============================
+   PILLOW TALK — FIREBASE SETUP
+============================== */
+
+import { db } from "../date-planner/firebase-config.js";
+
+import {
+    collection,
+    getDocs
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+/* ==============================
+   GAME VARIABLES
+============================== */
+
+let questions = [];
+
+let currentQuestion = 0;
+
 // ==============================
 // START PILLOW TALK
 // ==============================
