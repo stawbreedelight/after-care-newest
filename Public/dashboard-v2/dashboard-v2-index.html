@@ -1,202 +1,1253 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#FFF8EB">
-  <title>Our World | Mid Vanilla</title>
 
-  <!-- Fonts and icons -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <script defer src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+    <meta charset="UTF-8">
 
-  <!-- Load shared calendar styling FIRST, then our dashboard overrides -->
-  <link rel="stylesheet" href="../calendar/calendar.css?v=3">
-  <link rel="stylesheet" href="./dashboard-v2.css?v=5">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Our World | Mid Vanilla</title>
+
+    <!-- FREDOKA FONT -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- LUCIDE ICONS -->
+    <script
+        src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"
+        defer>
+    </script>
+
+    <!-- EXISTING CALENDAR CSS -->
+    <link
+        rel="stylesheet"
+        href="../calendar/calendar.css?v=3"
+    >
+
+    <!-- DASHBOARD V2 CSS -->
+    <link
+        rel="stylesheet"
+        href="./dashboard-v2.css?v=5"
+    >
+
 </head>
+
+
 <body class="dashboard-v2-page">
 
-  <p id="loadingMessage" class="loading-message" role="status">Opening your adventure ♡</p>
 
-  <div id="dashboardV2" hidden>
-    <!-- Illustrated banner. Background artwork will be added in CSS later. -->
+<!-- ==================================
+     LOADING SCREEN
+================================== -->
+
+<p id="loadingMessage"
+   class="loading-message"
+   role="status">
+
+    Opening your adventure ♡
+
+</p>
+
+
+<!-- ==================================
+     MAIN DASHBOARD
+================================== -->
+
+<div id="dashboardV2" hidden>
+
+
+    <!-- ==============================
+         TOP BANNER
+    ============================== -->
+
     <header class="v2-header">
-      <a class="v2-logo-link" href="../index.html" aria-label="Mid Vanilla home">
-        <img class="v2-logo" src="../images/mid-vanilla.PNG" alt="Mid Vanilla">
-      </a>
-      <button id="customizeBackgroundButton" type="button" class="background-customize-button" disabled title="Background customization coming soon">
-        <i data-lucide="image" aria-hidden="true"></i><span>Customize</span>
-      </button>
+
+        <a href="../index.html"
+           class="v2-logo-link"
+           aria-label="Mid Vanilla home">
+
+            <img
+                src="../images/mid-vanilla.PNG"
+                alt="Mid Vanilla"
+                class="v2-logo"
+            >
+
+        </a>
+
+
+        <!-- CUSTOMIZE BACKGROUND -->
+
+        <button
+            type="button"
+            class="background-customize-button"
+            id="customizeBackgroundButton"
+            disabled
+            title="Background customization coming soon"
+        >
+
+            <i data-lucide="image"></i>
+
+            <span>Customize</span>
+
+        </button>
+
     </header>
 
+
+
+    <!-- ==============================
+         DASHBOARD LAYOUT
+    ============================== -->
+
     <div class="v2-layout">
-      <!-- On desktop this is a vertical sidebar; on mobile, a horizontal navigation bar. -->
-      <aside class="v2-sidebar">
-        <nav class="v2-navigation" aria-label="Dashboard navigation">
-          <a class="active" href="#dashboardHome" aria-current="page"><i data-lucide="house" aria-hidden="true"></i><span>Dashboard</span></a>
-          <a href="../levels.html"><i data-lucide="gamepad-2" aria-hidden="true"></i><span>Games</span></a>
-          <a href="#ourCalendar"><i data-lucide="calendar-days" aria-hidden="true"></i><span>Calendar</span></a>
-          <a href="#ourAdventure"><i data-lucide="map" aria-hidden="true"></i><span>Our World</span></a>
-          <a href="#ourScrapbook"><i data-lucide="book-open" aria-hidden="true"></i><span>Scrapbook</span></a>
-          <a href="#ourRewards"><i data-lucide="gift" aria-hidden="true"></i><span>Rewards</span></a>
-          <a href="#ourProgress"><i data-lucide="chart-no-axes-column-increasing" aria-hidden="true"></i><span>Our Progress</span></a>
-          <a href="#ourAvatars"><i data-lucide="shirt" aria-hidden="true"></i><span>Customize</span></a>
-        </nav>
-        <button id="logoutButton" class="v2-logout-button" type="button">Log Out</button>
-      </aside>
 
-      <main id="dashboardHome" class="v2-main">
-        <!-- OUR RELATIONSHIP -->
-        <section id="ourRelationship" class="v2-panel relationship-panel" aria-labelledby="relationshipHeading">
-          <div class="relationship-heading">
-            <h2 id="relationshipHeading">Our Relationship</h2>
-            <div class="relationship-ribbon"><h3 id="relationshipLevelName">The New Adventurers</h3></div>
-          </div>
-          <div id="ourAvatars" class="couple-avatars">
-            <div class="avatar-profile">
-              <div class="avatar-placeholder"><i data-lucide="user-round" aria-hidden="true"></i></div>
-              <span id="playerOneName">You</span>
+
+        <!-- ==========================
+             NAVIGATION
+        ========================== -->
+
+        <aside class="v2-sidebar">
+
+            <nav class="v2-navigation"
+                 aria-label="Dashboard navigation">
+
+
+                <a href="#dashboardHome"
+                   class="active">
+
+                    <i data-lucide="house"></i>
+
+                    <span>Dashboard</span>
+
+                </a>
+
+
+                <a href="../levels.html">
+
+                    <i data-lucide="gamepad-2"></i>
+
+                    <span>Games</span>
+
+                </a>
+
+
+                <a href="#ourCalendar">
+
+                    <i data-lucide="calendar-days"></i>
+
+                    <span>Calendar</span>
+
+                </a>
+
+
+                <a href="#ourAdventure">
+
+                    <i data-lucide="map"></i>
+
+                    <span>Our World</span>
+
+                </a>
+
+
+                <a href="#ourScrapbook">
+
+                    <i data-lucide="book-open"></i>
+
+                    <span>Scrapbook</span>
+
+                </a>
+
+
+                <a href="#ourRewards">
+
+                    <i data-lucide="gift"></i>
+
+                    <span>Rewards</span>
+
+                </a>
+
+
+                <a href="#ourProgress">
+
+                    <i data-lucide="chart-no-axes-column-increasing"></i>
+
+                    <span>Our Progress</span>
+
+                </a>
+
+
+                <a href="#ourAvatars">
+
+                    <i data-lucide="shirt"></i>
+
+                    <span>Customize</span>
+
+                </a>
+
+
+            </nav>
+
+
+            <!-- LOG OUT -->
+
+            <button
+                type="button"
+                id="logoutButton"
+                class="v2-logout-button"
+            >
+
+                Log Out
+
+            </button>
+
+        </aside>
+
+
+
+        <!-- ==============================
+             DASHBOARD CONTENT
+        ============================== -->
+
+        <main class="v2-main"
+              id="dashboardHome">
+
+
+            <!-- ==========================
+                 OUR RELATIONSHIP
+            ========================== -->
+
+            <section
+                class="v2-panel relationship-panel"
+                id="ourRelationship"
+            >
+
+
+                <div class="relationship-heading">
+
+                    <h2>OUR RELATIONSHIP</h2>
+
+
+                    <div class="relationship-ribbon">
+
+                        <h3 id="relationshipLevelName">
+
+                            The New Adventurers
+
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- COUPLE AVATARS -->
+
+                <div class="couple-avatars"
+                     id="ourAvatars">
+
+
+                    <!-- PLAYER ONE -->
+
+                    <div class="avatar-profile">
+
+                        <div class="avatar-placeholder">
+
+                            <i data-lucide="user-round"></i>
+
+                        </div>
+
+                        <span id="playerOneName">
+
+                            You
+
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- CONNECTION ICON -->
+
+                    <a
+                        href="../connect-partner.html"
+                        class="avatar-connection"
+                        aria-label="Manage partner connection"
+                    >
+
+                        <i data-lucide="link"></i>
+
+                    </a>
+
+
+
+                    <!-- PLAYER TWO -->
+
+                    <div class="avatar-profile">
+
+                        <div class="avatar-placeholder">
+
+                            <i data-lucide="user-round"></i>
+
+                        </div>
+
+                        <span id="playerTwoName">
+
+                            Partner
+
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- RELATIONSHIP LEVEL -->
+
+                <div class="relationship-level">
+
+                    <span>
+
+                        Level
+
+                        <span id="relationshipLevel">1</span>
+
+                    </span>
+
+                </div>
+
+
+
+                <!-- XP PROGRESS -->
+
+                <div class="xp-progress">
+
+                    <div
+                        class="xp-progress-fill"
+                        id="xpProgressFill"
+                        style="width:0%"
+                    ></div>
+
+                    <span id="xpProgressText">
+
+                        0 / 100 XP
+
+                    </span>
+
+                </div>
+
+
+
+                <!-- CONNECT PARTNER -->
+
+                <a
+                    href="../connect-partner.html"
+                    class="partner-connect-button"
+                >
+
+                    <i data-lucide="link"></i>
+
+                    <span>Connect Partner Account</span>
+
+                </a>
+
+
+
+                <!-- RELATIONSHIP SHORTCUTS -->
+
+                <div class="relationship-shortcuts">
+
+
+                    <!-- AVATARS -->
+
+                    <a href="#ourAvatars"
+                       class="relationship-shortcut">
+
+                        <i data-lucide="users-round"></i>
+
+                        <span>Avatars</span>
+
+                    </a>
+
+
+
+                    <!-- ACHIEVEMENTS -->
+
+                    <a href="#ourRewards"
+                       class="relationship-shortcut">
+
+                        <i data-lucide="award"></i>
+
+                        <span>Achievements</span>
+
+                    </a>
+
+
+
+                    <!-- OUR PROGRESS -->
+
+                    <a href="#ourProgress"
+                       class="relationship-shortcut">
+
+                        <i data-lucide="chart-no-axes-column-increasing"></i>
+
+                        <span>Our Progress</span>
+
+                    </a>
+
+
+                </div>
+
+
+
+                <!-- EXISTING JS STAT REFERENCES -->
+
+                <div class="relationship-stats" hidden>
+
+                    <span id="gamesCompleted">0</span>
+
+                    <span id="datesCompleted">0</span>
+
+                    <span id="badgesEarned">0</span>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- ==========================
+                 FAVOURITE GAMES
+            ========================== -->
+
+            <section
+                class="v2-panel favourites-panel"
+                id="favouriteGames"
+            >
+
+
+                <div class="v2-panel-header">
+
+                    <h2>Favourite Games</h2>
+
+
+                    <button
+                        type="button"
+                        class="manage-shortcuts-button"
+                        id="manageShortcutsButton"
+                        disabled
+                        title="Manage shortcuts coming soon"
+                    >
+
+                        <i data-lucide="pencil"></i>
+
+                        <span>Manage Shortcuts</span>
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- FAVOURITE GAME GRID -->
+
+                <div class="favourite-games-grid">
+
+
+                    <!-- PILLOW TALK -->
+
+                    <a href="../pillow-talk/"
+                       class="favourite-game">
+
+                        <span class="favourite-icon pillow-icon">
+
+                            <i data-lucide="message-circle-heart"></i>
+
+                        </span>
+
+                        <span>Pillow Talk</span>
+
+                    </a>
+
+
+
+                    <!-- DATE PLANNER -->
+
+                    <a href="../date-planner/"
+                       class="favourite-game">
+
+                        <span class="favourite-icon date-icon">
+
+                            <i data-lucide="calendar-heart"></i>
+
+                        </span>
+
+                        <span>Date Planner</span>
+
+                    </a>
+
+
+
+                    <!-- A LITTLE DEEPER -->
+
+                    <button
+                        type="button"
+                        class="favourite-game"
+                        disabled
+                        title="Shortcut coming soon"
+                    >
+
+                        <span class="favourite-icon cards-icon">
+
+                            <i data-lucide="messages-square"></i>
+
+                        </span>
+
+                        <span>A Little Deeper</span>
+
+                    </button>
+
+
+
+                    <!-- SWEET STREAK -->
+
+                    <button
+                        type="button"
+                        class="favourite-game"
+                        disabled
+                        title="Shortcut coming soon"
+                    >
+
+                        <span class="favourite-icon streak-icon">
+
+                            <i data-lucide="target"></i>
+
+                        </span>
+
+                        <span>Sweet Streak</span>
+
+                    </button>
+
+
+                </div>
+
+
+
+                <!-- ======================
+                     QUICK ACTIONS
+                ====================== -->
+
+                <div class="favourites-quick-actions">
+
+                    <h3>Quick Actions</h3>
+
+
+                    <div class="quick-actions-grid">
+
+
+                        <!-- PLAY A GAME -->
+
+                        <a href="../levels.html"
+                           class="quick-action">
+
+                            <i data-lucide="gamepad-2"></i>
+
+                            <span>Play a Game</span>
+
+                        </a>
+
+
+
+                        <!-- PLAN A DATE -->
+
+                        <a href="#ourCalendar"
+                           class="quick-action">
+
+                            <i data-lucide="calendar-days"></i>
+
+                            <span>Plan a Date</span>
+
+                        </a>
+
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- ==========================
+                 OUR CALENDAR
+            ========================== -->
+
+            <section
+                class="v2-panel calendar-panel"
+                id="ourCalendar"
+            >
+
+
+                <div class="v2-panel-header">
+
+                    <h2>Our Calendar</h2>
+
+
+                    <button
+                        type="button"
+                        id="addCalendarEvent"
+                        class="v2-primary-button"
+                    >
+
+                        <i data-lucide="plus"></i>
+
+                        <span>Add Event</span>
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- MONTH NAVIGATION -->
+
+                <div class="calendar-navigation">
+
+
+                    <button
+                        type="button"
+                        id="prevMonth"
+                        aria-label="Previous month"
+                    >
+
+                        <i data-lucide="chevron-left"></i>
+
+                    </button>
+
+
+
+                    <h3 id="calendarMonth"></h3>
+
+
+
+                    <button
+                        type="button"
+                        id="nextMonth"
+                        aria-label="Next month"
+                    >
+
+                        <i data-lucide="chevron-right"></i>
+
+                    </button>
+
+
+                </div>
+
+
+
+                <!-- WEEKDAYS -->
+
+                <div class="calendar-weekdays">
+
+                    <span>Sun</span>
+                    <span>Mon</span>
+                    <span>Tue</span>
+                    <span>Wed</span>
+                    <span>Thu</span>
+                    <span>Fri</span>
+                    <span>Sat</span>
+
+                </div>
+
+
+
+                <!-- CALENDAR DATES -->
+
+                <div
+                    id="calendarDays"
+                    class="calendar-days"
+                ></div>
+
+
+
+                <!-- SELECTED DATE EVENTS -->
+
+                <div class="calendar-event-list">
+
+                    <h3 id="selectedDateTitle"></h3>
+
+                    <div id="selectedDateEvents"></div>
+
+                </div>
+
+
+
+                <!-- ======================
+                     EVENT EDITOR
+                ====================== -->
+
+                <div
+                    id="calendarEventPanel"
+                    class="calendar-event-panel"
+                    hidden
+                >
+
+
+                    <h3 id="eventPanelTitle">
+
+                        Plan Something Sweet
+
+                    </h3>
+
+
+
+                    <form id="calendarEventForm">
+
+
+                        <label for="eventTitle">
+
+                            Our Plan
+
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="eventTitle"
+                            maxlength="100"
+                            required
+                        >
+
+
+
+                        <label for="eventTime">
+
+                            Time
+
+                        </label>
+
+
+                        <input
+                            type="time"
+                            id="eventTime"
+                        >
+
+
+
+                        <label for="eventNotes">
+
+                            Little Details
+
+                        </label>
+
+
+                        <textarea
+                            id="eventNotes"
+                            maxlength="1000"
+                        ></textarea>
+
+
+
+                        <label for="eventColour">
+
+                            Event Colour
+
+                        </label>
+
+
+                        <select id="eventColour">
+
+                            <option value="pink">Pink</option>
+
+                            <option value="purple">Purple</option>
+
+                            <option value="green">Green</option>
+
+                        </select>
+
+
+
+                        <div class="calendar-form-actions">
+
+
+                            <button
+                                type="submit"
+                                class="calendar-save-button"
+                            >
+
+                                Save Our Date
+
+                            </button>
+
+
+
+                            <button
+                                type="button"
+                                id="cancelCalendarEvent"
+                                class="calendar-cancel-button"
+                            >
+
+                                Cancel
+
+                            </button>
+
+
+                        </div>
+
+
+                    </form>
+
+
+                </div>
+
+
+
+                <!-- CALENDAR STATUS -->
+
+                <p
+                    id="calendarStatus"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+
+
+            </section>
+
+
+
+            <!-- ==========================
+                 SCRAPBOOK
+            ========================== -->
+
+            <section
+                class="v2-panel feature-panel scrapbook-panel"
+                id="ourScrapbook"
+            >
+
+
+                <!-- SCRAPBOOK ARTWORK -->
+
+                <div class="feature-illustration scrapbook-art">
+
+                    <i data-lucide="book-heart"></i>
+
+                </div>
+
+
+
+                <!-- SCRAPBOOK CONTENT -->
+
+                <div class="feature-content">
+
+                    <h2>Scrapbook</h2>
+
+
+                    <p>
+
+                        Capture your favourite
+                        moments together
+
+                    </p>
+
+
+                    <button
+                        type="button"
+                        class="feature-button purple-button"
+                        disabled
+                        title="Scrapbook coming soon"
+                    >
+
+                        <span>Open Scrapbook</span>
+
+                        <i data-lucide="arrow-right"></i>
+
+                    </button>
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- ==========================
+                 RELATIONSHIP SKILLS
+            ========================== -->
+
+            <section
+                class="v2-panel feature-panel skills-panel"
+                id="ourProgress"
+            >
+
+
+                <!-- SKILLS ARTWORK -->
+
+                <div class="feature-illustration skills-art">
+
+                    <i data-lucide="book-open-check"></i>
+
+                </div>
+
+
+
+                <!-- SKILLS CONTENT -->
+
+                <div class="feature-content">
+
+                    <h2>Relationship Skills</h2>
+
+
+                    <p>
+
+                        Grow together with fun
+                        and guided activities
+
+                    </p>
+
+
+                    <a
+                        href="#relationshipSkillDetails"
+                        class="feature-button green-button"
+                    >
+
+                        <span>Build Skills</span>
+
+                        <i data-lucide="arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+
+
+                <!-- EXPANDABLE SKILL DETAILS -->
+
+                <details
+                    class="skills-details"
+                    id="relationshipSkillDetails"
+                >
+
+                    <summary>View Our Skills</summary>
+
+
+                    <div class="skills-list">
+
+
+                        <!-- TIME -->
+
+                        <div class="skill-item"
+                             data-skill="time">
+
+                            <span>Quality Time</span>
+
+                            <div class="skill-bar">
+                                <div style="width:0%"></div>
+                            </div>
+
+                            <span class="skill-level">Lv. 1</span>
+
+                        </div>
+
+
+
+                        <!-- CONNECTION -->
+
+                        <div class="skill-item"
+                             data-skill="connection">
+
+                            <span>Connection</span>
+
+                            <div class="skill-bar">
+                                <div style="width:0%"></div>
+                            </div>
+
+                            <span class="skill-level">Lv. 1</span>
+
+                        </div>
+
+
+
+                        <!-- COMMUNICATION -->
+
+                        <div class="skill-item"
+                             data-skill="communication">
+
+                            <span>Communication</span>
+
+                            <div class="skill-bar">
+                                <div style="width:0%"></div>
+                            </div>
+
+                            <span class="skill-level">Lv. 1</span>
+
+                        </div>
+
+
+
+                        <!-- INTIMACY -->
+
+                        <div class="skill-item"
+                             data-skill="intimacy">
+
+                            <span>Intimacy</span>
+
+                            <div class="skill-bar">
+                                <div style="width:0%"></div>
+                            </div>
+
+                            <span class="skill-level">Lv. 1</span>
+
+                        </div>
+
+
+
+                        <!-- SUPPORT -->
+
+                        <div class="skill-item"
+                             data-skill="support">
+
+                            <span>Support</span>
+
+                            <div class="skill-bar">
+                                <div style="width:0%"></div>
+                            </div>
+
+                            <span class="skill-level">Lv. 1</span>
+
+                        </div>
+
+
+
+                        <!-- TRUST -->
+
+                        <div class="skill-item"
+                             data-skill="trust">
+
+                            <span>Trust</span>
+
+                            <div class="skill-bar">
+                                <div style="width:0%"></div>
+                            </div>
+
+                            <span class="skill-level">Lv. 1</span>
+
+                        </div>
+
+
+
+                        <!-- PLAYFULNESS -->
+
+                        <div class="skill-item"
+                             data-skill="playfulness">
+
+                            <span>Fun & Playfulness</span>
+
+                            <div class="skill-bar">
+                                <div style="width:0%"></div>
+                            </div>
+
+                            <span class="skill-level">Lv. 1</span>
+
+                        </div>
+
+
+                    </div>
+
+
+                </details>
+
+
+            </section>
+
+
+
+            <!-- ==========================
+                 EXPLORE OUR WORLDS
+            ========================== -->
+
+            <section
+                class="v2-panel adventure-panel"
+                id="ourAdventure"
+            >
+
+
+                <div class="adventure-content">
+
+                    <h2>Explore Our Worlds</h2>
+
+
+                    <p>
+
+                        Discover new games,
+                        challenges, and adventures
+                        across all lands
+
+                    </p>
+
+                </div>
+
+
+
+                <!-- FOUR WORLDS -->
+
+                <div class="adventure-worlds">
+
+
+                    <!-- VANILLA LAND -->
+
+                    <a
+                        href="../vanilla-land/"
+                        class="world-card vanilla-world"
+                    >
+
+                        <span>🍦</span>
+
+                        <strong>Vanilla Land</strong>
+
+                    </a>
+
+
+
+                    <!-- PEACH LAND -->
+
+                    <a
+                        href="../peach-land/"
+                        class="world-card peach-world"
+                    >
+
+                        <span>🍑</span>
+
+                        <strong>Peach Land</strong>
+
+                    </a>
+
+
+
+                    <!-- BERRY LAND -->
+
+                    <a
+                        href="../berry-land/"
+                        class="world-card berry-world"
+                    >
+
+                        <span>🫐</span>
+
+                        <strong>Berry Land</strong>
+
+                    </a>
+
+
+
+                    <!-- PISTACHIO LAND -->
+
+                    <a
+                        href="../pistachio-land/"
+                        class="world-card pistachio-world"
+                    >
+
+                        <span>🌿</span>
+
+                        <strong>Pistachio Land</strong>
+
+                    </a>
+
+
+                </div>
+
+
+
+                <!-- EXPLORE BUTTON -->
+
+                <a
+                    href="../levels.html"
+                    class="feature-button purple-button adventure-button"
+                >
+
+                    <span>Explore Now</span>
+
+                    <i data-lucide="arrow-right"></i>
+
+                </a>
+
+
+            </section>
+
+
+
+            <!-- ==========================
+                 REWARDS REFERENCE
+            ========================== -->
+
+            <div id="ourRewards"
+                 class="rewards-anchor"
+                 hidden>
+
+                <h2>Rewards</h2>
+
+                <p>
+                    More rewards are coming soon.
+                </p>
+
             </div>
-            <a href="../connect-partner.html" class="avatar-connection" aria-label="Manage partner connection"><i data-lucide="link" aria-hidden="true"></i></a>
-            <div class="avatar-profile">
-              <div class="avatar-placeholder"><i data-lucide="user-round" aria-hidden="true"></i></div>
-              <span id="playerTwoName">Partner</span>
-            </div>
-          </div>
-          <div class="relationship-level">Level <span id="relationshipLevel">1</span></div>
-          <div class="xp-progress" role="group" aria-label="Relationship experience points">
-            <div id="xpProgressFill" class="xp-progress-fill" style="width:0%"></div>
-            <span id="xpProgressText">0 / 100 XP</span>
-          </div>
-          <a class="partner-connect-button" href="../connect-partner.html"><i data-lucide="link" aria-hidden="true"></i><span>Connect Partner Account</span></a>
-          <div class="relationship-shortcuts">
-            <a href="#ourAvatars" class="relationship-shortcut"><i data-lucide="users-round" aria-hidden="true"></i><span>Avatars</span></a>
-            <a href="#ourRewards" class="relationship-shortcut"><i data-lucide="award" aria-hidden="true"></i><span>Achievements</span></a>
-            <a href="#ourProgress" class="relationship-shortcut"><i data-lucide="chart-no-axes-column-increasing" aria-hidden="true"></i><span>Our Progress</span></a>
-          </div>
-          <!-- Retain IDs required by the existing dashboard-v2.app.js. -->
-          <div class="relationship-stats" hidden>
-            <span id="gamesCompleted">0</span><span id="datesCompleted">0</span><span id="badgesEarned">0</span>
-          </div>
-        </section>
 
-        <!-- FAVOURITE GAMES AND QUICK ACTIONS -->
-        <section id="favouriteGames" class="v2-panel favourites-panel" aria-labelledby="favouritesHeading">
-          <div class="v2-panel-header">
-            <h2 id="favouritesHeading">Favourite Games</h2>
-            <button id="manageShortcutsButton" type="button" class="manage-shortcuts-button" disabled title="Custom shortcuts coming soon"><i data-lucide="pencil" aria-hidden="true"></i><span>Manage Shortcuts</span></button>
-          </div>
-          <div class="favourite-games-grid">
-            <a class="favourite-game" href="../pillow-talk/"><span class="favourite-icon pillow-icon"><i data-lucide="message-circle-heart" aria-hidden="true"></i></span><span>Pillow Talk</span></a>
-            <a class="favourite-game" href="../date-planner/"><span class="favourite-icon date-icon"><i data-lucide="calendar-heart" aria-hidden="true"></i></span><span>Date Planner</span></a>
-            <div class="favourite-game is-placeholder" title="Add game link later"><span class="favourite-icon cards-icon"><i data-lucide="messages-square" aria-hidden="true"></i></span><span>A Little Deeper</span></div>
-            <div class="favourite-game is-placeholder" title="Add game link later"><span class="favourite-icon streak-icon"><i data-lucide="target" aria-hidden="true"></i></span><span>Sweet Streak</span></div>
-          </div>
-          <div class="favourites-quick-actions">
-            <h3>Quick Actions</h3>
-            <div class="quick-actions-grid">
-              <a class="quick-action" href="../levels.html"><i data-lucide="gamepad-2" aria-hidden="true"></i><span>Play a Game</span></a>
-              <a class="quick-action" href="#ourCalendar"><i data-lucide="calendar-days" aria-hidden="true"></i><span>Plan a Date</span></a>
-            </div>
-          </div>
-        </section>
 
-        <!-- LARGE, FULL-WIDTH CALENDAR: KEEP IDS FOR calendar.apps.js -->
-        <section id="ourCalendar" class="v2-panel calendar-panel" aria-labelledby="calendarHeading">
-          <div class="v2-panel-header">
-            <h2 id="calendarHeading">Our Calendar</h2>
-            <button id="addCalendarEvent" class="v2-primary-button" type="button"><i data-lucide="plus" aria-hidden="true"></i><span>Add Event</span></button>
-          </div>
-          <div class="calendar-navigation">
-            <button id="prevMonth" type="button" aria-label="Previous month"><i data-lucide="chevron-left" aria-hidden="true"></i></button>
-            <h3 id="calendarMonth"></h3>
-            <button id="nextMonth" type="button" aria-label="Next month"><i data-lucide="chevron-right" aria-hidden="true"></i></button>
-          </div>
-          <div class="calendar-weekdays" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
-          <div id="calendarDays" class="calendar-days"></div>
-          <div class="calendar-event-list">
-            <h3 id="selectedDateTitle"></h3>
-            <div id="selectedDateEvents"></div>
-          </div>
-          <div id="calendarEventPanel" class="calendar-event-panel" hidden>
-            <h3 id="eventPanelTitle">Plan Something Sweet</h3>
-            <form id="calendarEventForm">
-              <label for="eventTitle">Our Plan</label>
-              <input id="eventTitle" type="text" maxlength="100" placeholder="Date night..." required>
-              <label for="eventTime">Time</label>
-              <input id="eventTime" type="time">
-              <label for="eventNotes">Little Details</label>
-              <textarea id="eventNotes" maxlength="1000" placeholder="What shall we do together?"></textarea>
-              <label for="eventColour">Event Colour</label>
-              <select id="eventColour"><option value="pink">Pink</option><option value="purple">Purple</option><option value="green">Green</option></select>
-              <div class="calendar-form-actions">
-                <button class="calendar-save-button" type="submit">Save Our Date</button>
-                <button id="cancelCalendarEvent" class="calendar-cancel-button" type="button">Cancel</button>
-              </div>
-            </form>
-          </div>
-          <p id="calendarStatus" role="status" aria-live="polite"></p>
-        </section>
+        </main>
 
-        <!-- SCRAPBOOK: illustration placeholder until you add an image -->
-        <section id="ourScrapbook" class="v2-panel feature-panel scrapbook-panel" aria-labelledby="scrapbookHeading">
-          <div class="feature-illustration scrapbook-art"><i data-lucide="book-heart" aria-hidden="true"></i></div>
-          <div class="feature-content">
-            <h2 id="scrapbookHeading">Scrapbook</h2>
-            <p>Capture your favourite moments together.</p>
-            <span class="feature-button purple-button is-coming-soon">Open Scrapbook <i data-lucide="arrow-right" aria-hidden="true"></i></span>
-          </div>
-        </section>
 
-        <!-- RELATIONSHIP SKILLS -->
-        <section id="ourProgress" class="v2-panel feature-panel skills-panel" aria-labelledby="skillsHeading">
-          <div class="feature-illustration skills-art"><i data-lucide="book-open-check" aria-hidden="true"></i></div>
-          <div class="feature-content">
-            <h2 id="skillsHeading">Relationship Skills</h2>
-            <p>Grow together with fun and guided activities.</p>
-            <a class="feature-button green-button" href="#relationshipSkillDetails">Build Skills <i data-lucide="arrow-right" aria-hidden="true"></i></a>
-          </div>
-          <details id="relationshipSkillDetails" class="skills-details">
-            <summary>View Our Skills</summary>
-            <div class="skills-list">
-              <div class="skill-item" data-skill="time"><span>Quality Time</span><div class="skill-bar"><div style="width:0%"></div></div><span class="skill-level">Lv. 1</span></div>
-              <div class="skill-item" data-skill="connection"><span>Connection</span><div class="skill-bar"><div style="width:0%"></div></div><span class="skill-level">Lv. 1</span></div>
-              <div class="skill-item" data-skill="communication"><span>Communication</span><div class="skill-bar"><div style="width:0%"></div></div><span class="skill-level">Lv. 1</span></div>
-              <div class="skill-item" data-skill="intimacy"><span>Intimacy</span><div class="skill-bar"><div style="width:0%"></div></div><span class="skill-level">Lv. 1</span></div>
-              <div class="skill-item" data-skill="support"><span>Support</span><div class="skill-bar"><div style="width:0%"></div></div><span class="skill-level">Lv. 1</span></div>
-              <div class="skill-item" data-skill="trust"><span>Trust</span><div class="skill-bar"><div style="width:0%"></div></div><span class="skill-level">Lv. 1</span></div>
-              <div class="skill-item" data-skill="playfulness"><span>Fun &amp; Playfulness</span><div class="skill-bar"><div style="width:0%"></div></div><span class="skill-level">Lv. 1</span></div>
-            </div>
-          </details>
-        </section>
-
-        <!-- EXPLORE OUR WORLDS -->
-        <section id="ourAdventure" class="v2-panel adventure-panel" aria-labelledby="adventureHeading">
-          <div class="adventure-copy">
-            <h2 id="adventureHeading">Explore Our Worlds</h2>
-            <p>Discover new games, challenges, and adventures across all lands.</p>
-          </div>
-          <div class="adventure-worlds" aria-label="Four Mid Vanilla worlds">
-            <a class="world-card vanilla-world" href="../vanilla-land/"><span>🍦</span><strong>Vanilla Land</strong></a>
-            <a class="world-card peach-world" href="../peach-land/"><span>🍑</span><strong>Peach Land</strong></a>
-            <a class="world-card berry-world" href="../berry-land/"><span>🫐</span><strong>Berry Land</strong></a>
-            <a class="world-card pistachio-world" href="../pistachio-land/"><span>🌿</span><strong>Pistachio Land</strong></a>
-          </div>
-          <a class="feature-button purple-button adventure-button" href="../levels.html">Explore Now <i data-lucide="arrow-right" aria-hidden="true"></i></a>
-        </section>
-
-        <!-- Rewards anchor for navigation; full rewards page to be built later. -->
-        <div id="ourRewards" class="v2-anchor" aria-label="Rewards coming soon"></div>
-      </main>
     </div>
 
-    <p id="dashboardMessage" role="status" aria-live="polite"></p>
-  </div>
 
-  <!-- The same working modules; do not move script tags into JavaScript. -->
-  <script type="module" src="./dashboard-v2.app.js?v=2"></script>
-  <script type="module" src="../calendar/calendar.apps.js?v=3"></script>
+
+    <!-- DASHBOARD STATUS -->
+
+    <p
+        id="dashboardMessage"
+        role="status"
+    ></p>
+
+
+</div>
+
+
+
+<!-- ==================================
+     JAVASCRIPT
+================================== -->
+
+
+<!-- DASHBOARD LOGIN / RPG -->
+
+<script
+    type="module"
+    src="./dashboard-v2.app.js?v=3"
+></script>
+
+
+
+<!-- EXISTING CALENDAR -->
+
+<script
+    type="module"
+    src="../calendar/calendar.apps.js?v=4"
+></script>
+
+
 </body>
+
 </html>
