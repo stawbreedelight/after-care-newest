@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mid Vanilla | My Avatar</title>
+  <link rel="stylesheet" href="avatar.css" />
+  <script src="avatar.js" defer></script>
+</head>
+<body>
+  <main class="page">
+    <header class="masthead">
+      <a class="back" href="/">← Back to Mid Vanilla</a>
+      <p class="eyebrow">MID VANILLA · THE WARDROBE</p>
+      <h1>Make your magic</h1>
+      <p>Dress up your character with outfits and treasures collected along your journey together.</p>
+    </header>
+
+    <div class="layout">
+      <section class="avatar-panel" aria-label="Avatar preview">
+        <div class="panel-heading"><span>YOUR CHARACTER</span><span class="sparkles">✦ ✧ ✦</span></div>
+        <div class="avatar-stage" id="avatarStage">
+          <div class="avatar-stack" id="avatarStack">
+            <!-- Items behind the character are injected here. -->
+            <img class="base-avatar" src="images/avatar-clean.png" alt="Your customizable avatar" />
+            <!-- Items in front of the character are injected here. -->
+          </div>
+        </div>
+        <div class="avatar-actions">
+          <button type="button" class="secondary" id="clearBtn">Remove all items</button>
+          <button type="button" class="primary" id="saveBtn">Save outfit</button>
+        </div>
+        <p class="save-message" id="saveMessage" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="wardrobe-panel" aria-label="Fantasy wardrobe">
+        <div class="panel-heading"><span>FANTASY WARDROBE</span><span>✦ Your collection</span></div>
+        <p class="help">Tap any item to equip it. Tap again to remove it.</p>
+        <div class="filters" role="group" aria-label="Filter wardrobe">
+          <button class="filter active" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter" data-filter="head" aria-pressed="false">Head</button>
+          <button class="filter" data-filter="magic" aria-pressed="false">Magic</button>
+          <button class="filter" data-filter="outfit" aria-pressed="false">Clothing</button>
+        </div>
+        <div class="item-grid" id="itemGrid"></div>
+        <div class="fit-panel">
+          <h2>Adjust the fit</h2>
+          <p class="fit-intro">Select an equipped piece to move or resize it. These settings are saved on this device.</p>
+          <label for="adjustItem">Accessory</label>
+          <select id="adjustItem" aria-label="Accessory to adjust"></select>
+          <div class="control"><label for="xRange">Left / right</label><input id="xRange" type="range" min="0" max="100" step="1" /></div>
+          <div class="control"><label for="yRange">Up / down</label><input id="yRange" type="range" min="0" max="100" step="1" /></div>
+          <div class="control"><label for="widthRange">Size</label><input id="widthRange" type="range" min="5" max="100" step="1" /></div>
+          <button type="button" class="secondary reset" id="resetFitBtn">Reset selected item's fit</button>
+        </div>
+      </section>
+    </div>
+    <footer>Every great adventure starts with a little imagination. ♡</footer>
+  </main>
+</body>
+</html>
