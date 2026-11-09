@@ -42,8 +42,6 @@ button,select,input{font:inherit}button{cursor:pointer}button:focus-visible,sele
    AVATAR IMAGE LAYERS
 ============================== */
 
-/* Container holding the character */
-
 #avatarStack {
   position: relative;
   width: 100%;
@@ -51,65 +49,50 @@ button,select,input{font:inherit}button{cursor:pointer}button:focus-visible,sele
   isolation: isolate;
 }
 
-/* Base avatar */
-
-#avatarStack .base-avatar {
+/* Shared layer settings */
+#avatarStack .avatar-layer {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;
-  z-index: 2;
 }
 
-/* Adjustable skin overlay */
-
-#avatarStack .skin-overlay {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  opacity: 0;
-  z-index: 3;
-  pointer-events: none;
-}
-
-/* Accessories behind the character */
-
+/* Behind accessories like wings/capes */
 #avatarStack .avatar-item.behind {
   z-index: 1;
 }
 
-/* Accessories in front */
+/* Base body */
+#avatarStack .base-avatar {
+  z-index: 2;
+}
 
-#avatarStack .avatar-item.front {
+/* Darker skin overlay */
+#avatarStack .skin-overlay {
+  z-index: 3;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Face features over skin */
+#avatarStack .eyes-layer {
   z-index: 4;
+  pointer-events: none;
 }
 
-/* SKIN TONE CONTROL */
-
-.skin-controls {
-  margin-top: 20px;
+#avatarStack .lips-layer {
+  z-index: 5;
+  pointer-events: none;
 }
 
-.skin-controls label {
-  display: block;
-  margin-bottom: 15px;
-  font-weight: bold;
-  font-size: 18px;
+/* Hair over face */
+#avatarStack .hair-layer {
+  z-index: 6;
+  pointer-events: none;
 }
 
-#skinSlider {
-  width: 100%;
-  accent-color: #92a77d;
-  cursor: pointer;
-}
-
-.skin-labels {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 8px;
-  font-size: 14px;
-  color: #76695d;
+/* Front accessories like hats, boots, belt pouch, wand */
+#avatarStack .avatar-item.front {
+  z-index: 7;
 }
