@@ -37,26 +37,54 @@ button,select,input{font:inherit}button{cursor:pointer}button:focus-visible,sele
   border-color: #7c956b;
 }
 
-/* AVATAR PREVIEW */
+/
+/* ==============================
+   AVATAR IMAGE LAYERS
+============================== */
 
-.avatar-preview {
+/* Container holding the character */
+
+#avatarStack {
   position: relative;
-  width: min(300px, 100%);
-  aspect-ratio: 2 / 3;
-  margin: 20px auto;
+  width: 100%;
+  height: 100%;
+  isolation: isolate;
 }
 
-.avatar-layer {
+/* Base avatar */
+
+#avatarStack .base-avatar {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;
+  z-index: 2;
 }
 
-.skin-overlay {
+/* Adjustable skin overlay */
+
+#avatarStack .skin-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
   opacity: 0;
+  z-index: 3;
   pointer-events: none;
+}
+
+/* Accessories behind the character */
+
+#avatarStack .avatar-item.behind {
+  z-index: 1;
+}
+
+/* Accessories in front */
+
+#avatarStack .avatar-item.front {
+  z-index: 4;
 }
 
 /* SKIN TONE CONTROL */
