@@ -1,12 +1,7 @@
 
 /* ==========================================
    MID VANILLA — FANTASY AVATAR CREATOR
-
-   Male + Female avatars
-   Individual skin-tone settings
-   Fantasy wardrobe
-   Accessory positioning
-   Local browser saving
+   COMPLETE UPDATED AVATAR.JS
 ========================================== */
 
 
@@ -91,11 +86,10 @@ const ITEMS = [
 
 
 /* ==========================================
-   AVATAR IMAGE SETTINGS
+   AVATAR IMAGES
 ========================================== */
 
 const AVATARS = {
-
   male: {
     base: 'images/male-base.png',
     overlay: 'images/male-dark-skin.png'
@@ -105,6 +99,67 @@ const AVATARS = {
     base: 'images/female-base.png',
     overlay: 'images/female-dark-skin.png'
   }
+};
+
+
+/* ==========================================
+   FACE CUSTOMIZATION OPTIONS
+========================================== */
+
+const FACE_OPTIONS = {
+
+  hair: [
+    {
+      name: 'Short Blonde',
+      file: 'blonde-short-hair.png'
+    },
+    {
+      name: 'Short Wavy Blonde',
+      file: 'blonde-short-wavy-hair.png'
+    },
+    {
+      name: 'Long Wavy Blonde',
+      file: 'blonde-long-wavy-hair.png'
+    }
+  ],
+
+  eyes: [
+    {
+      name: 'Brown Eyes',
+      file: 'eyes-brown.png'
+    },
+    {
+      name: 'Green Eyes',
+      file: 'eyes-green.png'
+    },
+    {
+      name: 'Blue Eyes',
+      file: 'eyes-blue.png'
+    }
+  ],
+
+  lips: [
+    {
+      name: 'Closed Lips',
+      file: 'Closed-lips.png'
+    },
+    {
+      name: 'Small Closed Lips',
+      file: 'closed-small-lips.png'
+    },
+    {
+      name: 'Closed Smile',
+      file: 'closed-smile.png'
+    },
+    {
+      name: 'Open Smile',
+      file: 'open-smile.png'
+    },
+    {
+      name: 'Open Smile With Teeth',
+      file: 'open-teeth.png'
+    }
+  ]
 
 };
 
@@ -122,6 +177,10 @@ const adjustSelect = $('adjustItem');
 const baseAvatar = $('baseAvatar');
 const skinOverlay = $('skinOverlay');
 const skinSlider = $('skinSlider');
+
+const eyesLayer = $('eyesLayer');
+const lipsLayer = $('lipsLayer');
+const hairLayer = $('hairLayer');
 
 const avatarButtons =
   document.querySelectorAll('.avatar-option');
@@ -147,8 +206,16 @@ let skinTones = {
   female: 0
 };
 
+let faceSelections = {
+  hair: 'blonde-short-hair.png',
+  eyes: 'eyes-brown.png',
+  lips: 'Closed-lips.png'
+};
 
-/* LOAD SAVED SETTINGS */
+
+/* ==========================================
+   LOAD SAVED SETTINGS
+========================================== */
 
 try {
 
@@ -179,6 +246,26 @@ try {
 
   }
 
+  /* Load saved face choices */
+
+  if (saved.faceSelections) {
+
+    for (const type of ['hair', 'eyes', 'lips']) {
+
+      const selected = saved.faceSelections[type];
+
+      if (
+        FACE_OPTIONS[type].some(
+          option => option.file === selected
+        )
+      ) {
+        faceSelections[type] = selected;
+      }
+
+    }
+
+  }
+
 } catch (error) {
 
   console.warn(
@@ -190,7 +277,7 @@ try {
 
 
 /* ==========================================
-   AVATAR SELECTION
+   AVATAR APPEARANCE
 ========================================== */
 
 function updateAvatarAppearance() {
@@ -231,7 +318,9 @@ function updateAvatarAppearance() {
 }
 
 
-/* SWITCH MALE / FEMALE */
+/* ==========================================
+   SWITCH MALE / FEMALE
+========================================== */
 
 avatarButtons.forEach(button => {
 
@@ -279,6 +368,130 @@ if (skinSlider) {
 
 
 /* ==========================================
+   UPDATE FACE IMAGES
+========================================== */
+
+function updateFaceLayers() {
+
+  if (hairLayer) {
+
+    hairLayer.src =
+      `images/${faceSelections.hair}`;
+
+  }
+
+  if (eyesLayer) {
+
+    eyesLayer.src =
+      `images/${faceSelections.eyes}`;
+
+  }
+
+  if (lipsLayer) {
+
+    lipsLayer.src =
+      `images/${faceSelections.lips}`;
+
+  }
+
+}
+
+
+/* ==========================================
+   CREATE FACE SELECTION MENUS
+========================================== */
+
+function createFaceControls() {
+
+  const controlsContainer =
+    document.querySelector(
+      '.avatar-customization-controls'
+    );
+
+  if (!controlsContainer) return;
+
+  // Avoid creating duplicate menus.
+  if ($('faceControls')) return;
+
+  const section = document.createElement('div');
+
+  section.id = 'faceControls';
+  section.className = 'face-controls';
+
+  const heading = document.createElement('h3');
+
+  heading.textContent = 'Face & Hair';
+
+  section.appendChild(heading);
+
+
+  const controls = [
+    {
+      type: 'hair',
+      label: 'Hairstyle'
+    },
+    {
+      type: 'eyes',
+      label: 'Eye Colour'
+    },
+    {
+      type: 'lips',
+      label: 'Lips & Expression'
+    }
+  ];
+
+
+  for (const control of controls) {
+
+    const wrapper = document.createElement('div');
+
+    wrapper.className = 'face-control';
+
+    const label = document.createElement('label');
+
+    label.textContent = control.label;
+    label.htmlFor = `${control.type}Select`;
+
+    const select = document.createElement('select');
+
+    select.id = `${control.type}Select`;
+
+    for (const option of FACE_OPTIONS[control.type]) {
+
+      const element = document.createElement('option');
+
+      element.value = option.file;
+      element.textContent = option.name;
+
+      select.appendChild(element);
+
+    }
+
+    select.value = faceSelections[control.type];
+
+    select.addEventListener('change', event => {
+
+      faceSelections[control.type] =
+        event.target.value;
+
+      updateFaceLayers();
+
+      saveMessage.textContent = 'Unsaved changes';
+
+    });
+
+    wrapper.append(label, select);
+
+    section.appendChild(wrapper);
+
+  }
+
+  controlsContainer.appendChild(section);
+
+}
+
+
+/* ==========================================
    ACCESSORY FIT SETTINGS
 ========================================== */
 
@@ -303,7 +516,7 @@ const getFit = id => ({
 
 
 /* ==========================================
-   RENDER AVATAR ACCESSORIES
+   RENDER EQUIPPED ACCESSORIES
 ========================================== */
 
 function renderAvatar() {
@@ -413,7 +626,7 @@ function renderGrid() {
 
 
 /* ==========================================
-   POSITIONING CONTROLS
+   ACCESSORY POSITIONING CONTROLS
 ========================================== */
 
 function renderControls() {
@@ -486,6 +699,8 @@ function renderAll() {
 
   updateAvatarAppearance();
 
+  updateFaceLayers();
+
   renderAvatar();
 
   renderGrid();
@@ -496,7 +711,7 @@ function renderAll() {
 
 
 /* ==========================================
-   WARDROBE FILTER BUTTONS
+   WARDROBE FILTERS
 ========================================== */
 
 document.querySelectorAll('.filter')
@@ -621,7 +836,8 @@ $('saveBtn').addEventListener('click', () => {
     equipped,
     fits,
     currentAvatar,
-    skinTones
+    skinTones,
+    faceSelections
 
   };
 
@@ -638,7 +854,7 @@ $('saveBtn').addEventListener('click', () => {
   } catch (error) {
 
     saveMessage.textContent =
-      'Could not save. Check browser storage settings.';
+      'Could not save. Check your browser storage settings.';
 
   }
 
@@ -648,5 +864,7 @@ $('saveBtn').addEventListener('click', () => {
 /* ==========================================
    INITIAL PAGE LOAD
 ========================================== */
+
+createFaceControls();
 
 renderAll();
