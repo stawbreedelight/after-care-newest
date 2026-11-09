@@ -62,32 +62,53 @@
 
       <div class="avatar-stage" id="avatarStage">
 
-        <div class="avatar-stack" id="avatarStack">
+       <div class="avatar-stack" id="avatarStack">
 
-          <!-- BASE AVATAR -->
+  <!-- Base avatar -->
+  <img
+    id="baseAvatar"
+    class="base-avatar avatar-layer"
+    src="images/male-base.png"
+    alt="Your customizable avatar"
+  >
 
-          <img
-            id="baseAvatar"
-            class="base-avatar avatar-layer"
-            src="images/male-base.png"
-            alt="Your customizable avatar"
-          >
+  <!-- Skin tone overlay -->
+  <img
+    id="skinOverlay"
+    class="skin-overlay avatar-layer"
+    src="images/male-dark-skin.png"
+    alt=""
+    aria-hidden="true"
+  >
 
+  <!-- Eyes -->
+  <img
+    id="eyesLayer"
+    class="eyes-layer avatar-layer"
+    src="images/eyes-brown.png"
+    alt=""
+    aria-hidden="true"
+  >
 
-          <!-- SKIN TONE OVERLAY -->
+  <!-- Lips -->
+  <img
+    id="lipsLayer"
+    class="lips-layer avatar-layer"
+    src="images/Closed-lips.png"
+    alt=""
+    aria-hidden="true"
+  >
 
-          <img
-            id="skinOverlay"
-            class="skin-overlay avatar-layer"
-            src="images/male-dark-skin.png"
-            alt=""
-            aria-hidden="true"
-          >
+  <!-- Hair -->
+  <img
+    id="hairLayer"
+    class="hair-layer avatar-layer"
+    src="images/blonde-short-hair.png"
+    alt=""
+    aria-hidden="true"
+  >
 
-          <!-- Fantasy clothes and accessories
-               are added automatically by avatar.js -->
-
-        </div>
+  <!-- Accessories get injected by JS -->
 
       </div>
 
