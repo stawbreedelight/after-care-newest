@@ -26,6 +26,54 @@
             <!-- Items in front of the character are injected here. -->
           </div>
         </div>
+        <!-- AVATAR CUSTOMIZATION CONTROLS -->
+
+<div class="avatar-customization-controls">
+
+  <h3>Customize Your Avatar</h3>
+
+  <!-- MALE / FEMALE SELECTION -->
+  <div class="avatar-selection">
+
+    <button
+      type="button"
+      class="avatar-option active"
+      data-avatar="male"
+    >
+      Male
+    </button>
+
+    <button
+      type="button"
+      class="avatar-option"
+      data-avatar="female"
+    >
+      Female
+    </button>
+
+  </div>
+
+  <!-- SKIN TONE -->
+  <div class="skin-controls">
+
+    <label for="skinSlider">Skin Tone</label>
+
+    <input
+      type="range"
+      id="skinSlider"
+      min="0"
+      max="100"
+      value="0"
+    >
+
+    <div class="skin-labels">
+      <span>Light</span>
+      <span>Dark</span>
+    </div>
+
+  </div>
+
+</div>
         <div class="avatar-actions">
           <button type="button" class="secondary" id="clearBtn">Remove all items</button>
           <button type="button" class="primary" id="saveBtn">Save outfit</button>
