@@ -440,4 +440,183 @@ if (logoutButton) {
         }
     );
 
+/* ==========================================
+   MID VANILLA — DISPLAY SAVED AVATAR
+========================================== */
+
+function loadDashboardAvatar() {
+
+    const container =
+        document.getElementById("playerOneAvatar");
+
+    if (!container) return;
+
+    const STORE_KEY = "midVanillaAvatarV1";
+
+    let saved;
+
+    try {
+        saved = JSON.parse(
+            localStorage.getItem(STORE_KEY) || "null"
+        );
+    } catch (error) {
+        console.error("Avatar data error:", error);
+        return;
+    }
+
+    if (!saved) {
+        container.textContent = "Create your avatar ✦";
+        return;
+    }
+
+    container.replaceChildren();
+
+    const avatarType =
+        saved.currentAvatar === "female"
+            ? "female"
+            : "male";
+
+    const imageFolder = "/avatar/images/";
+
+    function addLayer(filename, zIndex, opacity = 1) {
+
+        if (!filename) return;
+
+        const img = document.createElement("img");
+
+        img.src = imageFolder + filename;
+        img.alt = "";
+        img.style.zIndex = zIndex;
+        img.style.opacity = opacity;
+
+        // Hide any missing image files.
+        img.onerror = () => img.remove();
+
+        container.appendChild(img);
+    }
+
+    /* SAVED EQUIPMENT */
+
+    const equipped = saved.equipped || {};
+
+    const itemLayers = {
+        fairy_wings: 1,
+        fantasy_boots: 5,
+        belt_pouch: 8,
+        short_cape: 9,
+        elf_ears: 11,
+        cowboy_hat: 12,
+        flower_crown: 12,
+        leaf_circlet: 12,
+        wand: 13
+    };
+
+    /* WINGS BEHIND BODY */
+
+    if (equipped.back === "fairy_wings") {
+        addLayer("fairy_wings.png", 1);
+    }
+
+    /* BASE AVATAR */
+
+    addLayer(`${avatarType}-base.png`, 2);
+
+    /* SKIN TONE */
+
+    const skinTone = Math.max(
+        0,
+        Math.min(
+            100,
+            Number(saved.skinTones?.[avatarType] ?? 0)
+        )
+    );
+
+    addLayer(
+        `${avatarType}-dark-skin.png`,
+        3,
+        skinTone / 100
+    );
+
+    /* FACE */
+
+    const face = saved.faceSelections || {};
+
+    addLayer(face.eyes || "eyes-brown.png", 4);
+
+    addLayer(face.lips || "Closed-lips.png", 4);
+
+    /* CLOTHING AND ACCESSORIES */
+
+    const equippedIds = Object.values(equipped);
+
+    equippedIds
+        .filter(id => id !== "fairy_wings")
+        .filter(id => id !== "short_cape")
+        .filter(id => id !== "elf_ears")
+        .filter(id =>
+            !["cowboy_hat", "flower_crown", "leaf_circlet"]
+                .includes(id)
+        )
+        .filter(id => id !== "wand")
+        .forEach(id => {
+            if (itemLayers[id] !== undefined) {
+                addLayer(`${id}.png`, itemLayers[id]);
+            }
+        });
+
+    /* CAPE ABOVE BODY AND SHIRT */
+
+    if (equipped.back === "short_cape") {
+        addLayer("short_cape.png", 9);
+    }
+
+    /* HAIR ABOVE CAPE */
+
+    addLayer(
+        face.hair || "blonde-short-hair.png",
+        10
+    );
+
+    /* ELF EARS */
+
+    if (equipped.ears === "elf_ears") {
+        addLayer("elf_ears.png", 11);
+    }
+
+    /* HATS AND CROWNS */
+
+    const hat = equipped.hat;
+
+    if (
+        hat &&
+        ["cowboy_hat", "flower_crown", "leaf_circlet"]
+            .includes(hat)
+    ) {
+        addLayer(`${hat}.png`, 12);
+    }
+
+    /* WAND IN FRONT */
+
+    if (equipped.hand === "wand") {
+        addLayer("wand.png", 13);
+    }
+
 }
+
+/* INITIAL LOAD */
+
+if (document.readyState === "loading") {
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        loadDashboardAvatar
+    );
+
+} else {
+
+    loadDashboardAvatar();
+
+}
+
+}
+    );
