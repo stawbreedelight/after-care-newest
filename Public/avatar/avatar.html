@@ -8,18 +8,20 @@
 
   <title>Mid Vanilla | My Avatar</title>
 
-  <link rel="stylesheet" href="avatar.css?v=5">
+  <!-- STYLES -->
+  <link rel="stylesheet" href="avatar.css?v=8">
 
-  <script src="avatar.js?v=2" defer></script>
+  <!-- JAVASCRIPT -->
+  <script src="avatar.js?v=8" defer></script>
 </head>
 
 <body>
 
 <main class="page">
 
-  <!-- =========================
+  <!-- ======================================
        PAGE HEADER
-  ========================= -->
+  ====================================== -->
 
   <header class="masthead">
 
@@ -41,11 +43,16 @@
   </header>
 
 
+  <!-- ======================================
+       MAIN PAGE LAYOUT
+  ====================================== -->
+
   <div class="layout">
 
-    <!-- =========================
-         AVATAR PREVIEW
-    ========================= -->
+
+    <!-- ====================================
+         LEFT PANEL — YOUR CHARACTER
+    ==================================== -->
 
     <section
       class="avatar-panel"
@@ -58,64 +65,100 @@
       </div>
 
 
-      <!-- AVATAR DISPLAY -->
+      <!-- ==================================
+           AVATAR DISPLAY
+      ================================== -->
 
-      <div class="avatar-stage" id="avatarStage">
+      <div
+        class="avatar-stage"
+        id="avatarStage"
+      >
 
-       <div class="avatar-stack" id="avatarStack">
+        <div
+          class="avatar-stack"
+          id="avatarStack"
+        >
 
-  <!-- Base avatar -->
-  <img
-    id="baseAvatar"
-    class="base-avatar avatar-layer"
-    src="images/male-base.png"
-    alt="Your customizable avatar"
-  >
+          <!-- BASE BODY -->
 
-  <!-- Skin tone overlay -->
-  <img
-    id="skinOverlay"
-    class="skin-overlay avatar-layer"
-    src="images/male-dark-skin.png"
-    alt=""
-    aria-hidden="true"
-  >
+          <img
+            id="baseAvatar"
+            class="base-avatar avatar-layer"
+            src="images/male-base.png"
+            alt="Your customizable avatar"
+          >
 
-  <!-- Eyes -->
-  <img
-    id="eyesLayer"
-    class="eyes-layer avatar-layer"
-    src="images/eyes-brown.png"
-    alt=""
-    aria-hidden="true"
-  >
 
-  <!-- Lips -->
-  <img
-    id="lipsLayer"
-    class="lips-layer avatar-layer"
-    src="images/Closed-lips.png"
-    alt=""
-    aria-hidden="true"
-  >
+          <!-- SKIN TONE OVERLAY -->
 
-  <!-- Hair -->
-  <img
-    id="hairLayer"
-    class="hair-layer avatar-layer"
-    src="images/blonde-short-hair.png"
-    alt=""
-    aria-hidden="true"
-  >
+          <img
+            id="skinOverlay"
+            class="skin-overlay avatar-layer"
+            src="images/male-dark-skin.png"
+            alt=""
+            aria-hidden="true"
+          >
 
-  <!-- Accessories get injected by JS -->
+
+          <!-- EYES -->
+
+          <img
+            id="eyesLayer"
+            class="eyes-layer avatar-layer"
+            src="images/eyes-brown.png"
+            alt=""
+            aria-hidden="true"
+          >
+
+
+          <!-- LIPS -->
+
+          <img
+            id="lipsLayer"
+            class="lips-layer avatar-layer"
+            src="images/Closed-lips.png"
+            alt=""
+            aria-hidden="true"
+          >
+
+
+          <!-- HAIR -->
+
+          <img
+            id="hairLayer"
+            class="hair-layer avatar-layer"
+            src="images/blonde-short-hair.png"
+            alt=""
+            aria-hidden="true"
+          >
+
+
+          <!--
+            FANTASY ACCESSORIES
+
+            The JavaScript adds equipped items here.
+
+            Layering will be controlled by CSS:
+
+            Wings behind body
+            Pants under shirt
+            Shirt under cape
+            Cape under hair
+            Hat and crown over hair
+            Wand over body
+          -->
+
+        </div>
+        <!-- END avatarStack -->
+
 
       </div>
+      <!-- END avatarStage -->
 
 
-      <!-- =========================
+      <!-- ==================================
            AVATAR CUSTOMIZATION
-      ========================= -->
+      ================================== -->
 
       <div class="avatar-customization-controls">
 
@@ -147,7 +190,7 @@
         </div>
 
 
-        <!-- SKIN TONE CONTROL -->
+        <!-- SKIN TONE -->
 
         <div class="skin-controls">
 
@@ -171,12 +214,22 @@
 
         </div>
 
+
+        <!--
+          HAIR / EYES / LIPS CONTROLS
+
+          Your existing avatar.js creates these
+          dropdown menus automatically inside
+          avatar-customization-controls.
+        -->
+
       </div>
+      <!-- END avatar-customization-controls -->
 
 
-      <!-- =========================
-           AVATAR ACTIONS
-      ========================= -->
+      <!-- ==================================
+           AVATAR ACTION BUTTONS
+      ================================== -->
 
       <div class="avatar-actions">
 
@@ -199,6 +252,8 @@
       </div>
 
 
+      <!-- SAVE CONFIRMATION -->
+
       <p
         class="save-message"
         id="saveMessage"
@@ -207,12 +262,13 @@
       ></p>
 
     </section>
+    <!-- END LEFT PANEL -->
 
 
 
-    <!-- =========================
-         FANTASY WARDROBE
-    ========================= -->
+    <!-- ====================================
+         RIGHT PANEL — FANTASY WARDROBE
+    ==================================== -->
 
     <section
       class="wardrobe-panel"
@@ -230,7 +286,9 @@
       </p>
 
 
-      <!-- WARDROBE FILTERS -->
+      <!-- ==================================
+           WARDROBE FILTERS
+      ================================== -->
 
       <div
         class="filters"
@@ -277,7 +335,9 @@
       </div>
 
 
-      <!-- WARDROBE ITEMS -->
+      <!-- ==================================
+           WARDROBE COLLECTION
+      ================================== -->
 
       <div
         class="item-grid"
@@ -285,10 +345,9 @@
       ></div>
 
 
-
-      <!-- =========================
+      <!-- ==================================
            ACCESSORY POSITIONING
-      ========================= -->
+      ================================== -->
 
       <div class="fit-panel">
 
@@ -312,7 +371,7 @@
         ></select>
 
 
-        <!-- HORIZONTAL POSITION -->
+        <!-- LEFT / RIGHT -->
 
         <div class="control">
 
@@ -326,12 +385,13 @@
             min="0"
             max="100"
             step="1"
+            value="50"
           >
 
         </div>
 
 
-        <!-- VERTICAL POSITION -->
+        <!-- UP / DOWN -->
 
         <div class="control">
 
@@ -345,12 +405,13 @@
             min="0"
             max="100"
             step="1"
+            value="50"
           >
 
         </div>
 
 
-        <!-- ACCESSORY SIZE -->
+        <!-- ITEM SIZE -->
 
         <div class="control">
 
@@ -364,12 +425,13 @@
             min="5"
             max="100"
             step="1"
+            value="100"
           >
 
         </div>
 
 
-        <!-- RESET POSITION -->
+        <!-- RESET ITEM FIT -->
 
         <button
           type="button"
@@ -380,16 +442,19 @@
         </button>
 
       </div>
+      <!-- END fit-panel -->
 
     </section>
+    <!-- END RIGHT PANEL -->
+
 
   </div>
+  <!-- END MAIN LAYOUT -->
 
 
-
-  <!-- =========================
+  <!-- ======================================
        FOOTER
-  ========================= -->
+  ====================================== -->
 
   <footer>
     Every great adventure starts with
