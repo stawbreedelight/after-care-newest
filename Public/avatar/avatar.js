@@ -34,7 +34,7 @@ const FACE_OPTIONS = {
     { name: 'Blue Eyes', file: 'eyes-blue.png' }
   ],
   lips: [
-    { name: 'Closed Lips', file: 'Closed-lips.png' },
+    { name: 'Closed Lips', file: 'closed-lips.png' },
     { name: 'Small Closed Lips', file: 'closed-small-lips.png' },
     { name: 'Closed Smile', file: 'closed-smile.png' },
     { name: 'Open Smile', file: 'open-smile.png' },
