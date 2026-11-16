@@ -1,0 +1,69 @@
+/* MID VANILLA — aligned, full-canvas avatar wardrobe */
+:root {
+  font-family: ui-rounded, 'Trebuchet MS', system-ui, sans-serif;
+  color: #51444a; background: #fffaf0; font-synthesis: none;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: radial-gradient(circle at 10% 12%, #f9e5e0 0, transparent 27%), radial-gradient(circle at 93% 22%, #e2efda 0, transparent 30%), #fffaf0; }
+button, select, input { font: inherit; }
+button { cursor: pointer; }
+button:focus-visible, select:focus-visible, input:focus-visible, a:focus-visible { outline: 3px solid #8374c5; outline-offset: 3px; }
+.page { max-width: 1140px; margin: auto; padding: 24px 20px 42px; }
+.masthead { text-align: center; margin: 0 auto 28px; max-width: 730px; }
+.back { display: block; text-align: left; color: #776b74; text-decoration: none; font-size: .9rem; margin-bottom: 14px; }
+.eyebrow { letter-spacing: .18em; color: #8b9d78; font-size: .75rem; font-weight: 800; margin: 0; }
+.masthead h1 { font-family: Georgia, serif; color: #864c67; font-size: clamp(2.2rem, 5vw, 3.4rem); margin: 9px 0; }
+.masthead > p:last-child { line-height: 1.5; color: #796c70; margin: 0; }
+.layout { display: grid; grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr); gap: 22px; align-items: start; }
+.avatar-panel, .wardrobe-panel { min-width: 0; background: #fffdf9; border: 1px solid #e8d9cc; border-radius: 25px; padding: 19px; box-shadow: 0 12px 28px #7156480e; }
+.panel-heading { display: flex; justify-content: space-between; gap: 8px; color: #8b6a7a; font-size: .75rem; letter-spacing: .07em; font-weight: 800; margin-bottom: 12px; }
+.sparkles { color: #c99a48; }
+
+/* Avatar canvas: every transparent PNG fits the SAME exact rectangle. */
+.avatar-stage { display: flex; align-items: center; justify-content: center; min-height: 455px; padding: 16px; border: 1px solid #f0e0d4; border-radius: 21px; overflow: hidden; background: radial-gradient(ellipse at 50% 76%, #f2e9d4 0, transparent 44%), linear-gradient(#fdf5e9, #edf1e3); }
+.avatar-stack { position: relative; isolation: isolate; width: min(100%, 320px); aspect-ratio: 2 / 3; flex-shrink: 0; }
+#avatarStack .avatar-layer, #avatarStack .avatar-item { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: contain; pointer-events: none; transform: none; margin: 0; }
+/* Layer numbers are also assigned to wardrobe images in avatar.js. */
+#avatarStack .base-avatar { z-index: 20; }
+#avatarStack .skin-overlay { z-index: 30; opacity: 0; }
+#avatarStack .eyes-layer { z-index: 40; }
+#avatarStack .lips-layer { z-index: 41; }
+#avatarStack .hair-layer { z-index: 80; }
+
+/* Customization lives BELOW the preview, never inside the canvas. */
+.avatar-customization-controls { position: static; width: 100%; padding: 20px 8px 6px; text-align: center; }
+.avatar-customization-controls h2 { margin: 0 0 14px; font-size: 1.15rem; }
+.avatar-selection { display: flex; justify-content: center; gap: 14px; margin: 15px 0 22px; flex-wrap: wrap; }
+.avatar-option { padding: 11px 26px; border: 2px solid #9eaf87; border-radius: 20px; background: #fff9ed; color: #50433c; }
+.avatar-option.active { background: #c5d9ae; border-color: #7c956b; font-weight: 700; }
+.skin-controls { max-width: 350px; margin: 0 auto 20px; }
+.skin-controls label { display: block; font-weight: 700; margin-bottom: 9px; }
+#skinSlider { display: block; width: 100%; accent-color: #92a77d; }
+.skin-labels { display: flex; justify-content: space-between; margin-top: 7px; color: #76695d; font-size: .85rem; }
+.face-controls { padding: 18px; text-align: left; background: #fff9ed; border: 1px solid #e5d9c9; border-radius: 17px; }
+.face-controls h3 { color: #805a85; text-align: center; margin: 0 0 15px; }
+.face-control + .face-control { margin-top: 13px; }
+.face-control label { display: block; font-weight: 700; font-size: .9rem; margin-bottom: 6px; }
+.face-control select { display: block; width: 100%; min-width: 0; padding: 11px; border: 1px solid #c5d9ae; border-radius: 11px; background: white; color: #50433c; }
+.avatar-actions { display: flex; gap: 10px; margin-top: 15px; }
+.primary, .secondary { padding: 11px 14px; border-radius: 13px; border: 1px solid #d9bfc8; flex: 1; min-width: 0; font-weight: 700; }
+.primary { background: #b27f99; color: white; border-color: #b27f99; }
+.secondary { background: #fff8f7; color: #775c6d; }
+.save-message { min-height: 1.5em; text-align: center; font-size: .85rem; color: #567657; margin: 8px 0 0; }
+
+/* Wardrobe thumbnails are cropped from transparent PNG alpha bounds in JS. */
+.help { margin: 0 0 15px; color: #847779; font-size: .91rem; }
+.filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 15px; }
+.filter { border: 1px solid #e5d9ce; background: #fff9f1; color: #6e6167; border-radius: 999px; padding: 7px 13px; }
+.filter.active { background: #dbe7d2; border-color: #a5ba9a; color: #41573e; font-weight: 800; }
+.item-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.item { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 7px; min-width: 0; min-height: 154px; padding: 8px 5px 10px; border: 2px solid #eadfd7; border-radius: 15px; background: #fffaf5; color: #61575a; }
+.item.selected { border-color: #99b48c; background: #f2f8ed; }
+.item .item-thumbnail { display: flex; align-items: center; justify-content: center; width: 100%; height: 112px; overflow: hidden; }
+.item .item-thumbnail img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.item span.item-name { font-size: .76rem; font-weight: 700; text-align: center; }
+.item.selected::after { content: '✓'; position: absolute; right: 7px; top: 5px; z-index: 2; background: #8aa981; color: white; border-radius: 50%; width: 21px; height: 21px; line-height: 21px; font-weight: 900; }
+.wardrobe-note { color: #847779; font-size: .8rem; line-height: 1.5; margin: 15px 0 0; }
+footer { text-align: center; margin-top: 28px; color: #a28b8b; font-family: Georgia, serif; font-style: italic; }
+@media(max-width: 760px) { .layout { grid-template-columns: 1fr; } .page { padding: 16px 12px 28px; } .avatar-stage { min-height: 0; } .avatar-stack { width: min(100%, 330px); } }
+@media(max-width: 380px) { .item-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .avatar-actions { flex-wrap: wrap; } .avatar-actions button { flex: 1 1 130px; } }

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mid Vanilla | My Avatar</title>
+  <link rel="stylesheet" href="avatar.css?v=9">
+  <script src="avatar.js?v=9" defer></script>
+</head>
+<body>
+  <main class="page">
+    <header class="masthead">
+      <a class="back" href="/">← Back to Mid Vanilla</a>
+      <p class="eyebrow">MID VANILLA · THE WARDROBE</p>
+      <h1>Make your magic</h1>
+      <p>Dress up your character with outfits and treasures collected along your journey together.</p>
+    </header>
+
+    <div class="layout">
+      <section class="avatar-panel" aria-label="Avatar preview">
+        <div class="panel-heading"><span>YOUR CHARACTER</span><span class="sparkles">✦ ✧ ✦</span></div>
+        <div class="avatar-stage" id="avatarStage">
+          <div class="avatar-stack" id="avatarStack">
+            <!-- These five images share the SAME transparent canvas and position. -->
+            <img id="baseAvatar" class="avatar-layer base-avatar" src="images/male-base.png" alt="Your customizable avatar">
+            <img id="skinOverlay" class="avatar-layer skin-overlay" src="images/male-dark-skin.png" alt="" aria-hidden="true">
+            <img id="eyesLayer" class="avatar-layer eyes-layer" src="images/eyes-brown.png" alt="" aria-hidden="true">
+            <img id="lipsLayer" class="avatar-layer lips-layer" src="images/Closed-lips.png" alt="" aria-hidden="true">
+            <img id="hairLayer" class="avatar-layer hair-layer" src="images/blonde-short-hair.png" alt="" aria-hidden="true">
+            <!-- Equipped wardrobe images are inserted here by JavaScript. -->
+          </div>
+        </div>
+
+        <div class="avatar-customization-controls">
+          <h2>Customize Your Avatar</h2>
+          <div class="avatar-selection" role="group" aria-label="Avatar body">
+            <button type="button" class="avatar-option active" data-avatar="male" aria-pressed="true">Male</button>
+            <button type="button" class="avatar-option" data-avatar="female" aria-pressed="false">Female</button>
+          </div>
+
+          <div class="skin-controls">
+            <label for="skinSlider">Skin tone</label>
+            <input type="range" id="skinSlider" min="0" max="100" step="1" value="0">
+            <div class="skin-labels"><span>Light</span><span>Dark</span></div>
+          </div>
+
+          <div class="face-controls">
+            <h3>Face &amp; Hair</h3>
+            <div class="face-control"><label for="hairSelect">Hairstyle</label><select id="hairSelect"></select></div>
+            <div class="face-control"><label for="eyesSelect">Eye colour</label><select id="eyesSelect"></select></div>
+            <div class="face-control"><label for="lipsSelect">Lips &amp; expression</label><select id="lipsSelect"></select></div>
+          </div>
+        </div>
+
+        <div class="avatar-actions">
+          <button type="button" class="secondary" id="clearBtn">Remove all items</button>
+          <button type="button" class="primary" id="saveBtn">Save outfit</button>
+        </div>
+        <p id="saveMessage" class="save-message" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="wardrobe-panel" aria-label="Fantasy wardrobe">
+        <div class="panel-heading"><span>FANTASY WARDROBE</span><span>✦ Your collection</span></div>
+        <p class="help">Tap an item to equip it. Tap again to remove it.</p>
+        <div class="filters" role="group" aria-label="Filter wardrobe">
+          <button type="button" class="filter active" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="filter" data-filter="head" aria-pressed="false">Head</button>
+          <button type="button" class="filter" data-filter="magic" aria-pressed="false">Magic</button>
+          <button type="button" class="filter" data-filter="outfit" aria-pressed="false">Clothing</button>
+        </div>
+        <div class="item-grid" id="itemGrid"></div>
+        <p class="wardrobe-note">Wardrobe previews automatically zoom in on each item's artwork. Equipped pieces retain their exact, original canvas alignment.</p>
+      </section>
+    </div>
+    <footer>Every great adventure starts with a little imagination. ♡</footer>
+  </main>
+</body>
+</html>
