@@ -101,11 +101,12 @@ function displayUsername(user) {
         sessionStorage.getItem("midVanillaUsername");
 
     if (
+        playerOneName &&
         savedUID === user.uid &&
         savedUsername
     ) {
         playerOneName.textContent = savedUsername;
-    } else {
+    } else if (playerOneName) {
         playerOneName.textContent = "You";
     }
 
@@ -126,7 +127,6 @@ async function loadPartnerConnection(user) {
             "https://auth.midvanilla.com/partner/status",
             {
                 method: "GET",
-
                 headers: {
                     "Authorization": "Bearer " + token
                 }
@@ -141,15 +141,12 @@ async function loadPartnerConnection(user) {
 
         const data = await response.json();
 
-        if (data.connected) {
+        if (playerTwoName) {
 
             playerTwoName.textContent =
-                data.partnerUsername || "Partner";
-
-        } else {
-
-            playerTwoName.textContent =
-                "Not Connected";
+                data.connected
+                    ? (data.partnerUsername || "Partner")
+                    : "Not Connected";
 
         }
 
@@ -157,11 +154,13 @@ async function loadPartnerConnection(user) {
 
         console.error(
             "Unable to load partner connection:",
-            error.name
+            error
         );
 
-        playerTwoName.textContent =
-            "Partner Unavailable";
+        if (playerTwoName) {
+            playerTwoName.textContent =
+                "Partner Unavailable";
+        }
 
     }
 
@@ -176,17 +175,11 @@ async function loadPartnerConnection(user) {
 const demoRelationship = {
 
     level: 1,
-
     levelName: "The New Adventurers",
-
     xp: 0,
-
     xpNeeded: 100,
-
     games: 0,
-
     dates: 0,
-
     badges: 0
 
 };
@@ -194,41 +187,52 @@ const demoRelationship = {
 
 function displayRelationshipProgress() {
 
-    relationshipLevel.textContent =
-        demoRelationship.level;
+    if (relationshipLevel) {
+        relationshipLevel.textContent =
+            demoRelationship.level;
+    }
 
-    relationshipLevelName.textContent =
-        demoRelationship.levelName;
+    if (relationshipLevelName) {
+        relationshipLevelName.textContent =
+            demoRelationship.levelName;
+    }
 
-    const progress =
-        Math.min(
-            100,
-            Math.max(
-                0,
-                (
-                    demoRelationship.xp /
-                    demoRelationship.xpNeeded
-                ) * 100
-            )
-        );
+    const progress = Math.min(
+        100,
+        Math.max(
+            0,
+            (demoRelationship.xp /
+                demoRelationship.xpNeeded) * 100
+        )
+    );
 
-    xpProgressFill.style.width =
-        progress + "%";
+    if (xpProgressFill) {
+        xpProgressFill.style.width =
+            progress + "%";
+    }
 
-    xpProgressText.textContent =
-        demoRelationship.xp +
-        " / " +
-        demoRelationship.xpNeeded +
-        " XP";
+    if (xpProgressText) {
+        xpProgressText.textContent =
+            demoRelationship.xp +
+            " / " +
+            demoRelationship.xpNeeded +
+            " XP";
+    }
 
-    gamesCompleted.textContent =
-        demoRelationship.games;
+    if (gamesCompleted) {
+        gamesCompleted.textContent =
+            demoRelationship.games;
+    }
 
-    datesCompleted.textContent =
-        demoRelationship.dates;
+    if (datesCompleted) {
+        datesCompleted.textContent =
+            demoRelationship.dates;
+    }
 
-    badgesEarned.textContent =
-        demoRelationship.badges;
+    if (badgesEarned) {
+        badgesEarned.textContent =
+            demoRelationship.badges;
+    }
 
 }
 
@@ -319,7 +323,6 @@ function displayRelationshipSkills() {
 
 /* ==========================================
    NOTIFICATIONS
-   FUTURE FEATURE
 ========================================== */
 
 if (notificationButton) {
@@ -328,11 +331,209 @@ if (notificationButton) {
         "click",
         () => {
 
-            dashboardMessage.textContent =
-                "Notifications are coming soon ♡";
+            if (dashboardMessage) {
+                dashboardMessage.textContent =
+                    "Notifications are coming soon ♡";
+            }
 
         }
     );
+
+}
+
+
+/* ==========================================
+   DISPLAY SAVED FANTASY AVATAR
+========================================== */
+
+function loadDashboardAvatar() {
+
+    const container =
+        document.getElementById("playerOneAvatar");
+
+    if (!container) return;
+
+    const STORE_KEY = "midVanillaAvatarV1";
+
+    let saved;
+
+    try {
+
+        saved = JSON.parse(
+            localStorage.getItem(STORE_KEY) || "null"
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Unable to read saved avatar:",
+            error
+        );
+
+        return;
+
+    }
+
+    container.replaceChildren();
+
+    if (!saved) {
+
+        container.textContent =
+            "Create your avatar ✦";
+
+        return;
+
+    }
+
+    const avatarType =
+        saved.currentAvatar === "female"
+            ? "female"
+            : "male";
+
+    const imageFolder = "/avatar/images/";
+
+    /* ADD AN IMAGE LAYER */
+
+    function addLayer(filename, zIndex, opacity = 1) {
+
+        if (!filename) return;
+
+        const img = document.createElement("img");
+
+        img.src = imageFolder + filename;
+        img.alt = "";
+
+        img.style.position = "absolute";
+        img.style.inset = "0";
+        img.style.width = "100%";
+        img.style.height = "100%";
+        img.style.objectFit = "contain";
+
+        img.style.zIndex = String(zIndex);
+        img.style.opacity = String(opacity);
+
+        img.onerror = () => img.remove();
+
+        container.appendChild(img);
+
+    }
+
+
+    /* SAVED ITEMS */
+
+    const equipped = saved.equipped || {};
+    const face = saved.faceSelections || {};
+
+
+    /* WINGS BEHIND BODY */
+
+    if (
+        Object.values(equipped).includes("fairy_wings")
+    ) {
+        addLayer("fairy_wings.png", 1);
+    }
+
+
+    /* BASE AVATAR */
+
+    addLayer(
+        `${avatarType}-base.png`,
+        2
+    );
+
+
+    /* SKIN TONE */
+
+    const rawSkinTone =
+        Number(saved.skinTones?.[avatarType] ?? 0);
+
+    const skinTone = Number.isFinite(rawSkinTone)
+        ? Math.max(0, Math.min(100, rawSkinTone))
+        : 0;
+
+    addLayer(
+        `${avatarType}-dark-skin.png`,
+        3,
+        skinTone / 100
+    );
+
+
+    /* EYES AND LIPS */
+
+    addLayer(
+        face.eyes || "eyes-brown.png",
+        4
+    );
+
+    addLayer(
+        face.lips || "Closed-lips.png",
+        5
+    );
+
+
+    /* BOOTS AND BELT */
+
+    if (
+        Object.values(equipped).includes("fantasy_boots")
+    ) {
+        addLayer("fantasy_boots.png", 6);
+    }
+
+    if (
+        Object.values(equipped).includes("belt_pouch")
+    ) {
+        addLayer("belt_pouch.png", 7);
+    }
+
+
+    /* CAPE */
+
+    if (
+        Object.values(equipped).includes("short_cape")
+    ) {
+        addLayer("short_cape.png", 8);
+    }
+
+
+    /* HAIR */
+
+    addLayer(
+        face.hair || "blonde-short-hair.png",
+        9
+    );
+
+
+    /* ELF EARS */
+
+    if (
+        Object.values(equipped).includes("elf_ears")
+    ) {
+        addLayer("elf_ears.png", 10);
+    }
+
+
+    /* HATS AND CROWNS */
+
+    const hat = equipped.hat;
+
+    if (
+        [
+            "cowboy_hat",
+            "flower_crown",
+            "leaf_circlet"
+        ].includes(hat)
+    ) {
+        addLayer(`${hat}.png`, 11);
+    }
+
+
+    /* WAND IN FRONT */
+
+    if (
+        Object.values(equipped).includes("wand")
+    ) {
+        addLayer("wand.png", 12);
+    }
 
 }
 
@@ -342,6 +543,7 @@ if (notificationButton) {
 ========================================== */
 
 onAuthStateChanged(
+
     auth,
 
     async (user) => {
@@ -367,9 +569,24 @@ onAuthStateChanged(
 
         /* SHOW DASHBOARD */
 
-        dashboard.hidden = false;
+        if (dashboard) {
+            dashboard.hidden = false;
+        }
 
-        loadingMessage.hidden = true;
+        if (loadingMessage) {
+            loadingMessage.hidden = true;
+        }
+
+        /* LOAD SAVED AVATAR */
+
+        try {
+            loadDashboardAvatar();
+        } catch (error) {
+            console.error(
+                "Avatar display failed:",
+                error
+            );
+        }
 
         /* LOAD PARTNER INFORMATION */
 
@@ -381,13 +598,16 @@ onAuthStateChanged(
 
         console.error(
             "Dashboard V2 authentication failed:",
-            error.code || error.name
+            error
         );
 
-        loadingMessage.textContent =
-            "Unable to open your world. Please refresh.";
+        if (loadingMessage) {
+            loadingMessage.textContent =
+                "Unable to open your world. Please refresh.";
+        }
 
     }
+
 );
 
 
@@ -398,14 +618,17 @@ onAuthStateChanged(
 if (logoutButton) {
 
     logoutButton.addEventListener(
+
         "click",
 
         async () => {
 
             logoutButton.disabled = true;
 
-            dashboardMessage.textContent =
-                "Logging out...";
+            if (dashboardMessage) {
+                dashboardMessage.textContent =
+                    "Logging out...";
+            }
 
             try {
 
@@ -427,196 +650,20 @@ if (logoutButton) {
 
                 console.error(
                     "Logout failed:",
-                    error.code || error.name
+                    error
                 );
 
-                dashboardMessage.textContent =
-                    "Unable to log out. Please try again.";
+                if (dashboardMessage) {
+                    dashboardMessage.textContent =
+                        "Unable to log out. Please try again.";
+                }
 
                 logoutButton.disabled = false;
 
             }
 
         }
+
     );
-
-/* ==========================================
-   MID VANILLA — DISPLAY SAVED AVATAR
-========================================== */
-
-function loadDashboardAvatar() {
-
-    const container =
-        document.getElementById("playerOneAvatar");
-
-    if (!container) return;
-
-    const STORE_KEY = "midVanillaAvatarV1";
-
-    let saved;
-
-    try {
-        saved = JSON.parse(
-            localStorage.getItem(STORE_KEY) || "null"
-        );
-    } catch (error) {
-        console.error("Avatar data error:", error);
-        return;
-    }
-
-    if (!saved) {
-        container.textContent = "Create your avatar ✦";
-        return;
-    }
-
-    container.replaceChildren();
-
-    const avatarType =
-        saved.currentAvatar === "female"
-            ? "female"
-            : "male";
-
-    const imageFolder = "/avatar/images/";
-
-    function addLayer(filename, zIndex, opacity = 1) {
-
-        if (!filename) return;
-
-        const img = document.createElement("img");
-
-        img.src = imageFolder + filename;
-        img.alt = "";
-        img.style.zIndex = zIndex;
-        img.style.opacity = opacity;
-
-        // Hide any missing image files.
-        img.onerror = () => img.remove();
-
-        container.appendChild(img);
-    }
-
-    /* SAVED EQUIPMENT */
-
-    const equipped = saved.equipped || {};
-
-    const itemLayers = {
-        fairy_wings: 1,
-        fantasy_boots: 5,
-        belt_pouch: 8,
-        short_cape: 9,
-        elf_ears: 11,
-        cowboy_hat: 12,
-        flower_crown: 12,
-        leaf_circlet: 12,
-        wand: 13
-    };
-
-    /* WINGS BEHIND BODY */
-
-    if (equipped.back === "fairy_wings") {
-        addLayer("fairy_wings.png", 1);
-    }
-
-    /* BASE AVATAR */
-
-    addLayer(`${avatarType}-base.png`, 2);
-
-    /* SKIN TONE */
-
-    const skinTone = Math.max(
-        0,
-        Math.min(
-            100,
-            Number(saved.skinTones?.[avatarType] ?? 0)
-        )
-    );
-
-    addLayer(
-        `${avatarType}-dark-skin.png`,
-        3,
-        skinTone / 100
-    );
-
-    /* FACE */
-
-    const face = saved.faceSelections || {};
-
-    addLayer(face.eyes || "eyes-brown.png", 4);
-
-    addLayer(face.lips || "Closed-lips.png", 4);
-
-    /* CLOTHING AND ACCESSORIES */
-
-    const equippedIds = Object.values(equipped);
-
-    equippedIds
-        .filter(id => id !== "fairy_wings")
-        .filter(id => id !== "short_cape")
-        .filter(id => id !== "elf_ears")
-        .filter(id =>
-            !["cowboy_hat", "flower_crown", "leaf_circlet"]
-                .includes(id)
-        )
-        .filter(id => id !== "wand")
-        .forEach(id => {
-            if (itemLayers[id] !== undefined) {
-                addLayer(`${id}.png`, itemLayers[id]);
-            }
-        });
-
-    /* CAPE ABOVE BODY AND SHIRT */
-
-    if (equipped.back === "short_cape") {
-        addLayer("short_cape.png", 9);
-    }
-
-    /* HAIR ABOVE CAPE */
-
-    addLayer(
-        face.hair || "blonde-short-hair.png",
-        10
-    );
-
-    /* ELF EARS */
-
-    if (equipped.ears === "elf_ears") {
-        addLayer("elf_ears.png", 11);
-    }
-
-    /* HATS AND CROWNS */
-
-    const hat = equipped.hat;
-
-    if (
-        hat &&
-        ["cowboy_hat", "flower_crown", "leaf_circlet"]
-            .includes(hat)
-    ) {
-        addLayer(`${hat}.png`, 12);
-    }
-
-    /* WAND IN FRONT */
-
-    if (equipped.hand === "wand") {
-        addLayer("wand.png", 13);
-    }
 
 }
-
-/* INITIAL LOAD */
-
-if (document.readyState === "loading") {
-
-    document.addEventListener(
-        "DOMContentLoaded",
-        loadDashboardAvatar
-    );
-
-} else {
-
-    loadDashboardAvatar();
-
-}
-
-}
-    );
