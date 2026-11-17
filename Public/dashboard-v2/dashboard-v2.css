@@ -366,7 +366,13 @@ button:disabled {
     font-weight: 600;
 }
 
-/* AVATARS */
+
+/* ==========================================
+   MID VANILLA DASHBOARD V2
+   COUPLE AVATARS
+========================================== */
+
+/* COUPLE AVATAR ROW */
 
 .couple-avatars {
     display: flex;
@@ -375,15 +381,68 @@ button:disabled {
     gap: 18px;
 
     margin: 22px 0 15px;
+    width: 100%;
 }
+
+/* INDIVIDUAL PLAYER */
 
 .avatar-profile {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
+
     min-width: 0;
+    flex: 0 1 auto;
+    text-align: center;
 }
+
+/* SAVED AVATAR LINK */
+
+.dashboard-avatar-link {
+    display: block;
+    width: 110px;
+    height: 115px;
+
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+/* SAVED FANTASY AVATAR */
+
+.dashboard-avatar {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    border: 2px solid var(--border);
+    border-radius: 23px;
+
+    background: var(--blueberry-light);
+
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* ALL SAVED AVATAR LAYERS */
+
+.dashboard-avatar img {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    pointer-events: none;
+
+    /* ZOOM ALL LAYERS TOGETHER */
+    transform: scale(1.7) translateY(8%);
+    transform-origin: center 30%;
+}
+
+/* PARTNER AVATAR PLACEHOLDER */
 
 .avatar-placeholder {
     display: flex;
@@ -396,12 +455,10 @@ button:disabled {
     border: 2px solid var(--border);
     border-radius: 23px;
 
-    background: var(--blueberry-light);
-}
-
-.avatar-profile:nth-of-type(3) .avatar-placeholder {
     background: var(--peach-light);
 }
+
+/* PARTNER PLACEHOLDER ICON */
 
 .avatar-placeholder svg {
     width: 58px;
@@ -409,11 +466,28 @@ button:disabled {
     color: var(--purple);
 }
 
+/* PLAYER NAMES */
+
 .avatar-profile > span {
     max-width: 125px;
     font-size: .9rem;
     overflow-wrap: anywhere;
 }
+
+/* EDIT AVATAR LINK */
+
+.edit-avatar-link {
+    font-size: .75rem;
+    color: var(--purple);
+    text-decoration: none;
+    text-align: center;
+}
+
+.edit-avatar-link:hover {
+    text-decoration: underline;
+}
+
+/* CONNECTION ICON BETWEEN AVATARS */
 
 .avatar-connection {
     display: flex;
@@ -422,6 +496,8 @@ button:disabled {
 
     width: 42px;
     height: 42px;
+
+    flex-shrink: 0;
 
     border-radius: 50%;
     background: var(--pistachio-light);
@@ -433,6 +509,29 @@ button:disabled {
 .avatar-connection svg {
     width: 23px;
     height: 23px;
+}
+
+/* ==========================================
+   SMALL SCREEN ADJUSTMENTS
+========================================== */
+
+@media (max-width: 380px) {
+
+    .couple-avatars {
+        gap: 9px;
+    }
+
+    .dashboard-avatar-link,
+    .avatar-placeholder {
+        width: 90px;
+        height: 105px;
+    }
+
+    .avatar-connection {
+        width: 34px;
+        height: 34px;
+    }
+
 }
 
 /* LEVEL */
